@@ -136,6 +136,11 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='232164028907-ru9lo92i7175ua7q4l2b66ksavfe5v79.ap
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FLM8pKnxZlypJLQ9kP_ZrN6n'
 
 
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
