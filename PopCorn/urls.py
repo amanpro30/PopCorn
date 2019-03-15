@@ -16,8 +16,9 @@ Including another URLconf
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views as core_views
-
+from django.contrib import admin
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('login/', auth_views.LoginView, name='login'),
     path('logout/', auth_views.LogoutView, name='logout'),
     path('', core_views.landing, name='landing'),
