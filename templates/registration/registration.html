@@ -1,0 +1,9 @@
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    {{ profile }}
+    <br>
+    <button type="submit">Register</button>
+</form>
+

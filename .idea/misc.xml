@@ -3,5 +3,9 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="3.6 @ Ubuntu 18.04" project-jdk-type="Python SDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.5 (untitled)" project-jdk-type="Python SDK" />
+>>>>>>> 1b9ee967b24e507dcec22deee3d6916641ff2f08
 </project>

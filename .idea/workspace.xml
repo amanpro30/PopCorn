@@ -2,14 +2,487 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9534e91a-557d-4122-bc78-c0d79459ff34" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Movie/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Movie/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Movie/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Movie/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Movie/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Movie/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Movie/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Movie/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/registration/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/registration/tokens.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/registration/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/css/ajax-loader.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/css/fonts/slick-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/css/fonts/slick-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/css/fonts/slick-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/css/fonts/slick.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/css/fonts/slickd41d.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/css/plugins.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/fonts/fontawesome-webfont93e3.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/fonts/fontawesome-webfont93e3.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/fonts/fontawesome-webfont93e3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/fonts/fontawesome-webfont93e3.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/fonts/fontawesome-webfont93e3.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/blank.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/fancybox_loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/fancybox_loading@2x.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/fancybox_overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/fancybox_sprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/fancybox_sprite@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/logo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/logo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/nivo/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/nivo/close@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/nivo/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/nivo/loading@2x.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/nivo/next.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/nivo/next@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/nivo/prev.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/nivo/prev@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ads1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ads2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/author.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/author2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/author3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/author4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ava1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ava2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ava3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ava4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blog-detail.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blog-detail2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blog-it1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blog-it2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blog26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blog27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blog29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/bloglist-it1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/bloglist-it2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/bloglist-it3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/bloglist-it4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/bloglist-it5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/bloglist-it6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blogv21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blogv22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blogv23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blogv24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blogv25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/blogv29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cast1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cast2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cast3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cast4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cast5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cast6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cast7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cast9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceb9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceblist1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceblist2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceblist3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceblist4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceblist5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceblist6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceblist7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ceblist8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cebsingle2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/celeb-hero-single.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/cm-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/drop-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/err-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/error-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/film1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/film2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/film3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/film4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/film5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/film6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/film7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/film8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/ft-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/hero-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image1-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image101.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image111.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image121.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image131.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image141.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image161.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image171.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image181.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image191.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image2-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image201.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image211.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image31.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image51.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image61.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image81.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/image91.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/landing-dark-version.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/landing-light-version.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/movie-single.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-it9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv-item9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/mv5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/play-vd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/poster1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/search-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/search-bgsb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/season.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/series-img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/slider-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/slider-bg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/slider1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/slider2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/slider3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/slider4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/sr-single.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/topsearch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/trailer2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/trailer3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/trailer4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/trailer5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/trailer6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/trailer7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/user-hero-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/user-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/userava1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/userava2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/userava3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/userava4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/userava5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/vd-item1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/vd-item2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/vd-item3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/images/uploads/vd-item4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/js/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/js/plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/core/js/plugins2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/blogdetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/bloggrid.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/bloglist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/celebritygrid01.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/celebritygrid02.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/celebritylist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/celebritysingle.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/comingsoon.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/css/ajax-loader.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/css/fonts/slick-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/css/fonts/slick-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/css/fonts/slick-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/css/fonts/slick.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/css/fonts/slickd41d.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/css/plugins.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/fonts/fontawesome-webfont93e3.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/fonts/fontawesome-webfont93e3.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/fonts/fontawesome-webfont93e3.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/fonts/fontawesome-webfont93e3.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/fonts/fontawesome-webfont93e3.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/homev2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/homev3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/blank.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/fancybox_loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/fancybox_loading@2x.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/fancybox_overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/fancybox_sprite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/fancybox_sprite@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/logo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/logo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/nivo/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/nivo/close@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/nivo/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/nivo/loading@2x.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/nivo/next.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/nivo/next@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/nivo/prev.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/nivo/prev@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ads1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ads2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/author.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/author2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/author3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/author4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ava1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ava2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ava3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ava4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blog-detail.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blog-detail2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blog-it1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blog-it2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blog26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blog27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blog29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/bloglist-it1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/bloglist-it2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/bloglist-it3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/bloglist-it4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/bloglist-it5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/bloglist-it6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blogv21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blogv22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blogv23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blogv24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blogv25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/blogv29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cast1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cast2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cast3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cast4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cast5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cast6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cast7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cast9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb23.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb27.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceb9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceblist1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceblist2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceblist3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceblist4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceblist5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceblist6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceblist7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ceblist8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cebsingle2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/celeb-hero-single.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/cm-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/drop-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/err-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/error-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/film1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/film2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/film3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/film4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/film5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/film6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/film7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/film8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/ft-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/hero-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image1-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image101.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image111.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image121.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image131.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image141.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image161.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image171.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image181.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image191.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image2-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image201.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image211.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image31.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image51.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image61.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image81.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/image91.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/landing-dark-version.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/landing-light-version.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/movie-single.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-it9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv-item9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/mv5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/play-vd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/poster1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/search-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/search-bgsb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/season.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/series-img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/slider-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/slider-bg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/slider1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/slider2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/slider3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/slider4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/sr-single.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/topsearch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/trailer2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/trailer3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/trailer4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/trailer5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/trailer6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/trailer7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/user-hero-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/user-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/userava1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/userava2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/userava3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/userava4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/userava5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/vd-item1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/vd-item2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/vd-item3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/images/uploads/vd-item4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/js/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/js/plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/js/plugins2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/moviegrid.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/moviegridfw.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/movielist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/moviesingle.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/seriessingle.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/userfavoritegrid.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/userfavoritelist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/userprofile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/core/userrate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/registration/account_activation_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/registration/email_verification.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/registration/registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/PopCorn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PopCorn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PopCorn/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/PopCorn/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PopCorn/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PopCorn/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PopCorn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/PopCorn/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/core/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/core/landing.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/core/landing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,57 +496,98 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PopCorn/urls.py">
+        <entry file="file://$PROJECT_DIR$/registration/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="68">
+              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
               <folding>
-                <element signature="e#631#668#0" expanded="true" />
+                <element signature="e#0#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/core/home.html">
+        <entry file="file://$PROJECT_DIR$/registration/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="23" selection-start-column="23" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PopCorn/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
-                <element signature="e#0#57#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/core/landing.html">
+        <entry file="file://$PROJECT_DIR$/registration/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="55" column="49" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+            <state relative-caret-position="62">
+              <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
               <folding>
-                <element signature="n#style#0;n#p#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#444#503#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PopCorn/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Movie/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Movie/apps.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PopCorn/settings.py">
+        <entry file="file://$PROJECT_DIR$/Movie/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+            <state relative-caret-position="102">
+              <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/casts/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/casts/apps.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/casts/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,8 +597,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -96,19 +610,42 @@
       <list>
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/PopCorn/templates/home.html" />
-        <option value="$PROJECT_DIR$/PopCorn/login.html" />
         <option value="$PROJECT_DIR$/templates/home/landing_page.html" />
         <option value="$PROJECT_DIR$/templates/home/home.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/templates/core/settings.html.py" />
         <option value="$PROJECT_DIR$/templates/core/password.html" />
         <option value="$PROJECT_DIR$/templates/core/settings.html" />
-        <option value="$PROJECT_DIR$/templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/PopCorn/views.py" />
-        <option value="$PROJECT_DIR$/templates/core/home.html" />
+        <option value="$PROJECT_DIR$/PopCorn/login.html" />
+        <option value="$PROJECT_DIR$/templates/core/navbar.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/core/footer.html" />
+        <option value="$PROJECT_DIR$/templates/core/test..html" />
+        <option value="$PROJECT_DIR$/templates/core/navbar&amp;footer.html" />
+        <option value="$PROJECT_DIR$/templates/core/test.html" />
+        <option value="$PROJECT_DIR$/templates/core/base.html" />
+        <option value="$PROJECT_DIR$/templates/core/index.html" />
         <option value="$PROJECT_DIR$/templates/core/landing.html" />
+        <option value="$PROJECT_DIR$/templates/registration/registration.py" />
+        <option value="$PROJECT_DIR$/templates/core/account_activation_email.html" />
+        <option value="$PROJECT_DIR$/registration/tokens.py" />
+        <option value="$PROJECT_DIR$/PopCorn/views.py" />
+        <option value="$PROJECT_DIR$/registration/forms.py" />
+        <option value="$PROJECT_DIR$/registration/models.py" />
+        <option value="$PROJECT_DIR$/templates/registration/email_verification.html" />
+        <option value="$PROJECT_DIR$/templates/registration/registration.html" />
+        <option value="$PROJECT_DIR$/registration/admin.py" />
+        <option value="$PROJECT_DIR$/templates/core/js/login.html" />
+        <option value="$PROJECT_DIR$/templates/registration/login.html" />
+        <option value="$PROJECT_DIR$/templates/core/home.html" />
         <option value="$PROJECT_DIR$/PopCorn/urls.py" />
+        <option value="$PROJECT_DIR$/registration/urls.py" />
+        <option value="$PROJECT_DIR$/registration/views.py" />
         <option value="$PROJECT_DIR$/PopCorn/settings.py" />
+        <option value="$PROJECT_DIR$/casts/models.py" />
+        <option value="$PROJECT_DIR$/Movie/models.py" />
+        <option value="$PROJECT_DIR$/casts/admin.py" />
+        <option value="$PROJECT_DIR$/Movie/admin.py" />
       </list>
     </option>
   </component>
@@ -120,30 +657,52 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="PopCorn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PopCorn" type="462c0819:PsiDirectoryNode" />
+              <item name="PopCorn" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="PopCorn" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="casts" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="PopCorn" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Movie" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dell\Desktop\PopCorn\templates\registration" />
+      <recent name="C:\Users\Dell\Desktop\PopCorn\templates\core" />
+      <recent name="C:\Users\Dell\Desktop\PopCorn\static\core" />
+      <recent name="C:\Users\Dell\Desktop\PopCorn\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dell\Desktop\PopCorn\templates\core" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -194,18 +753,47 @@
       <updated>1552507959244</updated>
       <workItem from="1552507962844" duration="11419000" />
       <workItem from="1552645271017" duration="740000" />
-      <workItem from="1552646071484" duration="454000" />
+      <workItem from="1552646071484" duration="1137000" />
+      <workItem from="1552671683900" duration="321000" />
+      <workItem from="1552672028820" duration="18000" />
+      <workItem from="1552672050007" duration="271000" />
+      <workItem from="1552672355877" duration="7616000" />
+      <workItem from="1552680064658" duration="15042000" />
+      <workItem from="1553359859927" duration="13084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19884000" />
+    <option name="totallyTimeSpent" value="56919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49876544" visible="true" weight="0.18299595" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49876544" visible="true" weight="0.20242915" />
+      <window_info id="Structure" order="1" sideWeight="0.5012346" side_tool="true" weight="0.17651822" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49878544" visible="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="Python Console" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50121456" side_tool="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="manage.py@PopCorn" order="13" weight="0.3283582" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49876544" visible="true" weight="0.20242915" />
       <window_info id="Structure" order="1" sideWeight="0.5012346" side_tool="true" weight="0.17651822" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -221,12 +809,13 @@
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49878544" weight="0.3283582" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50121456" side_tool="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="manage.py@PopCorn" order="13" weight="0.3283582" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -236,25 +825,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/PopCorn/settings.py</url>
-          <line>68</line>
+          <line>72</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/PopCorn/templates/home.html" />
     <entry file="file://$PROJECT_DIR$/templates/home/landing_page.html" />
-    <entry file="file://$PROJECT_DIR$/PopCorn/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/home.html" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -264,82 +843,226 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/core/settings.html.py" />
-    <entry file="file://$PROJECT_DIR$/templates/core/password.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#121#139#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/core/settings.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="51" column="13" selection-start-line="21" selection-end-line="51" selection-end-column="13" />
-          <folding>
-            <element signature="e#553#571#0#HTML" expanded="true" />
-            <element signature="e#1335#1353#0#HTML" expanded="true" />
-            <element signature="e#2083#2101#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/core/password.html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/settings.html" />
     <entry file="file://E:/ase_final/clubsportalfinal/registration/views.py" />
     <entry file="file://E:/ase_final/clubsportalfinal/registration/forms.py" />
     <entry file="file://E:/ase_final/clubsportalfinal/registration/urls.py" />
     <entry file="file://E:/ase_final/clubsportalfinal/clubsportal/settings.py" />
     <entry file="file://E:/ase_final/clubsportalfinal/registration/views(1).py" />
+    <entry file="file://$PROJECT_DIR$/PopCorn/login.html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/homev3.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/core/images/logo1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/core/images/logo2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/core/celebritygrid01.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/core/bloglist.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/core/footer.html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/navbar.html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/test..html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/navbar&amp;footer.html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/test.html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/base.html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/registration/home.html" />
+    <entry file="file://$PROJECT_DIR$/templates/core/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25330">
+          <caret line="1490" selection-start-line="1490" selection-end-line="1490" />
+          <folding>
+            <element signature="n#style#0;n#iframe#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/core/blogdetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="12" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration/registration.py" />
+    <entry file="file://$PROJECT_DIR$/registration/tokens.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+          <folding>
+            <element signature="e#667#691#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration/account_activation_email.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration/email_verification.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration/registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/core/js/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="5" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/core/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PopCorn/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PopCorn/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state>
           <folding>
             <element signature="e#631#668#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/core/home.html">
+    <entry file="file://$PROJECT_DIR$/templates/core/landing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        <state relative-caret-position="394">
+          <caret line="54" column="72" selection-start-line="54" selection-start-column="72" selection-end-line="54" selection-end-column="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PopCorn/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        <state relative-caret-position="85">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_emails/20190324-002513-139938930422784.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#444#503#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/core/landing.html">
+    <entry file="file://$PROJECT_DIR$/registration/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="49" selection-start-line="55" selection-start-column="49" selection-end-line="55" selection-end-column="49" />
+        <state relative-caret-position="68">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
           <folding>
-            <element signature="n#style#0;n#p#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#5;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PopCorn/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+        <state relative-caret-position="153">
+          <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Movie/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Movie/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casts/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casts/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casts/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Movie/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
         </state>
       </provider>
     </entry>

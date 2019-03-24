@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_django'
+    'social_django',
+    'Movie',
+    'casts',
+    'reviews_comments',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -122,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -133,7 +137,8 @@ USE_TZ = True
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='232164028907-ru9lo92i7175ua7q4l2b66ksavfe5v79.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FLM8pKnxZlypJLQ9kP_ZrN6n'
@@ -148,8 +153,17 @@ SOCIAL_AUTH_TWITTER_SECRET = '7fSNWtBWnzmPIIJvAKeU6KjfCdCeDT9avbvnHDMToAvz3A17cU
 # SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'popcornproject123@gmail.com'
+EMAIL_HOST_PASSWORD = 'project@123'
+EMAIL_PORT = '587'
