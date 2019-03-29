@@ -7,7 +7,7 @@ class Casts(models.Model):
     Dob = models.DateField()
     About = models.TextField(max_length=2000)
     Image = models.ImageField(upload_to='Actor', null=True, blank=True)
-    Awards = models.IntegerField(null=True, blank=True)
+    Awards = models.IntegerField(null=True, blank=True) # Can be moved to another table
     Nationality = models.CharField(max_length=200)
     ROLE_CHOICES = [
         ('A', 'actor'),
