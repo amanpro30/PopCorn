@@ -1,18 +1,14 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from datetime import datetime
 from casts.models import Casts
-import datetime
-# Create your models here.
+from django.utils import timezone
 
 
 class MovieSeries(models.Model):
-    Movie_title = models.CharField(max_length=200)
+    Movie_title = models.CharField(max_length=200, db_index=True)
+    ReleaseDate = models.DateField(db_index=True, default=timezone.now())
     Duration = models.IntegerField()
-    Description = models.TextField(max_length=20000)
-    ReleaseDate = models.DateField()
+    Description = models.TextField(max_length=2000)
     Cast = models.ManyToManyField(Casts, related_name="cast")
     GENRE_CHOICES = (
         ('R', 'Romance'),
@@ -24,21 +20,26 @@ class MovieSeries(models.Model):
     )
     Genre = models.CharField(max_length=1, choices=GENRE_CHOICES)
     Country = models.CharField(max_length=200)
-    Boc = models.IntegerField()
+    Budget = models.IntegerField(default=0)
+    Boc = models.IntegerField(db_index=True)
     STATUS_CHOICE = (
         ('F', 'Flop'),
         ('L', 'Losing'),
         ('A', 'Average'),
         ('H', 'Hit'),
-        ('S', 'Superhit'),
-        ('B', 'Blockbuster')
+        ('S', 'SuperHit'),
+        ('B', 'Blockbuster'),
+        ('R', 'Running')
     )
+    Avg_rating = models.FloatField(blank=True, db_index=True, default=0.0)
+    Num_ratings = models.IntegerField(blank=True, default=0)
     Status = models.CharField(max_length=1, choices=STATUS_CHOICE, null=True, blank=True)
     Trailer = models.CharField(max_length=2000, null=True, blank=True)
 
 
 class SEASON(models.Model):
     Season_title = models.CharField(max_length=200, null=True, blank=True)
+    ReleaseDate = models.DateField(db_index=True, default=timezone.now())
     Series = models.ForeignKey(MovieSeries, on_delete=models.CASCADE, null=True, blank=True)
 
 

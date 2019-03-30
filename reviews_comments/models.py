@@ -16,11 +16,12 @@ class ratings(models.Model):
     )
 
 
-class comments(models.Model):
+class review(models.Model):
     movie = models.ForeignKey(MovieSeries, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review_statement = models.CharField(max_length=1000)
 
 
 class upvotes(models.Model):
-    comment = models.ForeignKey(comments, on_delete=models.CASCADE)
+    review = models.ForeignKey(review, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
