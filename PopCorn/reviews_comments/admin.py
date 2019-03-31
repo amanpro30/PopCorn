@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import ratings, upvotes, review
+from .models import Ratings, Upvotes, Review
 
 # Register your models here.
 
-admin.site.register(ratings)
-admin.site.register(upvotes)
-admin.site.register(review)
+admin.site.register(Ratings)
+admin.site.register(Upvotes)
+admin.site.register(Review)

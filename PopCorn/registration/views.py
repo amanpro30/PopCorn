@@ -47,7 +47,7 @@ def registration(request):
                 fail_silently=False,
             )
             print(user.email)
-            return redirect('login')
+            return redirect('home')
     else:
         form = SignUpForm()
         profile_form = ProfileForm()
