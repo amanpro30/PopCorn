@@ -36,15 +36,16 @@
                         <span></span>
                     </div>
                 </div>
-                <a href="{% url 'home' %}"><img class="logo" src="{% static 'images/logo1.png' %}" alt="" width="89"
-                                                height="28"></a>
+                <a href="{% url 'Movie:home' %}"><img class="logo" src="{% static 'images/logo1.png' %}" alt=""
+                                                      width="89"
+                                                      height="18"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav flex-child-menu menu-left">
-                    <li><a class="btn btn-default" href="">Movies</a></li>
-                    <li><a class="btn btn-default" href="">TV Series</a></li>
-                    <li><a class="btn btn-default" href="">Celebrities</a></li>
+                    <li><a class="btn btn-default" href="{% url 'Movie:movielist' %}">Movies</a></li>
+                    <li><a class="btn btn-default" href="{% url 'Movie:tvseries' %}">TV Series</a></li>
+                    <li><a class="btn btn-default" href="{% url 'Movie:Celebrities:celeb' %}">Celebrities</a></li>
                 </ul>
                 <ul class="nav navbar-nav flex-child-menu menu-right">
                     {% if user.is_authenticated %}

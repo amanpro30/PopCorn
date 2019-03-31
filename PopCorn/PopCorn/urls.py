@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('landing', core_views.landing, name='landing'),
     path('auth/', include('social_django.urls', namespace='social')),
-    path('', TemplateView.as_view(template_name='html/basehome.html'), name='home'),
+    path('', include('Movie.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('registration/', include('registration.urls'))
 ]

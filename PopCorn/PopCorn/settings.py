@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'Movie',
-    'casts',
+    'Celebrities',
     'reviews_comments',
     'registration',
 ]
@@ -136,9 +136,9 @@ USE_TZ = True
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'Movie:home'
+LOGIN_REDIRECT_URL = 'Movie:home'
+LOGOUT_REDIRECT_URL = 'Movie:home'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='232164028907-ru9lo92i7175ua7q4l2b66ksavfe5v79.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FLM8pKnxZlypJLQ9kP_ZrN6n'

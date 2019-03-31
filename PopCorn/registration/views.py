@@ -26,8 +26,6 @@ from django.utils.http import urlsafe_base64_decode
 from django.core.mail import send_mail
 
 
-
-
 def registration(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -54,7 +52,6 @@ def registration(request):
     return render(request, 'registration/registration.html', {'form': form, 'profile': profile_form})
 
 
-
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -69,6 +66,7 @@ def activate(request, uidb64, token):
         return redirect('landing')
     else:
         return render(request, 'registration/account_activation_invalid.html')
+
 
 def email_verification(request):
     return render(request, 'registration/email_verification.html')
