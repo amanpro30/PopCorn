@@ -9,7 +9,7 @@ class Show(models.Model):
     ReleaseDate = models.DateField(db_index=True, default=timezone.now)
     Duration = models.TimeField()
     Description = models.TextField(max_length=2000)
-    Image = models.ImageField(upload_to='images/uploads', null=True, blank=True, default='movie.jpg')
+    Image = models.ImageField(upload_to='Show', null=True, blank=True, default='movie.jpg')
     GENRE_CHOICES = (
         ('R', 'Romance'),
         ('C', 'Comedy'),

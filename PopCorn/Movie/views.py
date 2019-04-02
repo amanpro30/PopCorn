@@ -26,8 +26,8 @@ def movies(request, filter):
         elif filter == 'top_grossers':
             movies_query = "Select * from Movie_Show where type= 'm'" \
                            "ORDER BY Boc DESC"
-            cur.execute(movies_query)
 
+        cur.execute(movies_query)
         movies_tuple = cur.fetchall()
         print(movies_tuple)
         for i in movies_tuple:
