@@ -10,13 +10,12 @@ class Celebrities(models.Model):
     Image = models.ImageField(upload_to='Actor', null=True, blank=True)
     Nationality = models.CharField(max_length=200)
     ROLE_CHOICES = [
-        ('A', 'actor'),
-        ('D', 'director'),
-        ('P', 'producer'),
-        ('O', 'other'),
-        ('W', 'writer'),
+        ('Actor', 'actor'),
+        ('Director', 'director'),
+        ('Producer', 'producer'),
+        ('Writer', 'writer'),
     ]
-    role = models.CharField(max_length=1, choices=ROLE_CHOICES)
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES)
 
     def __str__(self):
         return self.Name

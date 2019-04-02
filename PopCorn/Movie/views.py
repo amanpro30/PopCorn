@@ -19,8 +19,8 @@ def movies(request, filter):
         }
         if filter == 'top_rated':
             query_top_rated = "SELECT * " \
-                              "FROM Movie_Show " \
-                              "ORDER BY Avg_rating DESC"
+                              "FROM Movie_Show AS M, Movie_ShowCelebrity AS MS WHERE M.id=MS.id" \
+                              " ORDER BY Avg_rating DESC"
             cur.execute(query_top_rated)
             top_rated = cur.fetchall()
             context['top_rated']=top_rated
@@ -45,6 +45,11 @@ def movies(request, filter):
             cur.execute(query_top_grossers)
             top_grossers = cur.fetchall()
             context['top_grossers']=top_grossers
+        query_a = "SELECT * FROM Movie_Show AS m, Movie_ShowCelebrity AS ms, Celebrities_celebrities AS c WHERE m.id=ms.Show_id and c.id=ms.Celebrity_id ORDER BY Avg_rating DESC"
+        cur.execute(query_a)
+        a = cur.fetchall()
+        print(a)
+
         return render(request, 'html/showlist.html', context)
 
 
