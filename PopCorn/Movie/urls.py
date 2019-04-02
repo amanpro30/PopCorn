@@ -8,4 +8,5 @@ urlpatterns = [
     path('movies/', views.movies, name='movielist'),
     path('tvseries/', views.tvseries, name='tvseries'),
     path('celeb/', include('Celebrities.urls')),
+    path('profile/', include('Profile.urls')),
 ]
