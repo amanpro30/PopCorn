@@ -10,6 +10,7 @@ class Show(models.Model):
     Duration = models.IntegerField()
     Description = models.TextField(max_length=2000)
     Cast = models.ManyToManyField(Celebrities, related_name="cast")
+    Image = models.ImageField(upload_to='Show', null=True, blank=True, default='movie.jpg')
     GENRE_CHOICES = (
         ('R', 'Romance'),
         ('C', 'Comedy'),
@@ -36,10 +37,15 @@ class Show(models.Model):
     Status = models.CharField(max_length=1, choices=STATUS_CHOICE, null=True, blank=True)
     Trailer = models.CharField(max_length=2000, null=True, blank=True)
     SHOW_TYPE = (
-        ('tv', 'tvseries'),
+        ('tv', 'tvSeries'),
         ('m', 'movies'),
     )
     type = models.CharField(max_length=2, choices=SHOW_TYPE)
+
+
+class ShowCelebrity(models.Model):
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True)
+    Celebrities = models.ForeignKey(Celebrities, on_delete=models.CASCADE, null=True)
 
 
 class SEASON(models.Model):
