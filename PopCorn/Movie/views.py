@@ -29,7 +29,6 @@ def movies(request, filter):
 
         cur.execute(movies_query)
         movies_tuple = cur.fetchall()
-        print(movies_tuple)
         for i in movies_tuple:
             query = "SELECT *" \
                     " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mc" \
@@ -38,7 +37,6 @@ def movies(request, filter):
             query = query.format(i[0])
             cur.execute(query)
             celebrities = cur.fetchall()
-            print(celebrities)
             mov1 = {
                 'movie': i,
                 'director': [],
@@ -87,7 +85,6 @@ def tvseries(request, filter):
             cur.execute(movies_query)
 
         movies_tuple = cur.fetchall()
-        print(movies_tuple)
         for i in movies_tuple:
             query = "SELECT *" \
                     " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mc" \
@@ -96,7 +93,6 @@ def tvseries(request, filter):
             query = query.format(i[0])
             cur.execute(query)
             celebrities = cur.fetchall()
-            print(celebrities)
             mov1 = {
                 'movie': i,
                 'director': [],
@@ -122,3 +118,43 @@ def tvseries(request, filter):
         }
         print(context['data'])
     return render(request, 'html/showlist.html', context)
+
+
+def singledetail(request, movie_id):
+    with connection.cursor() as cur:
+        movies_query = "Select * from Movie_Show where type= 'm' and id ={}"
+        movies_query = movies_query.format(movie_id)
+        cur.execute(movies_query)
+        movies_tuple = cur.fetchall()
+        print(movies_tuple[0])
+        i = movies_tuple[0]
+        data = []
+        query = "SELECT *" \
+                " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mc" \
+                " WHERE msc.Celebrity_id = mc.id " \
+                "AND msc.Show_id={}"
+        query = query.format(i[0])
+        cur.execute(query)
+        celebrities = cur.fetchall()
+        mov1 = {
+            'movie': i,
+            'director': [],
+            'producer': [],
+            'writer': [],
+            'actors': [],
+        }
+        for j in celebrities:
+            if j[9] == 'D':
+                mov1['director'].append(j)
+            elif j[9] == 'A':
+                mov1['actors'].append(j)
+            elif j[9] == 'P':
+                mov1['producer'].append(j)
+            elif j[9] == 'W':
+                mov1['writer'].append(j)
+    context = {
+        "count": len(data),
+        "data": mov1,
+    }
+
+    return render(request, 'html/single_movie.html', context)
