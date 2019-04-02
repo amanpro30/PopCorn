@@ -13,7 +13,6 @@ class Celebrities(models.Model):
         ('A', 'actor'),
         ('D', 'director'),
         ('P', 'producer'),
-        ('O', 'other'),
         ('W', 'writer'),
     ]
     role = models.CharField(max_length=1, choices=ROLE_CHOICES)

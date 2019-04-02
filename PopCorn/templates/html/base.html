@@ -19,6 +19,8 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block head %}
+    {% endblock %}
 
 </head>
 <body>
@@ -43,9 +45,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav flex-child-menu menu-left">
-                    <li><a class="btn btn-default" href="{% url 'Movie:movielist' %}">Movies</a></li>
-                    <li><a class="btn btn-default" href="{% url 'Movie:tvseries' %}">TV Series</a></li>
-                    <li><a class="btn btn-default" href="{% url 'Movie:Celebrities:celeb' %}">Celebrities</a></li>
+                    <li><a class="btn btn-default" href="{% url 'Movie:movielist' 'top_rated' %}">Movies</a></li>
+                    <li><a class="btn btn-default" href="{% url 'Movie:tvseries' 'top_rated' %}">TV Series</a></li>
+                    <li><a class="btn btn-default" href="{% url 'Movie:Celebrities:celeb' 'top_rated' %}">Celebrities</a></li>
                 </ul>
                 <ul class="nav navbar-nav flex-child-menu menu-right">
                     {% if user.is_authenticated %}

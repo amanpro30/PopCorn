@@ -7,9 +7,9 @@ from django.utils import timezone
 class Show(models.Model):
     Movie_title = models.CharField(max_length=200, db_index=True)
     ReleaseDate = models.DateField(db_index=True, default=timezone.now)
-    Duration = models.IntegerField()
+    Duration = models.TimeField()
     Description = models.TextField(max_length=2000)
-    Cast = models.ManyToManyField(Celebrities, related_name="cast")
+    Image = models.ImageField(upload_to='images/uploads', null=True, blank=True, default='movie.jpg')
     GENRE_CHOICES = (
         ('R', 'Romance'),
         ('C', 'Comedy'),
@@ -36,10 +36,15 @@ class Show(models.Model):
     Status = models.CharField(max_length=1, choices=STATUS_CHOICE, null=True, blank=True)
     Trailer = models.CharField(max_length=2000, null=True, blank=True)
     SHOW_TYPE = (
-        ('tv', 'tvseries'),
+        ('tv', 'tvSeries'),
         ('m', 'movies'),
     )
     type = models.CharField(max_length=2, choices=SHOW_TYPE)
+
+
+class ShowCelebrity(models.Model):
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True)
+    Celebrity = models.ForeignKey(Celebrities, on_delete=models.CASCADE, null=True)
 
 
 class SEASON(models.Model):
