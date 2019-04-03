@@ -25,4 +25,4 @@ class Celebrities(models.Model):
 class Awards(models.Model):
     Name = models.CharField(max_length=100)
     Date = models.DateField()
-    Cast = models.ForeignKey(Celebrities, on_delete=models.CASCADE)
+    Cast = models.ForeignKey(Celebrities, on_delete=models.CASCADE )

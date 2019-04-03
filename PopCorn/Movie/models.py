@@ -9,7 +9,7 @@ class Show(models.Model):
     ReleaseDate = models.DateField(db_index=True, default=timezone.now)
     Duration = models.IntegerField()
     Description = models.TextField(max_length=2000)
-    Cast = models.ManyToManyField(Celebrities, related_name="cast")
+    #Cast = models.ManyToManyField(Celebrities, related_name="cast")
     Image = models.ImageField(upload_to='Show', null=True, blank=True, default='movie.jpg')
     GENRE_CHOICES = (
         ('R', 'Romance'),

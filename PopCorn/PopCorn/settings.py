@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Celebrities',
     'reviews_comments',
     'registration',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,17 @@
 from django.shortcuts import render
-from Movie.models import Show
+from Movie.models import *
+from Celebrities.models import *
 from django.db import connection
+#from __future__ import unicode_literals
+from django.shortcuts import render
+from .models import *
+from .serializers import *
+from rest_framework import generics
+from Movie import serializers
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
 
 # Create your views here.
 def hompage(request):
@@ -48,6 +59,32 @@ def movies(request, filter):
         return render(request, 'html/showlist.html', context)
 
 
+
+class ShowListView(generics.ListCreateAPIView):
+    queryset = Show.objects.all()
+    serializer_class = ShowSerializer
+
+class ShowView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ShowSerializer
+    queryset = Show.objects.all()
+
+class AwardsListView(generics.ListCreateAPIView):
+    queryset = Awards.objects.all()
+    serializer_class = AwardsSerializer
+
+
+class AwardsView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = AwardsSerializer
+    queryset = Awards.objects.all()
+
+
+class CelebritiesListView(generics.ListCreateAPIView):
+    queryset = Celebrities.objects.all()
+    serializer_class = CelebritiesSerializer
+
+class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CelebritiesSerializer
+    queryset = Celebrities.objects.all()
 
 
 def tvseries(request,filter):
