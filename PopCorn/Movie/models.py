@@ -1,7 +1,8 @@
 from django.db import models
-from datetime import datetime
 from Celebrities.models import Celebrities
 from django.utils import timezone
+from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Show(models.Model):
@@ -62,5 +63,25 @@ class EPISODE(models.Model):
     Season = models.ForeignKey(SEASON, on_delete=models.CASCADE, null=True, blank=True)
 
 
+class Ratings(models.Model):
+    movie = models.ForeignKey(Show, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    stars = models.PositiveIntegerField(
+        validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+        ]
+    )
 
 
+class Review(models.Model):
+    movie = models.ForeignKey(Show, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review_title = models.CharField(max_length=100)
+    review_statement = models.CharField(max_length=5000)
+    post_date = models.DateTimeField(db_index=True, auto_now_add=True, blank=True, null=True)
+
+
+class Upvotes(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
