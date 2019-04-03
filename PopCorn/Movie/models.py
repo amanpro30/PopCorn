@@ -41,6 +41,9 @@ class Show(models.Model):
     )
     type = models.CharField(max_length=2, choices=SHOW_TYPE)
 
+    def __str__(self):
+        return self.Movie_title
+
 
 class ShowCelebrity(models.Model):
     Show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True)

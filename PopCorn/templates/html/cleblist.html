@@ -47,7 +47,20 @@
                             <img src="" alt="">
                             <div class="ceb-infor">
                                 <h2><a href="{% url 'Celebrities:single_celeb' i.0 %}">{{i.1}}</a></h2>
-                                <span>{{i.6}}, {{i.5}}</span>
+                                <span>
+                                    {% ifequal i.6 'A' %}
+                                        Actor, {{i.5}}
+                                    {% endifequal%}
+                                    {% ifequal i.6 'D' %}
+                                        Director, {{i.5}}
+                                    {% endifequal%}
+                                    {% ifequal i.6 'P' %}
+                                        Producer, {{i.5}}
+                                    {% endifequal%}
+                                    {% ifequal i.6 'W' %}
+                                        Writer, {{i.5}}
+                                    {% endifequal%}
+                                </span>
                                 <p>
                                     {{i.3}}
                                 </p>

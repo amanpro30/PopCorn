@@ -25,3 +25,8 @@ class Awards(models.Model):
     Name = models.CharField(max_length=100)
     Date = models.DateField()
     Cast = models.ForeignKey(Celebrities, on_delete=models.CASCADE)
+
+
+class Tags(models.Model):
+    Celeb = models.ForeignKey(Celebrities, on_delete=models.CASCADE)
+    Tag_Name = models.CharField(max_length=100)
