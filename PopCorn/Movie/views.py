@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from Movie.models import Show
 from django.db import connection
+from Movie.form import ReviewForm
+from datetime import date
 
 
 # Create your views here.
@@ -26,8 +28,8 @@ def movies(request, filter):
         elif filter == 'top_grossers':
             movies_query = "Select * from Movie_Show where type= 'm'" \
                            "ORDER BY Boc DESC"
+            cur.execute(movies_query)
 
-        cur.execute(movies_query)
         movies_tuple = cur.fetchall()
         for i in movies_tuple:
             query = "SELECT *" \
@@ -55,7 +57,6 @@ def movies(request, filter):
                 elif j[9] == 'W':
                     mov1['writer'].append(j)
             data.append(mov1)
-
         context = {
             "count": len(data),
             "data": data,
@@ -122,6 +123,21 @@ def tvseries(request, filter):
 
 def singledetail(request, movie_id):
     with connection.cursor() as cur:
+        if request.method == 'POST':
+            reviewform = ReviewForm(request.POST)
+            if reviewform.is_valid():
+                title = reviewform.cleaned_data['review_title']
+                statement = reviewform.cleaned_data['review_statement']
+                postquery = "Insert into Movie_Review(movie_id,user_id,review_title,review_statement,post_date) " \
+                            "values " \
+                            " ({},{},'{}','{}','{}')"
+                print(date.today())
+                postquery = postquery.format(movie_id, request.user.id, title, statement, date.today())
+                cur.execute(postquery)
+
+        else:
+            reviewform = ReviewForm()
+
         movies_query = "Select * from Movie_Show where type= 'm' and id ={}"
         movies_query = movies_query.format(movie_id)
         cur.execute(movies_query)
@@ -153,23 +169,25 @@ def singledetail(request, movie_id):
             elif j[9] == 'W':
                 mov1['writer'].append(j)
         review_query = "Select * " \
-                       "from reviews_comments_review rcv " \
+                       "from Movie_review rcv " \
                        "where rcv.movie_id = {}"
         review_query = review_query.format(movie_id)
         cur.execute(review_query)
         reviews = cur.fetchall()
 
         stars_query = "Select AVG(rcv.stars) " \
-                      "from reviews_comments_ratings rcv " \
+                      "from Movie_ratings rcv " \
                       "where rcv.movie_id = {}"
         stars_query = stars_query.format(movie_id)
         cur.execute(stars_query)
         stars = cur.fetchall()[0]
+
     context = {
         'reviews': reviews,
         "count": len(data),
         "data": mov1,
         'stars': stars,
+        'reviewform': reviewform,
     }
 
     return render(request, 'html/single_movie.html', context)

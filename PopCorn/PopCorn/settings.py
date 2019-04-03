@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'social_django',
     'Movie',
     'Celebrities',
-    'reviews_comments',
     'registration',
     'Profile',
 ]

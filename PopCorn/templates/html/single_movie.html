@@ -1,6 +1,10 @@
 {% extends 'html/base.html' %}
 {% load static %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+{% endblock %}
+
 {% block body %}
     {{ data.movie }}
     <div class="hero mv-single-hero">
@@ -257,6 +261,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div id="reviews" class="tab review">
                                         <div class="row">
                                             <div class="rv-hd">
@@ -264,7 +269,21 @@
                                                     <h3>Related Movies To</h3>
                                                     <h2>Skyfall: Quantum of Spectre</h2>
                                                 </div>
-                                                <a href="#" class="redbtn">Write Review</a>
+                                                <a href="#review_popup" class="redbtn">Write Review</a>
+                                                {#                       dfghj         fbbdnl#}
+                                                <div id="review_popup" class="modal-window">
+                                                    <div>
+                                                        <a href="#modal-close"  class="redbtn">close &times;</a>
+                                                        <h1></h1>
+                                                        <form method=post action="{% url 'Movie:single_movie' data.movie.0 %}">
+                                                            {% csrf_token %}
+                                                            {{ reviewform.review_title }}
+                                                            {{ reviewform.review_statement }}
+                                                            <button type="submit">Submit</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                {#                                dfgh#}
                                             </div>
                                             <div class="topbar-filter">
                                                 <p>Found <span>{{ reviews|length }} reviews</span> in total</p>
@@ -277,7 +296,8 @@
                                                     <option value="date">Release date Descending</option>
                                                     <option value="date">Release date Ascending</option>
                                                 </select>
-                                            </div>{{ reviews }}
+                                            </div>
+                                            {{ reviews }}
                                             {% for rev in reviews %}
                                                 <div class="mv-user-review-item">
                                                     <div class="user-infor">
