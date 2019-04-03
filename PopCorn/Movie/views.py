@@ -20,44 +20,113 @@ def hompage(request):
 
 def movies(request, filter):
     with connection.cursor() as cur:
-        query_count_movies = "SELECT COUNT(*) " \
-                             "FROM Movie_Show " \
-                             "WHERE type='m'"
-        cur.execute(query_count_movies)
-        count = cur.fetchall()
-        context = {
-            "count": count,
-        }
+        data = []
         if filter == 'top_rated':
-            query_top_rated = "SELECT * " \
-                              "FROM Movie_Show " \
-                              "ORDER BY Avg_rating DESC"
-            cur.execute(query_top_rated)
-            top_rated = cur.fetchall()
-            context['top_rated']=top_rated
-        elif filter == 'all_name':
-            query_sort_name = "SELECT * " \
-                            "FROM Movie_Show " \
+            movies_query = "Select * from Movie_Show where type= 'm'" \
+                           " ORDER BY Avg_rating DESC"
+            cur.execute(movies_query)
+        elif filter == 'all_alphabet':
+            movies_query2 = "Select * from Movie_Show where type= 'm'" \
                             "ORDER BY Movie_title ASC"
-            cur.execute(query_sort_name)
-            sort_name = cur.fetchall()
-            context['sort_name']=sort_name
+            cur.execute(movies_query2)
         elif filter == 'all_release_date':
-            query_sort_release_date = "SELECT * " \
-                                "FROM Movie_Show " \
-                                "ORDER BY ReleaseDate DESC"
-            cur.execute(query_sort_release_date)
-            sort_release_date = cur.fetchall()
-            context['sort_release_date']=sort_release_date
+            movies_query = "Select * from Movie_Show where type= 'm'" \
+                           "ORDER BY ReleaseDate DESC"
+            cur.execute(movies_query)
         elif filter == 'top_grossers':
-            query_top_grossers ="SELECT * " \
-                           "FROM Movie_Show " \
+            movies_query = "Select * from Movie_Show where type= 'm'" \
                            "ORDER BY Boc DESC"
-            cur.execute(query_top_grossers)
-            top_grossers = cur.fetchall()
-            context['top_grossers']=top_grossers
+            cur.execute(movies_query)
+
+        movies_tuple = cur.fetchall()
+        for i in movies_tuple:
+            query = "SELECT *" \
+                    " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mc" \
+                    " WHERE msc.Celebrity_id = mc.id " \
+                    "AND msc.Show_id={}"
+            query = query.format(i[0])
+            cur.execute(query)
+            celebrities = cur.fetchall()
+            mov1 = {
+                'movie': i,
+                'director': [],
+                'producer': [],
+                'writer': [],
+                'actors': [],
+            }
+            print(celebrities)
+            for j in celebrities:
+                if j[9] == 'D':
+                    mov1['director'].append(j)
+                elif j[9] == 'A':
+                    mov1['actors'].append(j)
+                elif j[9] == 'P':
+                    mov1['producer'].append(j)
+                elif j[9] == 'W':
+                    mov1['writer'].append(j)
+            data.append(mov1)
+        context = {
+            "count": len(data),
+            "data": data,
+        }
+        print(context['data'])
         return render(request, 'html/showlist.html', context)
 
+
+def tvseries(request, filter):
+    with connection.cursor() as cur:
+        data = []
+        if filter == 'top_rated':
+            movies_query = "Select * from Movie_Show where type= 'tv'" \
+                           " ORDER BY Avg_rating DESC"
+            cur.execute(movies_query)
+        elif filter == 'all_alphabet':
+            movies_query2 = "Select * from Movie_Show where type= 'tv'" \
+                            "ORDER BY Movie_title ASC"
+            cur.execute(movies_query2)
+        elif filter == 'all_release_date':
+            movies_query = "Select * from Movie_Show where type= 'tv'" \
+                           "ORDER BY ReleaseDate DESC"
+            cur.execute(movies_query)
+        elif filter == 'top_grossers':
+            movies_query = "Select * from Movie_Show where type= 'tv'" \
+                           "ORDER BY Boc DESC"
+            cur.execute(movies_query)
+
+        movies_tuple = cur.fetchall()
+        for i in movies_tuple:
+            query = "SELECT *" \
+                    " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mclb" \
+                    " WHERE msc.Celebrity_id = mclb.id " \
+                    "AND msc.Show_id={}"
+            query = query.format(i[0])
+            cur.execute(query)
+            celebrities = cur.fetchall()
+            mov1 = {
+                'movie': i,
+                'director': [],
+                'producer': [],
+                'writer': [],
+                'actors': [],
+            }
+            print(celebrities)
+            for j in celebrities:
+                if j[9] == 'D':
+                    mov1['director'].append(j)
+                elif j[9] == 'A':
+                    mov1['actors'].append(j)
+                elif j[9] == 'P':
+                    mov1['producer'].append(j)
+                elif j[9] == 'W':
+                    mov1['writer'].append(j)
+            data.append(mov1)
+
+        context = {
+            "count": len(data),
+            "data": data,
+        }
+        print(context['data'])
+    return render(request, 'html/showlist.html', context)
 
 
 class ShowListView(generics.ListCreateAPIView):
@@ -87,7 +156,19 @@ class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Celebrities.objects.all()
 
 
-def tvseries(request,filter):
-    return render(request, 'html/showlist.html')
+        stars_query = "Select AVG(rcv.stars) " \
+                      "from Movie_ratings rcv " \
+                      "where rcv.movie_id = {}"
+        stars_query = stars_query.format(movie_id)
+        cur.execute(stars_query)
+        stars = cur.fetchall()[0]
 
+    context = {
+        'reviews': reviews,
+        "count": len(data),
+        "data": mov1,
+        'stars': stars,
+        'reviewform': reviewform,
+    }
 
+    return render(request, 'html/single_movie.html', context)
