@@ -87,8 +87,8 @@ def tvseries(request, filter):
         movies_tuple = cur.fetchall()
         for i in movies_tuple:
             query = "SELECT *" \
-                    " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mc" \
-                    " WHERE msc.Celebrity_id = mc.id " \
+                    " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mclb" \
+                    " WHERE msc.Celebrity_id = mclb.id " \
                     "AND msc.Show_id={}"
             query = query.format(i[0])
             cur.execute(query)
@@ -130,8 +130,8 @@ def singledetail(request, movie_id):
         i = movies_tuple[0]
         data = []
         query = "SELECT *" \
-                " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mc" \
-                " WHERE msc.Celebrity_id = mc.id " \
+                " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrities as mclb" \
+                " WHERE msc.Celebrity_id = mclb.id " \
                 "AND msc.Show_id={}"
         query = query.format(i[0])
         cur.execute(query)
@@ -152,9 +152,24 @@ def singledetail(request, movie_id):
                 mov1['producer'].append(j)
             elif j[9] == 'W':
                 mov1['writer'].append(j)
+        review_query = "Select * " \
+                       "from reviews_comments_review rcv " \
+                       "where rcv.movie_id = {}"
+        review_query = review_query.format(movie_id)
+        cur.execute(review_query)
+        reviews = cur.fetchall()
+
+        stars_query = "Select AVG(rcv.stars) " \
+                      "from reviews_comments_ratings rcv " \
+                      "where rcv.movie_id = {}"
+        stars_query = stars_query.format(movie_id)
+        cur.execute(stars_query)
+        stars = cur.fetchall()[0]
     context = {
+        'reviews': reviews,
         "count": len(data),
         "data": mov1,
+        'stars': stars,
     }
 
     return render(request, 'html/single_movie.html', context)
