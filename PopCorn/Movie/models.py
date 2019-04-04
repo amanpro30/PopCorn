@@ -42,10 +42,16 @@ class Show(models.Model):
     )
     type = models.CharField(max_length=2, choices=SHOW_TYPE)
 
+    def __str__(self):
+        return self.Movie_title
+
 
 class ShowCelebrity(models.Model):
     Show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True)
     Celebrity = models.ForeignKey(Celebrities, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.Show, self.Celebrity
 
 
 class SEASON(models.Model):
@@ -53,11 +59,17 @@ class SEASON(models.Model):
     ReleaseDate = models.DateField(db_index=True, default=timezone.now)
     Series = models.ForeignKey(Show, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return self.Season_title
+
 
 class EPISODE(models.Model):
     Episode_title = models.CharField(max_length=200, null=True, blank=True)
     Duration = models.IntegerField(null=True, blank=True)
     Season = models.ForeignKey(SEASON, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.Episode_title
 
 
 class Ratings(models.Model):
@@ -70,15 +82,24 @@ class Ratings(models.Model):
         ]
     )
 
+    def __str__(self):
+        return self.movie, self.stars
+
 
 class Review(models.Model):
     movie = models.ForeignKey(Show, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     review_title = models.CharField(max_length=100)
     review_statement = models.CharField(max_length=5000)
-    post_date = models.DateTimeField(db_index=True, auto_now_add=True, blank=True, null=True)
+    post_date = models.DateTimeField(db_index=True)
+
+    def __str__(self):
+        return self.review_title
 
 
 class Upvotes(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.review, self.user

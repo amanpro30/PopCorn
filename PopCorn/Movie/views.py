@@ -1,13 +1,56 @@
 from django.shortcuts import render
-from Movie.models import Show
 from django.db import connection
 from Movie.form import ReviewForm
-from datetime import date
+import datetime
 
 
 # Create your views here.
 def hompage(request):
-    return render(request, 'html/basehome.html')
+    context = {}
+    with connection.cursor() as cur:
+        movies_query = "Select * from Movie_Show" \
+                       " Where Status = 'R' and type = 'm'"
+        cur.execute(movies_query)
+        context['theater_movies'] = cur.fetchall()
+
+        tvseries_query = "Select * from Movie_Show " \
+                         "Where Status = 'R' And type= 'tv' "
+        cur.execute(tvseries_query)
+        context['rs'] = cur.fetchall()
+
+        movies_query = "Select * from Movie_Show where type= 'm'" \
+                       " ORDER BY Avg_rating DESC"
+        cur.execute(movies_query)
+        context['top_rated'] = cur.fetchall()
+
+        most_reviewed_query = " With count_table(id,no) as " \
+                              "(Select m.id,count(*) as no from movie_show m, movie_review r " \
+                              "where m.type = 'm' " \
+                              "and m.id = r.movie_id " \
+                              "group by m.id " \
+                              "order by no desc) " \
+                              " Select * from movie_show " \
+                              "where movie_show.id in (Select id from count_table) "
+        cur.execute(most_reviewed_query)
+        context['most_reviewed'] = cur.fetchall()
+
+        movies_query = "Select * from Movie_Show where type= 'tv'" \
+                       " ORDER BY Avg_rating DESC"
+        cur.execute(movies_query)
+        context['tv_top_rated'] = cur.fetchall()
+
+        most_reviewed_query = " With count_table(id,no) as " \
+                              "(Select m.id,count(*) as no from movie_show m, movie_review r " \
+                              "where m.type = 'tv' " \
+                              "and m.id = r.movie_id " \
+                              "group by m.id " \
+                              "order by no desc) " \
+                              " Select * from movie_show " \
+                              "where movie_show.id in (Select id from count_table) "
+        cur.execute(most_reviewed_query)
+        context['tv_most_reviewed'] = cur.fetchall()
+
+    return render(request, 'html/basehome.html', context)
 
 
 def movies(request, filter):
@@ -128,11 +171,10 @@ def singledetail(request, movie_id):
             if reviewform.is_valid():
                 title = reviewform.cleaned_data['review_title']
                 statement = reviewform.cleaned_data['review_statement']
-                postquery = "Insert into Movie_Review(movie_id,user_id,review_title,review_statement,post_date) " \
+                postquery = "Insert into Movie_Review(movie_id,user_id,review_title,review_statement, post_date) " \
                             "values " \
                             " ({},{},'{}','{}','{}')"
-                print(date.today())
-                postquery = postquery.format(movie_id, request.user.id, title, statement, date.today())
+                postquery = postquery.format(movie_id, request.user.id, title, statement, str(datetime.datetime.now()))
                 cur.execute(postquery)
 
         else:
