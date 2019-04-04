@@ -1,7 +1,10 @@
-from django.shortcuts import render
-from django.db import connection
 from Movie.form import ReviewForm
 import datetime
+from django.db import connection
+# from __future__ import unicode_literals
+from django.shortcuts import render
+from .serializers import *
+from rest_framework import generics
 
 
 # Create your views here.
@@ -216,7 +219,6 @@ def singledetail(request, movie_id):
         review_query = review_query.format(movie_id)
         cur.execute(review_query)
         reviews = cur.fetchall()
-
         stars_query = "Select AVG(rcv.stars) " \
                       "from Movie_ratings rcv " \
                       "where rcv.movie_id = {}"
@@ -233,3 +235,33 @@ def singledetail(request, movie_id):
     }
 
     return render(request, 'html/single_movie.html', context)
+
+
+class ShowListView(generics.ListCreateAPIView):
+    queryset = Show.objects.all()
+    serializer_class = ShowSerializer
+
+
+class ShowView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ShowSerializer
+    queryset = Show.objects.all()
+
+
+class AwardsListView(generics.ListCreateAPIView):
+    queryset = Awards.objects.all()
+    serializer_class = AwardsSerializer
+
+
+class AwardsView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = AwardsSerializer
+    queryset = Awards.objects.all()
+
+
+class CelebritiesListView(generics.ListCreateAPIView):
+    queryset = Celebrities.objects.all()
+    serializer_class = CelebritiesSerializer
+
+
+class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CelebritiesSerializer
+    queryset = Celebrities.objects.all()

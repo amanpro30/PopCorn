@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'Movie',
     'Celebrities',
     'registration',
-    'Profile',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
