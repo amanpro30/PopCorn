@@ -127,6 +127,20 @@ def tvseries(request, filter):
         }
         print(context['data'])
     return render(request, 'html/showlist.html', context)
+    stars_query = "Select AVG(rcv.stars) " \
+                  "from Movie_ratings rcv " \
+                  "where rcv.movie_id = {}"
+    stars_query = stars_query.format(movie_id)
+    cur.execute(stars_query)
+    stars = cur.fetchall()[0]
+    context = {
+        'reviews': reviews,
+        "count": len(data),
+        "data": mov1,
+        'stars': stars,
+        'reviewform': reviewform,
+    }
+    return render(request, 'html/single_movie.html', context)
 
 
 class ShowListView(generics.ListCreateAPIView):
@@ -156,19 +170,5 @@ class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Celebrities.objects.all()
 
 
-        stars_query = "Select AVG(rcv.stars) " \
-                      "from Movie_ratings rcv " \
-                      "where rcv.movie_id = {}"
-        stars_query = stars_query.format(movie_id)
-        cur.execute(stars_query)
-        stars = cur.fetchall()[0]
-
-    context = {
-        'reviews': reviews,
-        "count": len(data),
-        "data": mov1,
-        'stars': stars,
-        'reviewform': reviewform,
-    }
-
-    return render(request, 'html/single_movie.html', context)
+        
+    

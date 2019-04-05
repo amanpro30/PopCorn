@@ -36,10 +36,10 @@ class CelebritiesSerializer(serializers.ModelSerializer):
 	
 	
 	
-	# def create(self, validated_data):
-	# 	awards_data=validated_data.pop('celebritie')
-	# 	celebrities = Celebrities.objects.create(**validated_data)
-	# 	for award_data in awards_data:
-	# 		Awards.objects.create( **award_data) 
-	# 	return celebrities
-	# 	
+	def create(self, validated_data):
+		awards_data=validated_data.pop('celebritie')
+		celebrities = Celebrities.objects.create(**validated_data)
+		for award_data in awards_data:
+			Awards.objects.create( **award_data) 
+		return celebrities
+		
