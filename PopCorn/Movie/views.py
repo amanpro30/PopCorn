@@ -1,8 +1,18 @@
+<<<<<<< HEAD
 from django.shortcuts import render
 from Movie.models import Show
 from django.db import connection
 from Movie.form import ReviewForm, RatingForm
 from datetime import date
+=======
+from Movie.form import ReviewForm
+import datetime
+from django.db import connection
+# from __future__ import unicode_literals
+from django.shortcuts import render
+from .serializers import *
+from rest_framework import generics
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
 
 
 # Create your views here.
@@ -10,24 +20,41 @@ def hompage(request):
     context = {}
     with connection.cursor() as cur:
         movies_query = "Select * from Movie_Show" \
+<<<<<<< HEAD
                        " Where Status = 'R' and type = 'M'"
+=======
+                       " Where Status = 'R' and type = 'm'"
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
         cur.execute(movies_query)
         context['theater_movies'] = cur.fetchall()
 
         tvseries_query = "Select * from Movie_Show " \
+<<<<<<< HEAD
                          "Where Status = 'R' And type= 'T' "
         cur.execute(tvseries_query)
         context['rs'] = cur.fetchall()
 
         movies_query = "Select * from Movie_Show where type= 'M'" \
+=======
+                         "Where Status = 'R' And type= 'tv' "
+        cur.execute(tvseries_query)
+        context['rs'] = cur.fetchall()
+
+        movies_query = "Select * from Movie_Show where type= 'm'" \
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
                        " ORDER BY Avg_rating DESC"
         cur.execute(movies_query)
         context['top_rated'] = cur.fetchall()
 
         most_reviewed_query = " With count_table(id,no) as " \
                               "(Select m.id,count(*) as no from movie_show m, movie_review r " \
+<<<<<<< HEAD
                               "where m.type = 'M' " \
                               "and m.id = r.show_id " \
+=======
+                              "where m.type = 'm' " \
+                              "and m.id = r.movie_id " \
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
                               "group by m.id " \
                               "order by no desc) " \
                               " Select * from movie_show " \
@@ -35,7 +62,11 @@ def hompage(request):
         cur.execute(most_reviewed_query)
         context['most_reviewed'] = cur.fetchall()
 
+<<<<<<< HEAD
         movies_query = "Select * from Movie_Show where type= 'T'" \
+=======
+        movies_query = "Select * from Movie_Show where type= 'tv'" \
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
                        " ORDER BY Avg_rating DESC"
         cur.execute(movies_query)
         context['tv_top_rated'] = cur.fetchall()
@@ -43,14 +74,22 @@ def hompage(request):
         most_reviewed_query = " With count_table(id,no) as " \
                               "(Select m.id,count(*) as no from movie_show m, movie_review r " \
                               "where m.type = 'tv' " \
+<<<<<<< HEAD
                               "and m.id = r.show_id " \
+=======
+                              "and m.id = r.movie_id " \
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
                               "group by m.id " \
                               "order by no desc) " \
                               " Select * from movie_show " \
                               "where movie_show.id in (Select id from count_table) "
         cur.execute(most_reviewed_query)
         context['tv_most_reviewed'] = cur.fetchall()
+<<<<<<< HEAD
     print(context)
+=======
+
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
     return render(request, 'html/basehome.html', context)
 
 
@@ -162,6 +201,20 @@ def tvseries(request, filter):
         }
         print(context['data'])
     return render(request, 'html/showlist.html', context)
+    stars_query = "Select AVG(rcv.stars) " \
+                  "from Movie_ratings rcv " \
+                  "where rcv.movie_id = {}"
+    stars_query = stars_query.format(movie_id)
+    cur.execute(stars_query)
+    stars = cur.fetchall()[0]
+    context = {
+        'reviews': reviews,
+        "count": len(data),
+        "data": mov1,
+        'stars': stars,
+        'reviewform': reviewform,
+    }
+    return render(request, 'html/single_movie.html', context)
 
 
 def singledetailmovie(request, movie_id):
@@ -170,12 +223,21 @@ def singledetailmovie(request, movie_id):
             reviewform = ReviewForm(request.POST)
             ratingform = RatingForm(request.POST)
             if reviewform.is_valid():
+<<<<<<< HEAD
                 title = reviewform.cleaned_data['Title']
                 statement = reviewform.cleaned_data['Statement']
                 postquery = "Insert into Movie_Review(show_id,user_id,title,statement,PostDate) " \
                             "values " \
                             " ({},{},'{}','{}','{}')"
                 postquery = postquery.format(movie_id, request.user.id, title, statement, date.today())
+=======
+                title = reviewform.cleaned_data['review_title']
+                statement = reviewform.cleaned_data['review_statement']
+                postquery = "Insert into Movie_Review(movie_id,user_id,review_title,review_statement, post_date) " \
+                            "values " \
+                            " ({},{},'{}','{}','{}')"
+                postquery = postquery.format(movie_id, request.user.id, title, statement, str(datetime.datetime.now()))
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
                 cur.execute(postquery)
             if ratingform.is_valid():
                 if(ratingform.cleaned_data['stars']):
@@ -221,6 +283,7 @@ def singledetailmovie(request, movie_id):
         review_query = review_query.format(movie_id)
         cur.execute(review_query)
         reviews = cur.fetchall()
+<<<<<<< HEAD
         star_ivd_query = f"Select stars from Movie_rating where user_id = {request.user.id} and show_id= {movie_id}"
         cur.execute(star_ivd_query)
         star_result = cur.fetchall()
@@ -231,6 +294,15 @@ def singledetailmovie(request, movie_id):
             star_ivd = star_result[0][0]
 
         print(star_count)
+=======
+        stars_query = "Select AVG(rcv.stars) " \
+                      "from Movie_ratings rcv " \
+                      "where rcv.movie_id = {}"
+        stars_query = stars_query.format(movie_id)
+        cur.execute(stars_query)
+        stars = cur.fetchall()[0]
+
+>>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
     context = {
         'reviews': reviews,
         "count": len(data),
@@ -242,3 +314,33 @@ def singledetailmovie(request, movie_id):
     }
     print(data)
     return render(request, 'html/single_movie.html', context)
+
+
+class ShowListView(generics.ListCreateAPIView):
+    queryset = Show.objects.all()
+    serializer_class = ShowSerializer
+
+
+class ShowView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ShowSerializer
+    queryset = Show.objects.all()
+
+
+class AwardsListView(generics.ListCreateAPIView):
+    queryset = Awards.objects.all()
+    serializer_class = AwardsSerializer
+
+
+class AwardsView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = AwardsSerializer
+    queryset = Awards.objects.all()
+
+
+class CelebritiesListView(generics.ListCreateAPIView):
+    queryset = Celebrities.objects.all()
+    serializer_class = CelebritiesSerializer
+
+
+class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CelebritiesSerializer
+    queryset = Celebrities.objects.all()
