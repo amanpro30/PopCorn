@@ -4,12 +4,14 @@ from django.contrib import admin
 from django.contrib import admin
 
 # Register your models here.
-from .models import Show, SEASON, EPISODE, ShowCelebrity, Ratings, Review, Upvotes
+from .models import Show, Season, Episode, ShowCelebrity, Rating, Review, Upvote, Genre, Favourite
 
 admin.site.register(Show)
-admin.site.register(SEASON)
-admin.site.register(EPISODE)
+admin.site.register(Season)
+admin.site.register(Episode)
 admin.site.register(ShowCelebrity)
-admin.site.register(Ratings)
+admin.site.register(Rating)
 admin.site.register(Review)
-admin.site.register(Upvotes)
+admin.site.register(Upvote)
+admin.site.register(Genre)
+admin.site.register(Favourite)

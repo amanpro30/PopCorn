@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'Movie',
     'Celebrities',
     'registration',
-    'Profile',
 ]
 
 MIDDLEWARE = [
@@ -174,3 +173,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'popcornproject123@gmail.com'
 EMAIL_HOST_PASSWORD = 'project@123'
 EMAIL_PORT = '587'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Media')
+MEDIA_URL = '/Media/'

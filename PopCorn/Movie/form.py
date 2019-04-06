@@ -1,6 +1,17 @@
 from django import forms
+from django.forms import ModelForm
+from Movie.models import Rating, Review
 
 
-class ReviewForm(forms.Form):
-    review_title = forms.CharField(max_length=100)
-    review_statement = forms.CharField(max_length=5000)
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = ['Title', 'Statement']
+
+
+class RatingForm(ModelForm):
+    stars = forms.IntegerField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        model = Rating
+        fields = ['stars']

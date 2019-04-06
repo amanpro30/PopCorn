@@ -5,7 +5,7 @@ from django.db import connection
 def celeb(request, filter):
     with connection.cursor() as cur:
         query_celebrities = "SELECT DISTINCT * " \
-                             "FROM Celebrities_celebrities"
+                             "FROM Celebrities_celebrity"
         cur.execute(query_celebrities)
         celebrities = cur.fetchall()
         count = len(celebrities)
@@ -20,7 +20,7 @@ def celeb(request, filter):
 def single_celeb(request, celeb_id):
     with connection.cursor() as cur:
         query_celebrities = f"SELECT * " \
-                            f"FROM Celebrities_celebrities" \
+                            f"FROM Celebrities_celebrity" \
                             f" WHERE id={celeb_id}"
         cur.execute(query_celebrities)
         celebrities = cur.fetchall()

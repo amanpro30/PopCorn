@@ -1,32 +1,24 @@
 from django.db import models
 
 
-# Create your models here.
-
-class Celebrities(models.Model):
+class Celebrity(models.Model):
     Name = models.CharField(max_length=200)
     Dob = models.DateField()
     About = models.TextField(max_length=2000)
-    Image = models.ImageField(upload_to='Actor', null=True, blank=True)
+    Image = models.ImageField(upload_to='Celebrity', null=True, blank=True)
     Nationality = models.CharField(max_length=200)
-    ROLE_CHOICES = [
-        ('A', 'actor'),
-        ('D', 'director'),
-        ('P', 'producer'),
-        ('W', 'writer'),
-    ]
-    role = models.CharField(max_length=1, choices=ROLE_CHOICES)
+    Height = models.IntegerField()
 
     def __str__(self):
         return self.Name
 
 
-class Awards(models.Model):
+class Award(models.Model):
     Name = models.CharField(max_length=100)
     Date = models.DateField()
-    Cast = models.ForeignKey(Celebrities, on_delete=models.CASCADE)
+    Cast = models.ForeignKey(Celebrity, on_delete=models.CASCADE)
 
 
-class Tags(models.Model):
-    Celeb = models.ForeignKey(Celebrities, on_delete=models.CASCADE)
+class Tag(models.Model):
+    Celeb = models.ForeignKey(Celebrity, on_delete=models.CASCADE)
     Tag_Name = models.CharField(max_length=100)

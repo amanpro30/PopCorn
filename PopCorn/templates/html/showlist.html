@@ -50,20 +50,20 @@
                     </div>
                     {% for i in data %}
                         <div class="movie-item-style-2">
-                            <img src="{% static 'images/uploads/mv1.jpg' %}" alt="">
+                            <img src="/Media/{{i.movie.5}}" alt="" style="width:150px;height:200px">
                             <div class="mv-item-infor">
                                 <h6><a href="{% url 'Movie:single_movie' i.movie.0 %}">{{ i.movie.1 }}
                                     <span>({{ i.movie.2|date:'Y' }})</span></a></h6>
-                                <p class="rate"><i class="ion-android-star"></i><span>{{ i.movie.10 }}</span> /10</p>
-                                <p class="describe">{{ i.movie.4 }}</p>
-                                <p class="run-time"> Run Time: {{ i.movie.3|time }} . <span>MMPA: PG-13 </span> .
+                                <p class="rate"><i class="ion-android-star"></i><span>{{ i.movie.10 }}/10</span>({{ i.movie.11 }} ratings)</p>
+                                <p class="describe">{{ i.movie.4}}</p>
+                                <p class="run-time"> Run Time: {{ i.movie.3|date:"i:s" }}
                                     <span>Release: {{ i.movie.2|date }}</span></p>
                                 {% for j in i.director %}
                                     <p>Director: <a href="#">{{ j.director.4 }}</a></p>
                                 {% endfor %}
-                                <p>Stars:
+                                <p>Actors:
                                     {% for k in i.actors %}
-                                        <a href="#">{{ k.4 }}</a>,
+                                        <a href="#">{{ k.5 }}</a>,
                                     {% endfor %}
                                 </p>
 

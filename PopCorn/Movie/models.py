@@ -1,16 +1,43 @@
 from django.db import models
-from Celebrities.models import Celebrities
+from Celebrities.models import Celebrity
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Show(models.Model):
-    Movie_title = models.CharField(max_length=200, db_index=True)
-    ReleaseDate = models.DateField(db_index=True, default=timezone.now)
+    Title = models.CharField(max_length=200, db_index=True)
+    ReleaseDate = models.DateField(db_index=True)
     Duration = models.TimeField()
     Description = models.TextField(max_length=2000)
-    Image = models.ImageField(upload_to='Show', null=True, blank=True, default='movie.jpg')
+    Image = models.ImageField(upload_to='Show', default='movie.jpg')
+    Country = models.CharField(max_length=200)
+    Budget = models.IntegerField()
+    Boc = models.IntegerField(db_index=True)
+    # STATUS_CHOICE = (
+    #     ('F', 'Flop'),
+    #     ('A', 'Average'),
+    #     ('H', 'Hit'),
+    #     ('S', 'SuperHit'),
+    #     ('B', 'Blockbuster'),
+    #     ('R', 'Running')
+    # )
+    Status = models.CharField(max_length=1)
+    Avg_rating = models.FloatField(db_index=True)
+    Num_rating = models.IntegerField(default=0)
+    Trailer = models.CharField(max_length=200)
+    SHOW_TYPE = (
+        ('T', 'TvSeries'),
+        ('M', 'Movies'),
+    )
+    Type = models.CharField(max_length=1, choices=SHOW_TYPE)
+
+    def __str__(self):
+        return self.Title
+
+
+class Genre(models.Model):
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE)
     GENRE_CHOICES = (
         ('R', 'Romance'),
         ('C', 'Comedy'),
@@ -20,53 +47,36 @@ class Show(models.Model):
         ('A', 'Action')
     )
     Genre = models.CharField(max_length=1, choices=GENRE_CHOICES)
-    Country = models.CharField(max_length=200)
-    Budget = models.IntegerField(default=0)
-    Boc = models.IntegerField(db_index=True)
-    STATUS_CHOICE = (
-        ('F', 'Flop'),
-        ('L', 'Losing'),
-        ('A', 'Average'),
-        ('H', 'Hit'),
-        ('S', 'SuperHit'),
-        ('B', 'Blockbuster'),
-        ('R', 'Running')
-    )
-    Avg_rating = models.FloatField(blank=True, db_index=True, default=0.0)
-    Num_ratings = models.IntegerField(blank=True, default=0)
-    Status = models.CharField(max_length=1, choices=STATUS_CHOICE, null=True, blank=True)
-    Trailer = models.CharField(max_length=2000, null=True, blank=True)
-    SHOW_TYPE = (
-        ('tv', 'tvSeries'),
-        ('m', 'movies'),
-    )
-    type = models.CharField(max_length=2, choices=SHOW_TYPE)
-
-    def __str__(self):
-        return self.Movie_title
 
 
 class ShowCelebrity(models.Model):
-    Show = models.ForeignKey(Show, on_delete=models.CASCADE, null=True)
-    Celebrity = models.ForeignKey(Celebrities, on_delete=models.CASCADE, null=True)
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    Celebrity = models.ForeignKey(Celebrity, on_delete=models.CASCADE)
+    ROLE_CHOICES = [
+        ('A', 'actor'),
+        ('D', 'director'),
+        ('P', 'producer'),
+        ('W', 'writer'),
+    ]
+    role = models.CharField(max_length=1, choices=ROLE_CHOICES)
 
 
-class SEASON(models.Model):
-    Season_title = models.CharField(max_length=200, null=True, blank=True)
-    ReleaseDate = models.DateField(db_index=True, default=timezone.now)
-    Series = models.ForeignKey(Show, on_delete=models.CASCADE, null=True, blank=True)
+class Season(models.Model):
+    Title = models.CharField(max_length=200)
+    ReleaseDate = models.DurationField(db_index=True)
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE)
 
 
-class EPISODE(models.Model):
-    Episode_title = models.CharField(max_length=200, null=True, blank=True)
-    Duration = models.IntegerField(null=True, blank=True)
-    Season = models.ForeignKey(SEASON, on_delete=models.CASCADE, null=True, blank=True)
+class Episode(models.Model):
+    Title = models.CharField(max_length=200)
+    Duration = models.TimeField()
+    Season = models.ForeignKey(Season, on_delete=models.CASCADE)
 
 
-class Ratings(models.Model):
-    movie = models.ForeignKey(Show, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    stars = models.PositiveIntegerField(
+class Rating(models.Model):
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    Stars = models.IntegerField(
         validators=[
             MaxValueValidator(10),
             MinValueValidator(1)
@@ -75,13 +85,22 @@ class Ratings(models.Model):
 
 
 class Review(models.Model):
-    movie = models.ForeignKey(Show, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    review_title = models.CharField(max_length=100)
-    review_statement = models.CharField(max_length=5000)
-    post_date = models.DateTimeField(db_index=True, auto_now_add=True, blank=True, null=True)
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    Title = models.CharField(max_length=100)
+    Statement = models.CharField(max_length=5000)
+    PostDate = models.DateTimeField(db_index=True, auto_now_add=True)
 
 
-class Upvotes(models.Model):
-    review = models.ForeignKey(Review, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Upvote(models.Model):
+    Review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class Favourite(models.Model):
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    TYPE_CHOICE = (
+        ('F', 'Favourites'),
+        ('W', 'Watchlist')
+    )
+    Type = models.CharField(max_length=1, choices=TYPE_CHOICE)

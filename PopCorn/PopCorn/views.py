@@ -6,8 +6,6 @@ from django.shortcuts import render, redirect
 
 from social_django.models import UserSocialAuth
 
-def landing(request):
-    return render(request, 'core/landing.html')
 
 @login_required
 def home(request):
