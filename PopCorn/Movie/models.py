@@ -10,7 +10,6 @@ class Show(models.Model):
     ReleaseDate = models.DateField(db_index=True)
     Duration = models.TimeField()
     Description = models.TextField(max_length=2000)
-<<<<<<< HEAD
     Image = models.ImageField(upload_to='Show', default='movie.jpg')
     Country = models.CharField(max_length=200)
     Budget = models.IntegerField()
@@ -39,10 +38,6 @@ class Show(models.Model):
 
 class Genre(models.Model):
     Show = models.ForeignKey(Show, on_delete=models.CASCADE)
-=======
-    #Cast = models.ManyToManyField(Celebrities, related_name="cast")
-    Image = models.ImageField(upload_to='Show', null=True, blank=True, default='movie.jpg')
->>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
     GENRE_CHOICES = (
         ('R', 'Romance'),
         ('C', 'Comedy'),
@@ -105,29 +100,17 @@ class Rating(models.Model):
 
 
 class Review(models.Model):
-<<<<<<< HEAD
     Show = models.ForeignKey(Show, on_delete=models.CASCADE)
     User = models.ForeignKey(User, on_delete=models.CASCADE)
     Title = models.CharField(max_length=100)
     Statement = models.CharField(max_length=5000)
     PostDate = models.DateTimeField(db_index=True, auto_now_add=True)
 
-=======
-    movie = models.ForeignKey(Show, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    review_title = models.CharField(max_length=100)
-    review_statement = models.CharField(max_length=5000)
-    post_date = models.DateTimeField(db_index=True)
-
-    def __str__(self):
-        return self.review_title
->>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
 
 class Upvote(models.Model):
     Review = models.ForeignKey(Review, on_delete=models.CASCADE)
     User = models.ForeignKey(User, on_delete=models.CASCADE)
 
-<<<<<<< HEAD
 
 class Favourite(models.Model):
     User = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -136,11 +119,3 @@ class Favourite(models.Model):
         ('W', 'Watchlist')
     )
     Type = models.CharField(max_length=1, choices=TYPE_CHOICE)
-=======
-class Upvotes(models.Model):
-    review = models.ForeignKey(Review, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.review, self.user
->>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b

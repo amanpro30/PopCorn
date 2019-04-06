@@ -41,10 +41,6 @@ INSTALLED_APPS = [
     'Movie',
     'Celebrities',
     'registration',
-<<<<<<< HEAD
-=======
-    'rest_framework',
->>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
 ]
 
 MIDDLEWARE = [
@@ -103,11 +99,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'PopCorn',
             'USER': 'root',
-<<<<<<< HEAD
             'PASSWORD': '1121',
-=======
-            'PASSWORD': 'iamsanjay123',
->>>>>>> d05c0f9a706a7ad0d6348ab324365a451453859b
             'HOST': 'localhost',
         }
 }
