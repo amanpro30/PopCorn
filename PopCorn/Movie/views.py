@@ -258,31 +258,31 @@ def singledetailmovie(request, movie_id):
     return render(request, 'html/single_movie.html', context)
 
 
-class ShowListView(generics.ListCreateAPIView):
-    queryset = Show.objects.all()
-    serializer_class = ShowSerializer
-
-
-class ShowView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ShowSerializer
-    queryset = Show.objects.all()
-
-
-class AwardsListView(generics.ListCreateAPIView):
-    queryset = Awards.objects.all()
-    serializer_class = AwardsSerializer
-
-
-class AwardsView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = AwardsSerializer
-    queryset = Awards.objects.all()
-
-
-class CelebritiesListView(generics.ListCreateAPIView):
-    queryset = Celebrities.objects.all()
-    serializer_class = CelebritiesSerializer
-
-
-class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = CelebritiesSerializer
-    queryset = Celebrities.objects.all()
+# class ShowListView(generics.ListCreateAPIView):
+#     queryset = Show.objects.all()
+#     serializer_class = ShowSerializer
+#
+#
+# class ShowView(generics.RetrieveUpdateDestroyAPIView):
+#     serializer_class = ShowSerializer
+#     queryset = Show.objects.all()
+#
+#
+# class AwardsListView(generics.ListCreateAPIView):
+#     queryset = Awards.objects.all()
+#     serializer_class = AwardsSerializer
+#
+#
+# class AwardsView(generics.RetrieveUpdateDestroyAPIView):
+#     serializer_class = AwardsSerializer
+#     queryset = Awards.objects.all()
+#
+#
+# class CelebritiesListView(generics.ListCreateAPIView):
+#     queryset = Celebrities.objects.all()
+#     serializer_class = CelebritiesSerializer
+#
+#
+# class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
+#     serializer_class = CelebritiesSerializer
+#     queryset = Celebrities.objects.all()

@@ -5,7 +5,6 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
-from rest_framework.authtoken import views
 from Movie.views import *
 
 
