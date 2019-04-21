@@ -24,7 +24,7 @@
             <div class="row ipad-width2">
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="movie-img sticky-sb">
-                        <img src="{% static 'images/uploads/movie-single.jpg' %}" alt="">
+                        <img src="/Media/{{data.movie.5}}" alt="">
                         <div class="movie-btn">
                             <div class="btn-transform transform-vertical red">
                                 <div><a href="{{ data.movie.12 }}" class="item item-1 redbtn"> <i class="ion-play"></i>
@@ -95,7 +95,7 @@
                                     <li><a href="#reviews"> Reviews</a></li>
                                     <li><a href="#cast"> Cast & Crew </a></li>
                                     {#                                    <li><a href="#media"> Media</a></li>#}
-                                    <li><a href="#moviesrelated"> Related Movies</a></li>
+                                    <!--<li><a href="#moviesrelated"> Related Movies</a></li>-->
                                 </ul>
                                 <div class="tab-content">
                                     <div id="overview" class="tab active">
@@ -105,90 +105,6 @@
                                                     <h4>Description</h4>
                                                 </div>
                                                 <p>{{ data.movie.4 }}</p>
-                                                {#                                                <div class="mvsingle-item ov-item">#}
-                                                {#                                                    <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                                {#                                                       href="images/uploads/image11.jpg"><img#}
-                                                {#                                                            src="images/uploads/image1.jpg" alt=""></a>#}
-                                                {#                                                    <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                                {#                                                       href="images/uploads/image21.jpg"><img#}
-                                                {#                                                            src="images/uploads/image2.jpg" alt=""></a>#}
-                                                {#                                                    <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                                {#                                                       href="images/uploads/image31.jpg"><img#}
-                                                {#                                                            src="images/uploads/image3.jpg" alt=""></a>#}
-                                                {#                                                    <div class="vd-it">#}
-                                                {#                                                        <img class="vd-img" src="images/uploads/image4.jpg" alt="">#}
-                                                {#                                                        <a class="fancybox-media hvr-grow"#}
-                                                {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                                {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                                {#                                                    </div>#}
-                                                {#                                                </div>#}
-
-
-                                                {#                                                <div class="title-hd-sm">#}
-                                                {#                                                    <h4>cast</h4>#}
-                                                {#                                                    <a href="#" class="time">Full Cast & Crew <i#}
-                                                {#                                                            class="ion-ios-arrow-right"></i></a>#}
-                                                {#                                                </div>#}
-                                                {#                                                <!-- movie cast -->#}
-                                                {#                                                <div class="mvcast-item">#}
-                                                {#                                                    <div class="cast-it">#}
-                                                {#                                                        <div class="cast-left">#}
-                                                {#                                                            <img src="images/uploads/cast1.jpg" alt="">#}
-                                                {#                                                            <a href="#">Robert Downey Jr.</a>#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <p>... Robert Downey Jr.</p>#}
-                                                {#                                                    </div>#}
-                                                {#                                                    <div class="cast-it">#}
-                                                {#                                                        <div class="cast-left">#}
-                                                {#                                                            <img src="images/uploads/cast2.jpg" alt="">#}
-                                                {#                                                            <a href="#">Chris Hemsworth</a>#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <p>... Thor</p>#}
-                                                {#                                                    </div>#}
-                                                {#                                                    <div class="cast-it">#}
-                                                {#                                                        <div class="cast-left">#}
-                                                {#                                                            <img src="images/uploads/cast3.jpg" alt="">#}
-                                                {#                                                            <a href="#">Mark Ruffalo</a>#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <p>... Bruce Banner/ Hulk</p>#}
-                                                {#                                                    </div>#}
-                                                {#                                                    <div class="cast-it">#}
-                                                {#                                                        <div class="cast-left">#}
-                                                {#                                                            <img src="images/uploads/cast4.jpg" alt="">#}
-                                                {#                                                            <a href="#">Chris Evans</a>#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <p>... Steve Rogers/ Captain America</p>#}
-                                                {#                                                    </div>#}
-                                                {#                                                    <div class="cast-it">#}
-                                                {#                                                        <div class="cast-left">#}
-                                                {#                                                            <img src="images/uploads/cast5.jpg" alt="">#}
-                                                {#                                                            <a href="#">Scarlett Johansson</a>#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <p>... Natasha Romanoff/ Black Widow</p>#}
-                                                {#                                                    </div>#}
-                                                {#                                                    <div class="cast-it">#}
-                                                {#                                                        <div class="cast-left">#}
-                                                {#                                                            <img src="images/uploads/cast6.jpg" alt="">#}
-                                                {#                                                            <a href="#">Jeremy Renner</a>#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <p>... Clint Barton/ Hawkeye</p>#}
-                                                {#                                                    </div>#}
-                                                {#                                                    <div class="cast-it">#}
-                                                {#                                                        <div class="cast-left">#}
-                                                {#                                                            <img src="images/uploads/cast7.jpg" alt="">#}
-                                                {#                                                            <a href="#">James Spader</a>#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <p>... Ultron</p>#}
-                                                {#                                                    </div>#}
-                                                {#                                                    <div class="cast-it">#}
-                                                {#                                                        <div class="cast-left">#}
-                                                {#                                                            <img src="images/uploads/cast9.jpg" alt="">#}
-                                                {#                                                            <a href="#">Don Cheadle</a>#}
-                                                {#                                                        </div>#}
-                                                {#                                                        <p>... James Rhodes/ War Machine</p>#}
-                                                {#                                                    </div>#}
-                                                {#                                                </div>#}
-
                                                 <div class="title-hd-sm">
                                                     <h4>reviews</h4>
                                                     <a href="#reviews" class="time">See All {{ reviews|length }} Reviews
@@ -212,7 +128,7 @@
                                                         <i class="ion-android-star last"></i>
                                                     </div>
                                                     <p class="time">
-                                                        {{ reviews.0.3|date }} by <a href="#"> hawaiipierson</a>
+                                                        {{ reviews.0.3|date }} by <a href="#"> by {{request.user}}</a>
                                                     </p>
                                                     <p>{{ reviews.0.2 }}</p>
                                                 </div>
@@ -220,47 +136,32 @@
                                             <div class="col-md-4 col-xs-12 col-sm-12">
                                                 <div class="sb-it">
                                                     <h6>Director: </h6>
-                                                    <p><a href="#">Joss Whedon</a></p>
+                                                    {% for i in data.director %}
+                                                        <p><a href="#">{{i.5}}</a></p>
+                                                    {% endfor %}
                                                 </div>
                                                 <div class="sb-it">
                                                     <h6>Writer: </h6>
-                                                    <p><a href="#">Joss Whedon,</a> <a href="#">Stan Lee</a></p>
+                                                    {% for i in data.writer %}
+                                                        <p><a href="#">{{i.5}}</a></p>
+                                                    {% endfor %}
                                                 </div>
                                                 <div class="sb-it">
-                                                    <h6>Stars: </h6>
-                                                    <p><a href="#">Robert Downey Jr,</a> <a href="#">Chris Evans,</a> <a
-                                                            href="#">Mark Ruffalo,</a><a href="#"> Scarlett
-                                                        Johansson</a></p>
-                                                </div>
-                                                <div class="sb-it">
-                                                    <h6>Genres:</h6>
-                                                    <p><a href="#">Action, </a> <a href="#"> Sci-Fi,</a> <a href="#">Adventure</a>
-                                                    </p>
+                                                    <h6>Producer: </h6>
+                                                    {% for i in data.producer %}
+                                                        <p><a href="#">{{i.5}}</a></p>
+                                                    {% endfor %}
                                                 </div>
                                                 <div class="sb-it">
                                                     <h6>Release Date:</h6>
-                                                    <p>May 1, 2015 (U.S.A)</p>
+                                                    <p>{{ data.movie.2 }}</p>
                                                 </div>
                                                 <div class="sb-it">
                                                     <h6>Run Time:</h6>
-                                                    <p>141 min</p>
-                                                </div>
-                                                <div class="sb-it">
-                                                    <h6>MMPA Rating:</h6>
-                                                    <p>PG-13</p>
-                                                </div>
-                                                <div class="sb-it">
-                                                    <h6>Plot Keywords:</h6>
-                                                    <p class="tags">
-                                                        <span class="time"><a href="#">superhero</a></span>
-                                                        <span class="time"><a href="#">marvel universe</a></span>
-                                                        <span class="time"><a href="#">comic</a></span>
-                                                        <span class="time"><a href="#">blockbuster</a></span>
-                                                        <span class="time"><a href="#">final battle</a></span>
-                                                    </p>
+                                                    <p>{{ data.movie.3|date:"i:s" }}</p>
                                                 </div>
                                                 <div class="ads">
-                                                    <img src="images/uploads/ads1.png" alt="">
+                                                    <img src="images/uploads/ads.png" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -288,23 +189,23 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="topbar-filter">
-                                                <p>Found <span>{{ reviews|length }} reviews</span> in total</p>
-                                                <label>Filter by:</label>
-                                                <select>
-                                                    <option value="popularity">Popularity Descending</option>
-                                                    <option value="popularity">Popularity Ascending</option>
-                                                    <option value="rating">Rating Descending</option>
-                                                    <option value="rating">Rating Ascending</option>
-                                                    <option value="date">Release date Descending</option>
-                                                    <option value="date">Release date Ascending</option>
-                                                </select>
-                                            </div>
-                                            {{ reviews }}
+                                            <!--<div class="topbar-filter">-->
+                                                <!--<p>Found <span>{{ reviews|length }} reviews</span> in total</p>-->
+                                                <!--<label>Filter by:</label>-->
+                                                <!--<select>-->
+                                                    <!--<option value="popularity">Popularity Descending</option>-->
+                                                    <!--<option value="popularity">Popularity Ascending</option>-->
+                                                    <!--<option value="rating">Rating Descending</option>-->
+                                                    <!--<option value="rating">Rating Ascending</option>-->
+                                                    <!--<option value="date">Release date Descending</option>-->
+                                                    <!--<option value="date">Release date Ascending</option>-->
+                                                <!--</select>-->
+                                            <!--</div>-->
+                                            <!--{{ reviews }}-->
                                             {% for rev in reviews %}
                                                 <div class="mv-user-review-item">
                                                     <div class="user-infor">
-                                                        <img src="images/uploads/userava1.jpg" alt="">
+                                                        <img src="images/uploads/userava.jpg" alt="">
                                                         <div>
                                                             <h3>{{ rev.1 }}</h3>
                                                             <div class="no-star">
@@ -330,23 +231,23 @@
                                             {% empty %}
                                                 <div>Nothing to show!!</div>
                                             {% endfor %}
-                                            <div class="topbar-filter">
-                                                <label>Reviews per page:</label>
-                                                <select>
-                                                    <option value="range">5 Reviews</option>
-                                                    <option value="saab">10 Reviews</option>
-                                                </select>
-                                                <div class="pagination2">
-                                                    <span>Page 1 of 6:</span>
-                                                    <a class="active" href="#">1</a>
-                                                    <a href="#">2</a>
-                                                    <a href="#">3</a>
-                                                    <a href="#">4</a>
-                                                    <a href="#">5</a>
-                                                    <a href="#">6</a>
-                                                    <a href="#"><i class="ion-arrow-right-b"></i></a>
-                                                </div>
-                                            </div>
+                                            <!--<div class="topbar-filter">-->
+                                                <!--<label>Reviews per page:</label>-->
+                                                <!--<select>-->
+                                                    <!--<option value="range">5 Reviews</option>-->
+                                                    <!--<option value="saab">10 Reviews</option>-->
+                                                <!--</select>-->
+                                                <!--<div class="pagination2">-->
+                                                    <!--<span>Page 1 of 6:</span>-->
+                                                    <!--<a class="active" href="#">1</a>-->
+                                                    <!--<a href="#">2</a>-->
+                                                    <!--<a href="#">3</a>-->
+                                                    <!--<a href="#">4</a>-->
+                                                    <!--<a href="#">5</a>-->
+                                                    <!--<a href="#">6</a>-->
+                                                    <!--<a href="#"><i class="ion-arrow-right-b"></i></a>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
                                         </div>
                                     </div>
                                     <div id="cast" class="tab">
@@ -359,10 +260,12 @@
                                             </div>
                                             <div class="mvcast-item">
                                                 <div class="cast-it">
-                                                    <div class="cast-left">
-                                                        <h4>JW</h4>
-                                                        <a href="#">Joss Whedon</a>
-                                                    </div>
+                                                    {% for i in data.director %}
+                                                        <div class="cast-left">
+                                                            <h4>JW</h4>
+                                                            <a href="#">{{ i.5 }}</a>
+                                                        </div>
+                                                    {% endfor %}
                                                     <p>... Director</p>
                                                 </div>
                                             </div>
@@ -588,53 +491,53 @@
                                     {#                                            </div>#}
                                     {#                                        </div>#}
                                     {#                                    </div>#}
-                                    <div id="moviesrelated" class="tab">
-                                        <div class="row">
-                                            <h3>Related Movies To</h3>
-                                            <h2>Skyfall: Quantum of Spectre</h2>
-                                            <div class="topbar-filter">
-                                                <p>Found <span>12 movies</span> in total</p>
-                                                <label>Sort by:</label>
-                                                <select>
-                                                    <option value="popularity">Popularity Descending</option>
-                                                    <option value="popularity">Popularity Ascending</option>
-                                                    <option value="rating">Rating Descending</option>
-                                                    <option value="rating">Rating Ascending</option>
-                                                    <option value="date">Release date Descending</option>
-                                                    <option value="date">Release date Ascending</option>
-                                                </select>
-                                            </div>
-                                            <div class="movie-item-style-2">
-                                                <img src="images/uploads/mv1.jpg" alt="">
-                                                <div class="mv-item-infor">
-                                                    <h6><a href="#">oblivion <span>(2012)</span></a></h6>
-                                                    <p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10
-                                                    </p>
-                                                    <p class="describe">Earth's mightiest heroes must come together and
-                                                        learn to fight as a team if they are to stop the mischievous
-                                                        Loki and his alien army from enslaving humanity...</p>
-                                                    <p class="run-time"> Run Time: 2h21’ . <span>MMPA: PG-13 </span> .
-                                                        <span>Release: 1 May 2015</span></p>
-                                                    <p>Director: <a href="#">Joss Whedon</a></p>
-                                                    <p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris
-                                                        Evans,</a> <a href="#"> Chris Hemsworth</a></p>
-                                                </div>
-                                            </div>
-                                            <div class="topbar-filter">
-                                                <label>Movies per page:</label>
-                                                <select>
-                                                    <option value="range">5 Movies</option>
-                                                    <option value="saab">10 Movies</option>
-                                                </select>
-                                                <div class="pagination2">
-                                                    <span>Page 1 of 2:</span>
-                                                    <a class="active" href="#">1</a>
-                                                    <a href="#">2</a>
-                                                    <a href="#"><i class="ion-arrow-right-b"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!--<div id="moviesrelated" class="tab">-->
+                                        <!--<div class="row">-->
+                                            <!--<h3>Related Movies To</h3>-->
+                                            <!--<h2>Skyfall: Quantum of Spectre</h2>-->
+                                            <!--<div class="topbar-filter">-->
+                                                <!--<p>Found <span>12 movies</span> in total</p>-->
+                                                <!--<label>Sort by:</label>-->
+                                                <!--<select>-->
+                                                    <!--<option value="popularity">Popularity Descending</option>-->
+                                                    <!--<option value="popularity">Popularity Ascending</option>-->
+                                                    <!--<option value="rating">Rating Descending</option>-->
+                                                    <!--<option value="rating">Rating Ascending</option>-->
+                                                    <!--<option value="date">Release date Descending</option>-->
+                                                    <!--<option value="date">Release date Ascending</option>-->
+                                                <!--</select>-->
+                                            <!--</div>-->
+                                            <!--<div class="movie-item-style-2">-->
+                                                <!--<img src="images/uploads/mv1.jpg" alt="">-->
+                                                <!--<div class="mv-item-infor">-->
+                                                    <!--<h6><a href="#">oblivion <span>(2012)</span></a></h6>-->
+                                                    <!--<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10-->
+                                                    <!--</p>-->
+                                                    <!--<p class="describe">Earth's mightiest heroes must come together and-->
+                                                        <!--learn to fight as a team if they are to stop the mischievous-->
+                                                        <!--Loki and his alien army from enslaving humanity...</p>-->
+                                                    <!--<p class="run-time"> Run Time: 2h21’ . <span>MMPA: PG-13 </span> .-->
+                                                        <!--<span>Release: 1 May 2015</span></p>-->
+                                                    <!--<p>Director: <a href="#">Joss Whedon</a></p>-->
+                                                    <!--<p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris-->
+                                                        <!--Evans,</a> <a href="#"> Chris Hemsworth</a></p>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="topbar-filter">-->
+                                                <!--<label>Movies per page:</label>-->
+                                                <!--<select>-->
+                                                    <!--<option value="range">5 Movies</option>-->
+                                                    <!--<option value="saab">10 Movies</option>-->
+                                                <!--</select>-->
+                                                <!--<div class="pagination2">-->
+                                                    <!--<span>Page 1 of 2:</span>-->
+                                                    <!--<a class="active" href="#">1</a>-->
+                                                    <!--<a href="#">2</a>-->
+                                                    <!--<a href="#"><i class="ion-arrow-right-b"></i></a>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
                                 </div>
                             </div>
                         </div>

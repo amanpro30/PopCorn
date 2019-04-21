@@ -22,8 +22,8 @@
             </div>
             <div class="col-md-8 col-sm-12 col-xs-12">
                 <div class="movie-single-ct">
-                    <h1 class="bd-hd">Hugh Jackman</h1>
-                    <p class="ceb-single">Actor | Producer</p>
+                    <h1 class="bd-hd">{{ celebs.0.1 }}</h1>
+                    <!--<p class="ceb-single">Actor | Producer</p>-->
                     <div class="movie-tabs">
                         <div class="tabs">
                             <ul class="tab-links tabs-mv">
@@ -43,28 +43,26 @@
                                         <div class="col-md-4 col-xs-12 col-sm-12">
                                             <div class="sb-it">
                                                 <h6>Fullname: </h6>
-                                                <p><a href="#">Hugh Jackman</a></p>
+                                                <p><a href="#">{{ celebs.0.1 }}</a></p>
                                             </div>
                                             <div class="sb-it">
                                                 <h6>Date of Birth: </h6>
-                                                <p>June 24, 1982</p>
+                                                <p>{{ celebs.0.2 }}</p>
                                             </div>
                                             <div class="sb-it">
                                                 <h6>Country: </h6>
-                                                <p>Australian</p>
+                                                <p>{{ celebs.0.5 }}</p>
                                             </div>
                                             <div class="sb-it">
                                                 <h6>Height:</h6>
-                                                <p>186 cm/p>
+                                                <p>{{ celebs.0.6 }} cms</p>
                                             </div>
                                             <div class="sb-it">
-                                                <h6>Keywords:</h6>
+                                                <h6>Tags:</h6>
                                                 <p class="tags">
-                                                    <span class="time"><a href="#">jackman</a></span>
-                                                    <span class="time"><a href="#">wolverine</a></span>
-                                                    <span class="time"><a href="#">logan</a></span>
-                                                    <span class="time"><a href="#">blockbuster</a></span>
-                                                    <span class="time"><a href="#">final battle</a></span>
+                                                    {% for i in keywords %}
+                                                        <span class="time">{{ i.0 }}<br></span>
+                                                    {% endfor %}
                                                 </p>
                                             </div>
                                             <div class="ads">

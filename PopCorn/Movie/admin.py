@@ -15,3 +15,4 @@ admin.site.register(Review)
 admin.site.register(Upvote)
 admin.site.register(Genre)
 admin.site.register(Favourite)
+

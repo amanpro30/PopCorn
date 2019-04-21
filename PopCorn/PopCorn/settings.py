@@ -101,7 +101,10 @@ DATABASES = {
             'USER': 'root',
             'PASSWORD': '1121',
             'HOST': 'localhost',
-        }
+        },
+    'OPTIONS': {
+        'init_command': 'SET default_storage_engine=MEMORY',
+    }
 }
 
 # Password validation

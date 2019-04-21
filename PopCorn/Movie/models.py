@@ -6,14 +6,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Show(models.Model):
-    Title = models.CharField(max_length=200, db_index=True)
-    ReleaseDate = models.DateField(db_index=True)
+    Title = models.CharField(max_length=200)
+    ReleaseDate = models.DateField()
     Duration = models.TimeField()
     Description = models.TextField(max_length=2000)
     Image = models.ImageField(upload_to='Show', default='movie.jpg')
     Country = models.CharField(max_length=200)
     Budget = models.IntegerField()
-    Boc = models.IntegerField(db_index=True)
+    Boc = models.IntegerField()
     # STATUS_CHOICE = (
     #     ('F', 'Flop'),
     #     ('A', 'Average'),
@@ -22,8 +22,8 @@ class Show(models.Model):
     #     ('B', 'Blockbuster'),
     #     ('R', 'Running')
     # )
-    Status = models.CharField(max_length=1)
-    Avg_rating = models.FloatField(db_index=True)
+    Status = models.CharField(max_length=1, default='R')
+    Avg_rating = models.FloatField()
     Num_rating = models.IntegerField(default=0)
     Trailer = models.CharField(max_length=200)
     SHOW_TYPE = (
@@ -49,7 +49,7 @@ class Genre(models.Model):
     Genre = models.CharField(max_length=1, choices=GENRE_CHOICES)
 
     def __str__(self):
-        return self.Movie_title
+        return self.Show.Title
 
 
 class ShowCelebrity(models.Model):
@@ -63,26 +63,23 @@ class ShowCelebrity(models.Model):
     ]
     role = models.CharField(max_length=1, choices=ROLE_CHOICES)
 
-    def __str__(self):
-        return self.Show, self.Celebrity
-
 
 class Season(models.Model):
     Title = models.CharField(max_length=200)
-    ReleaseDate = models.DurationField(db_index=True)
+    ReleaseDate = models.DurationField()
     Show = models.ForeignKey(Show, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.Season_title
+        return self.Title
 
 
 class Episode(models.Model):
     Title = models.CharField(max_length=200)
-    Duration = models.TimeField()
+    Duration = models.DateField()
     Season = models.ForeignKey(Season, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.Episode_title
+        return self.Title
 
 
 class Rating(models.Model):
@@ -104,7 +101,7 @@ class Review(models.Model):
     User = models.ForeignKey(User, on_delete=models.CASCADE)
     Title = models.CharField(max_length=100)
     Statement = models.CharField(max_length=5000)
-    PostDate = models.DateTimeField(db_index=True, auto_now_add=True)
+    PostDate = models.DateTimeField(auto_now_add=True)
 
 
 class Upvote(models.Model):

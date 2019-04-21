@@ -3,6 +3,7 @@ from Movie.models import Show
 from django.db import connection
 from Movie.form import ReviewForm, RatingForm
 from datetime import date
+import math
 
 
 # Create your views here.
@@ -10,17 +11,17 @@ def hompage(request):
     context = {}
     with connection.cursor() as cur:
         movies_query = "Select * from Movie_Show" \
-                       " Where Status = 'R' and type = 'M'"
+                       " Where Status = 'R' or Status = 'U' and type = 'M' LIMIT 15"
         cur.execute(movies_query)
         context['theater_movies'] = cur.fetchall()
 
         tvseries_query = "Select * from Movie_Show " \
-                         "Where Status = 'R' And type= 'T' "
+                         "Where Status = 'R' And type= 'T' LIMIT 15"
         cur.execute(tvseries_query)
         context['rs'] = cur.fetchall()
 
         movies_query = "Select * from Movie_Show where type= 'M'" \
-                       " ORDER BY Avg_rating DESC"
+                       " ORDER BY Avg_rating DESC LIMIT 15"
         cur.execute(movies_query)
         context['top_rated'] = cur.fetchall()
 
@@ -54,26 +55,31 @@ def hompage(request):
     return render(request, 'html/basehome.html', context)
 
 
-def movies(request, filter):
+def movies(request, filter, page):
     with connection.cursor() as cur:
         data = []
+        page = str((int(page)-1)*10)
         if filter == 'top_rated':
-            movies_query = "Select * from Movie_Show where type= 'm'" \
-                           "ORDER BY Avg_rating DESC"
+            movies_query = f"Select * from Movie_Show where type= 'm'" \
+                           f"ORDER BY Avg_rating DESC LIMIT 10 OFFSET {page}"
             cur.execute(movies_query)
         elif filter == 'all_alphabet':
-            movies_query2 = "Select * from Movie_Show where type= 'm'" \
-                            "ORDER BY Movie_title ASC"
+            movies_query2 = f"Select * from Movie_Show where type= 'm'" \
+                            f"ORDER BY Title ASC LIMIT 10 OFFSET {page}"
             cur.execute(movies_query2)
         elif filter == 'all_release_date':
-            movies_query = "Select * from Movie_Show where type= 'm'" \
-                           "ORDER BY ReleaseDate DESC"
+            movies_query = f"Select * from Movie_Show where type= 'm'" \
+                           f"ORDER BY ReleaseDate DESC LIMIT 10 OFFSET {page}"
             cur.execute(movies_query)
         elif filter == 'top_grossers':
-            movies_query = "Select * from Movie_Show where type= 'm'" \
-                           "ORDER BY Boc DESC"
+            movies_query = f"Select * from Movie_Show where type= 'm'" \
+                           f"ORDER BY Boc DESC LIMIT 10 OFFSET {page}"
             cur.execute(movies_query)
         movies_tuple = cur.fetchall()
+        all_movies_query = "Select count(*) from Movie_Show";
+        cur.execute(all_movies_query)
+        all_mov = cur.fetchall()
+        count_page = math.ceil(all_mov[0][0]/10)
         for i in movies_tuple:
             query = "SELECT *" \
                     " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrity as mc" \
@@ -103,7 +109,11 @@ def movies(request, filter):
         context = {
             "count": len(data),
             "data": data,
+            "count_page": count_page,
+            "count_page_range": range(1, count_page+1),
+            "filter": filter,
         }
+
         print(context['data'])
         return render(request, 'html/showlist.html', context)
 
@@ -112,19 +122,19 @@ def tvseries(request, filter):
     with connection.cursor() as cur:
         data = []
         if filter == 'top_rated':
-            movies_query = "Select * from Movie_Show where type= 'tv'" \
+            movies_query = "Select * from Movie_Show where type= 'T'" \
                            " ORDER BY Avg_rating DESC"
             cur.execute(movies_query)
         elif filter == 'all_alphabet':
-            movies_query2 = "Select * from Movie_Show where type= 'tv'" \
+            movies_query2 = "Select * from Movie_Show where type= 'T'" \
                             "ORDER BY Movie_title ASC"
             cur.execute(movies_query2)
         elif filter == 'all_release_date':
-            movies_query = "Select * from Movie_Show where type= 'tv'" \
+            movies_query = "Select * from Movie_Show where type= 'T'" \
                            "ORDER BY ReleaseDate DESC"
             cur.execute(movies_query)
         elif filter == 'top_grossers':
-            movies_query = "Select * from Movie_Show where type= 'tv'" \
+            movies_query = "Select * from Movie_Show where type= 'T'" \
                            "ORDER BY Boc DESC"
             cur.execute(movies_query)
 
@@ -146,13 +156,13 @@ def tvseries(request, filter):
             }
             print(celebrities)
             for j in celebrities:
-                if j[9] == 'D':
+                if j[1] == 'D':
                     mov1['director'].append(j)
-                elif j[9] == 'A':
+                elif j[1] == 'A':
                     mov1['actors'].append(j)
-                elif j[9] == 'P':
+                elif j[1] == 'P':
                     mov1['producer'].append(j)
-                elif j[9] == 'W':
+                elif j[1] == 'W':
                     mov1['writer'].append(j)
             data.append(mov1)
 
@@ -221,13 +231,13 @@ def singledetailmovie(request, movie_id):
             'actors': [],
         }
         for j in celebrities:
-            if j[9] == 'D':
+            if j[1] == 'D':
                 mov1['director'].append(j)
-            elif j[9] == 'A':
+            elif j[1] == 'A':
                 mov1['actors'].append(j)
-            elif j[9] == 'P':
+            elif j[1] == 'P':
                 mov1['producer'].append(j)
-            elif j[9] == 'W':
+            elif j[1] == 'W':
                 mov1['writer'].append(j)
         review_query = "Select * " \
                        "from Movie_review as rcv " \
@@ -244,7 +254,7 @@ def singledetailmovie(request, movie_id):
         else:
             star_ivd = star_result[0][0]
 
-        print(star_count)
+        print('data', mov1)
     context = {
         'reviews': reviews,
         "count": len(data),

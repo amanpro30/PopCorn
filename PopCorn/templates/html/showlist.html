@@ -40,11 +40,11 @@
                         <div class="dropdown">
                             <button onclick="myFunction()" class="dropbtn">Dropdown</button>
                             <div id="myDropdown" class="dropdown-content">
-                                <a href="top_rated">Top Rated</a>
-                                <a href="trending">Trending</a>
-                                <a href="top_grossers">Top Grossers</a>
-                                <a href="all_alphabet">All (By Name)</a>
-                                <a href="all_release_date">All (By Release Date)</a>
+                                <a href="{% url 'Movie:movielist' 'top_rated' '1' %}">Top Rated</a>
+                                <a href="{% url 'Movie:movielist' 'trending' '1' %}">Trending</a>
+                                <a href="{% url 'Movie:movielist' 'top_grossers' '1' %}">Top Grossers</a>
+                                <a href="{% url 'Movie:movielist' 'all_alphabet' '1' %}">All (By Name)</a>
+                                <a href="{% url 'Movie:movielist' 'all_release_date' '1' %}">All (By Release Date)</a>
                             </div>
                         </div>
                     </div>
@@ -74,10 +74,10 @@
                     {% endfor %}
                     <div class="topbar-filter">
                         <div class="pagination2">
-                            <span>Page 1 of 2:</span>
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#"><i class="ion-arrow-right-b"></i></a>
+                            <span>Page 1 of {{ count_page }}:</span>
+                            {% for i in count_page_range %}
+                                <a href="{% url 'Movie:movielist' filter i %}">{{i}}</a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
