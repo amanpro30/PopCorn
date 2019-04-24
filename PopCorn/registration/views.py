@@ -19,7 +19,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
 from .forms import SignUpForm, ProfileForm
 from .tokens import account_activation_token
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
@@ -44,8 +44,11 @@ def registration(request):
                 [user.email],
                 fail_silently=False,
             )
+            login_user = authenticate(username=form.cleaned_data['username'],
+                                      password=form.cleaned_data['password1'],)
+            login(request, login_user)
             print(user.email)
-            return redirect('home')
+            return redirect('Movie:home')
     else:
         form = SignUpForm()
         profile_form = ProfileForm()

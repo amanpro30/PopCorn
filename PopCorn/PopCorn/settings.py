@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '6gk(5sgofv3d%^po-=r2tamrk3tvrn+h2*ucy_9v#71z5m47fr'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -86,9 +84,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-
 WSGI_APPLICATION = 'PopCorn.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -99,7 +95,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'PopCorn',
             'USER': 'root',
-            'PASSWORD': '1121',
+            'PASSWORD': '12345',
             'HOST': 'localhost',
         },
     'OPTIONS': {
@@ -125,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -145,14 +140,11 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'Movie:home'
 LOGIN_REDIRECT_URL = 'Movie:home'
 LOGOUT_REDIRECT_URL = 'Movie:home'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='232164028907-ru9lo92i7175ua7q4l2b66ksavfe5v79.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '232164028907-ru9lo92i7175ua7q4l2b66ksavfe5v79.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FLM8pKnxZlypJLQ9kP_ZrN6n'
-
 
 SOCIAL_AUTH_TWITTER_KEY = 'vMdfyXMOosn9M721oDCobTc4L'
 SOCIAL_AUTH_TWITTER_SECRET = '7fSNWtBWnzmPIIJvAKeU6KjfCdCeDT9avbvnHDMToAvz3A17cU'
-
-
 
 # SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
 # SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'

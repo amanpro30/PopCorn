@@ -22,12 +22,15 @@
 
 </head>
 
-<body style="background-color:#020D18 ;">
-<a href="{% url 'Movie:home' %}"><img class="logo" src="{% static 'images/logo1.png' %}" alt=""
-                                      width="89"
-                                      height="18"></a>
-<div style="margin: 15vh 25% 0 25%;background-color: #06121E;border: 2px solid #DCF836;padding: 4%;">
-    <h2 style="color:white;">Login</h2>
+<body style="background-image:url({% static 'images/uploads/user-hero-bg.jpg' %})">
+<div style="padding:2% 0 2% 2%">
+    <a href="{% url 'Movie:home' %}"><img class="logo" src="{% static 'images/logo1.png' %}" alt=""
+                                          width="130"
+                                          height="50"></a>
+</div>
+<div style="margin: 0 10% 0 50%;background-color: #06121E;border: 2px solid #DCF836;padding: 4%;">
+    <h2 style="color:#DCF836;">Login</h2>
+    <br>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

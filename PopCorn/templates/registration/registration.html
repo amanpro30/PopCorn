@@ -22,11 +22,13 @@
 
 </head>
 
-<body style="background-color:#020D18 ;">
-<a href="{% url 'Movie:home' %}" style = 'padding: 2%;margin-top:2vh;'><img class="logo" src="{% static 'images/logo1.png' %}" alt=""
-                                      width="89"
-                                      height="18"></a>
-<div style="margin: 15vh 25% 0 25%;background-color: #06121E;border: 2px solid #DCF836;padding: 4%;">
+<body style="background-image:url({% static 'images/uploads/user-hero-bg.jpg' %})">
+<div style="padding:2% 0 2% 2%">
+    <a href="{% url 'Movie:home' %}"><img class="logo" src="{% static 'images/logo1.png' %}" alt=""
+                                          width="130"
+                                          height="50"></a>
+</div>
+<div style="margin: 0 10% 0 50%;background-color: #06121E;border: 2px solid #DCF836;padding: 4%;">
     <h2 style="color:white;">Register</h2>
     <form method="POST">
         {% csrf_token %}
@@ -39,3 +41,46 @@
 </div>
 </body>
 </html>
+
+
+{#<!DOCTYPE html>#}
+{#{% load static %}#}
+{#<html lang="en" class="no-js">#}
+{##}
+{#<head>#}
+{#    <title>PopCorn</title>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="description" content="">#}
+{#    <meta name="keywords" content="">#}
+{#    <meta name="author" content="">#}
+{#    <link rel="profile" href="#">#}
+{##}
+{#    <!--Google Font-->#}
+{#    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600'/>#}
+{#    <!-- Mobile specific meta -->#}
+{#    <meta name=viewport content="width=device-width, initial-scale=1">#}
+{#    <meta name="format-detection" content="telephone-no">#}
+{##}
+{#    <!-- CSS files -->#}
+{#    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
+{##}
+{#</head>#}
+{##}
+{#<body style="background-color:#020D18 ;">#}
+{#<a href="{% url 'Movie:home' %}" style = 'padding: 2%;margin-top:2vh;'><img class="logo" src="{% static 'images/logo1.png' %}" alt=""#}
+{#                                      width="89"#}
+{#                                      height="18"></a>#}
+{#<div style="margin: 15vh 25% 0 25%;background-color: #06121E;border: 2px solid #DCF836;padding: 4%;">#}
+{#    <h2 style="color:white;">Register</h2>#}
+{#    <form method="POST">#}
+{#        {% csrf_token %}#}
+{#        {{ form }}#}
+{#        <br>#}
+{#        {{ profile }}#}
+{#        <br>#}
+{#        <button type="submit">Register</button>#}
+{#    </form>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}

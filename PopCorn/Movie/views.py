@@ -10,17 +10,17 @@ import math
 def hompage(request):
     context = {}
     with connection.cursor() as cur:
-        movies_query = "Select * from Movie_Show" \
+        movies_query = "Select * from movie_show" \
                        " Where Status = 'R' or Status = 'U' and type = 'M' LIMIT 15"
         cur.execute(movies_query)
         context['theater_movies'] = cur.fetchall()
 
-        tvseries_query = "Select * from Movie_Show " \
+        tvseries_query = "Select * from movie_show " \
                          "Where Status = 'R' And type= 'T' LIMIT 15"
         cur.execute(tvseries_query)
         context['rs'] = cur.fetchall()
 
-        movies_query = "Select * from Movie_Show where type= 'M'" \
+        movies_query = "Select * from movie_show where type= 'M'" \
                        " ORDER BY Avg_rating DESC LIMIT 15"
         cur.execute(movies_query)
         context['top_rated'] = cur.fetchall()
@@ -28,7 +28,7 @@ def hompage(request):
         most_reviewed_query = " With count_table(id,no) as " \
                               "(Select m.id,count(*) as no from movie_show m, movie_review r " \
                               "where m.type = 'M' " \
-                              "and m.id = r.show_id " \
+                              "and m.id = r.Show_id " \
                               "group by m.id " \
                               "order by no desc) " \
                               " Select * from movie_show " \
@@ -36,15 +36,15 @@ def hompage(request):
         cur.execute(most_reviewed_query)
         context['most_reviewed'] = cur.fetchall()
 
-        movies_query = "Select * from Movie_Show where type= 'T'" \
+        movies_query = "Select * from movie_show where type= 'T'" \
                        " ORDER BY Avg_rating DESC"
         cur.execute(movies_query)
         context['tv_top_rated'] = cur.fetchall()
 
         most_reviewed_query = " With count_table(id,no) as " \
                               "(Select m.id,count(*) as no from movie_show m, movie_review r " \
-                              "where m.type = 'tv' " \
-                              "and m.id = r.show_id " \
+                              "where m.type = 'T' " \
+                              "and m.id = r.Show_id " \
                               "group by m.id " \
                               "order by no desc) " \
                               " Select * from movie_show " \
@@ -58,9 +58,9 @@ def hompage(request):
 def movies(request, filter, page):
     with connection.cursor() as cur:
         data = []
-        page = str((int(page)-1)*10)
+        page = str((int(page) - 1) * 10)
         if filter == 'top_rated':
-            movies_query = f"Select * from Movie_Show where type= 'm'" \
+            movies_query = f"Select * from movie_show where type= 'm'" \
                            f"ORDER BY Avg_rating DESC LIMIT 10 OFFSET {page}"
             cur.execute(movies_query)
         elif filter == 'all_alphabet':
@@ -79,7 +79,7 @@ def movies(request, filter, page):
         all_movies_query = "Select count(*) from Movie_Show";
         cur.execute(all_movies_query)
         all_mov = cur.fetchall()
-        count_page = math.ceil(all_mov[0][0]/10)
+        count_page = math.ceil(all_mov[0][0] / 10)
         for i in movies_tuple:
             query = "SELECT *" \
                     " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrity as mc" \
@@ -110,7 +110,7 @@ def movies(request, filter, page):
             "count": len(data),
             "data": data,
             "count_page": count_page,
-            "count_page_range": range(1, count_page+1),
+            "count_page_range": range(1, count_page + 1),
             "filter": filter,
         }
 
@@ -202,7 +202,7 @@ def singledetailmovie(request, movie_id):
                 postquery = postquery.format(movie_id, request.user.id, title, statement, date.today())
                 cur.execute(postquery)
             if ratingform.is_valid():
-                if(ratingform.cleaned_data['stars']):
+                if (ratingform.cleaned_data['stars']):
                     starsrcvd = int(ratingform.cleaned_data['stars'])
                     ratingquery = f"Insert into Movie_Rating(show_id, user_id, stars) values ({movie_id},{request.user.id},{starsrcvd})"
                     cur.execute(ratingquery)
@@ -266,7 +266,6 @@ def singledetailmovie(request, movie_id):
     }
     print(data)
     return render(request, 'html/single_movie.html', context)
-
 
 # class ShowListView(generics.ListCreateAPIView):
 #     queryset = Show.objects.all()
