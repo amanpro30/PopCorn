@@ -22,26 +22,27 @@
 {% block profile %}
     <div class="col-md-9 col-sm-12 col-xs-12">
         <div class="form-style-1 user-pro">
-            <form action="#" class="user">
+            <form action="{% url 'registration:profile' %}" class="user" method="post">
+                {% csrf_token %}
                 <h4>Profile details</h4>
                 <div class="row">
                     <div class="col-md-6 form-it">
                         <label>Username</label>
-                        <input type="text" placeholder="edwardkennedy">
+                        {{ userform.username }}
                     </div>
                     <div class="col-md-6 form-it">
                         <label>Email Address</label>
-                        <input type="text" placeholder="edward@kennedy.com">
+                        {{ userform.email }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-it">
                         <label>First Name</label>
-                        <input type="text" placeholder="Edward ">
+                        {{ profileupdateform.first_name }}
                     </div>
                     <div class="col-md-6 form-it">
                         <label>Last Name</label>
-                        <input type="text" placeholder="Kennedy">
+                        {{ profileupdateform.last_name }}
                     </div>
                 </div>
                 <div class="row">

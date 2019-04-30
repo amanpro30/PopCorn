@@ -20,7 +20,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
 
 from Movie.form import SearchForm
-from .forms import SignUpForm, ProfileForm
+from .forms import SignUpForm, ProfileForm, UpdateProfile, UserForm
 from .tokens import account_activation_token
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
@@ -125,9 +125,20 @@ def watchlist(request):
 
 
 def profile(request):
+    if request.method == 'POST':
+        profileupdateform = UpdateProfile(request.POST, instance=request.user.profile)
+        userform = UserForm(data=request.POST, instance=request.user)
+        if profileupdateform.is_valid() and userform.is_valid():
+            profileupdateform.save()
+            userform.save()
+    else:
+        profileupdateform = UpdateProfile(instance=request.user.profile)
+        userform = UserForm(instance=request.user)
     context = {
         'token': 'profile',
         'searchform': SearchForm(),
+        'profileupdateform': profileupdateform,
+        'userform': userform,
     }
     return render(request, 'html/profile.html', context)
 
