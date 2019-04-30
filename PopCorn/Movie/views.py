@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from Movie.models import Show
 from django.db import connection
@@ -354,3 +354,7 @@ def searchbox(request):
         else:
             context['searchform'] = SearchForm()
     return render(request, 'html/searchresults.html', context)
+
+
+def favmod(request, mov_id):
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

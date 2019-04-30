@@ -22,7 +22,7 @@
                         <img src="/Media/{{ data.movie.5 }}" alt="">
                         <div class="movie-btn">
                             <div class="btn-transform transform-vertical red">
-                                <div><a href="{{ data.movie.12 }}" class="item item-1 redbtn"> <i class="ion-play"></i>
+                                <div><a href="/{{ data.movie.12 }}" class="item item-1 redbtn"> <i class="ion-play"></i>
                                     Watch Trailer</a>
                                 </div>
                                 <div><a href="{{ data.movie.13 }}"
@@ -37,7 +37,10 @@
                     <div class="movie-single-ct main-content">
                         <h1 class="bd-hd">{{ data.movie.1 }}&nbsp;<span>{{ data.movie.2|date:"Y" }}</span></h1>
                         <div class="social-btn">
-                            <a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+                            <a href="{% url 'Movie:favmod' data.movie.0 %}" class="parent-btn" style="color:yellow;"><i
+                                    class="ion-heart"
+                            ></i>
+                                Add to Favorite</a>
                             <a href="#" class="parent-btn"><i class="ion-clock"></i> Add to Watchlist</a>
                         </div>
                         <div class="movie-rate">

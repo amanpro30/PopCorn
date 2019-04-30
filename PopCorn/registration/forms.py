@@ -14,3 +14,9 @@ class ProfileForm(ModelForm):
     class Meta:
         model = Profile
         exclude = ['user', 'email_confirmed']
+
+
+class UpdateProfile(ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user', 'email_confirmed']
