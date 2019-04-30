@@ -92,8 +92,6 @@ class Rating(models.Model):
         ]
     )
 
-    def __str__(self):
-        return self.movie, self.stars
 
 
 class Review(models.Model):
