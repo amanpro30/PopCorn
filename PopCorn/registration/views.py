@@ -88,7 +88,7 @@ from django.shortcuts import render
 def recommend(request):
     print('recommend')
     with connection.cursor() as cur:
-        movies_query = "Select id,age,region,sex from registration_profile"
+        movies_query = "Select user_id,age,region,first_name from registration_profile"
         cur.execute(movies_query)
         profiles = cur.fetchall()
         print(profiles)
@@ -123,19 +123,23 @@ def recommend(request):
         for line in ratings.itertuples():
             data_matrix[line[1], line[2]] = line[3]
         user_similarity = 1-pairwise_distances(data_matrix, metric='cosine')
-
         def predict(ratings, similarity):
             mean_user_rating = ratings.mean(axis=1)
             ratings_diff = (ratings - mean_user_rating[:, np.newaxis])
             pred = mean_user_rating[:, np.newaxis] + similarity.dot(ratings_diff) / np.array(
                 [np.abs(similarity).sum(axis=1)]).T
             return pred
-
         user_prediction = predict(data_matrix, user_similarity)
+        print(user_prediction)
+    user_recommend_data = []
+    for i in user_prediction[request.user.id]:
+        user_recommend_data.append(i)
+    print(user_recommend_data)
+    user_recommend_data_sorted = user_recommend_data.sort()
+    print(user_recommend_data_sorted)
     context = {
         "profiles": users,
     }
-    print(user_prediction)
     return render(request, 'registration/recommend.html', context)
 
 
