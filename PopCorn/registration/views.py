@@ -13,10 +13,13 @@
 #     return render(request, 'registration/registration.html', {'form': form})
 
 from django.contrib.sites.shortcuts import get_current_site
+from django.db import connection
 from django.shortcuts import render, redirect
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
+
+from Movie.form import SearchForm
 from .forms import SignUpForm, ProfileForm
 from .tokens import account_activation_token
 from django.contrib.auth import login, authenticate
@@ -45,7 +48,7 @@ def registration(request):
                 fail_silently=False,
             )
             login_user = authenticate(username=form.cleaned_data['username'],
-                                      password=form.cleaned_data['password1'],)
+                                      password=form.cleaned_data['password1'], )
             login(request, login_user)
             print(user.email)
             return redirect('Movie:home')
@@ -80,6 +83,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def rating(request):
+    ratingquery = "Select * from "
     return render(request, 'html/showlist.html')
 
 
@@ -88,12 +92,49 @@ def activity(request):
 
 
 def favorites(request):
-    return render(request, 'html/showlist.html')
+    context = {
+        'token': 'favorites',
+        'searchform': SearchForm(),
+    }
+    with connection.cursor() as cur:
+        query = "Select * from movie_show " \
+                " where id in " \
+                " (Select Show_id from movie_favourite where Type='F' " \
+                "And User_id = {})"
+        query = query.format(request.user.id)
+        cur.execute(query)
+        context['data'] = cur.fetchall()
+
+    return render(request, 'html/watchfavlist.html', context)
 
 
 def watchlist(request):
-    return render(request, 'html/showlist.html')
+    context = {
+        'token': 'watchlist',
+        'searchform': SearchForm(),
+    }
+    with connection.cursor() as cur:
+        query = "Select * from movie_show " \
+                " where id in " \
+                " (Select Show_id from movie_favourite where Type='W' " \
+                "And User_id = {})"
+        query = query.format(request.user.id)
+        cur.execute(query)
+        context['data'] = cur.fetchall()
+    return render(request, 'html/watchfavlist.html', context)
 
 
 def profile(request):
-    return render(request, 'html/profile.html')
+    context = {
+        'token': 'profile',
+        'searchform': SearchForm(),
+    }
+    return render(request, 'html/profile.html', context)
+
+
+def changepassword(request):
+    context = {
+        'token': 'Change your password',
+        'searchform': SearchForm(),
+    }
+    return render(request, 'html/changepassword.html', context)

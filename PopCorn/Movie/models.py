@@ -115,3 +115,4 @@ class Favourite(models.Model):
         ('W', 'Watchlist')
     )
     Type = models.CharField(max_length=1, choices=TYPE_CHOICE)
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE)

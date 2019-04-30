@@ -1,0 +1,49 @@
+{% extends 'html/userdetailspage.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+{% endblock %}
+
+{% block profile %}
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="topbar-filter">
+            <p>Found <span>{{ count }} </span> in total</p>
+            <label>Sort by:</label>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="{% url 'Movie:movielist' 'top_rated' '1' %}">Top Rated</a>
+                    <a href="{% url 'Movie:movielist' 'trending' '1' %}">Trending</a>
+                    <a href="{% url 'Movie:movielist' 'top_grossers' '1' %}">Top Grossers</a>
+                    <a href="{% url 'Movie:movielist' 'all_alphabet' '1' %}">All (By Name)</a>
+                    <a href="{% url 'Movie:movielist' 'all_release_date' '1' %}">All (By Release Date)</a>
+                </div>
+            </div>
+        </div>
+        {% for i in data %}
+            <div class="movie-item-style-2">
+                <img src="/Media/{{ i.5 }}" alt="" style="width:150px;height:200px">
+                <div class="mv-item-infor">
+                    <h6><a href="{% url 'Movie:single_movie' i.0 %}">{{ i.1 }}
+                        <span>({{ i.2|date:'Y' }})</span></a></h6>
+                    <p class="rate"><i class="ion-android-star"></i><span>{{ i.10 }}/10</span>({{ i.11 }}
+                        ratings)</p>
+                    <p class="describe">{{ i.4 }}</p>
+                    <p class="run-time"> Run Time: {{ i.3|date:"i:s" }}
+                        <span>Release: {{ i.2|date }}</span></p>
+                </div>
+            </div>
+        {% empty %}
+            <div>Nothing to show!!</div>
+        {% endfor %}
+        <div class="topbar-filter">
+            <div class="pagination2">
+                <span>Page 1 of {{ count_page }}:</span>
+                {% for i in count_page_range %}
+                    <a href="{% url 'Movie:movielist' filter i %}">{{ i }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

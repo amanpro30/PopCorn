@@ -30,10 +30,10 @@ def hompage(request):
                               "(Select m.id,count(*) as no from movie_show m, movie_review r " \
                               "where m.type = 'M' " \
                               "and m.id = r.Show_id " \
-                              "group by m.id " \
-                              "order by no desc) " \
-                              " Select * from movie_show " \
-                              "where movie_show.id in (Select id from count_table) "
+                              "group by m.id) " \
+                              " Select * from movie_show, count_table " \
+                              "where movie_show.id = count_table.id " \
+                              " order by no desc "
         cur.execute(most_reviewed_query)
         context['most_reviewed'] = cur.fetchall()
 
@@ -48,8 +48,9 @@ def hompage(request):
                               "and m.id = r.Show_id " \
                               "group by m.id " \
                               "order by no desc) " \
-                              " Select * from movie_show " \
-                              "where movie_show.id in (Select id from count_table) "
+                              " Select * from movie_show, count_table " \
+                              "where movie_show.id = count_table.id " \
+                              " order by no desc "
         cur.execute(most_reviewed_query)
         context['tv_most_reviewed'] = cur.fetchall()
     print(context)

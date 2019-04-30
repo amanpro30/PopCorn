@@ -10,11 +10,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <!-- <h1> movie listing - list</h1>
-                    <ul class="breadcumb">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li> <span class="ion-ios-arrow-right"></span> movie listing</li>
-                    </ul> -->
                 </div>
             </div>
         </div>
@@ -24,7 +19,7 @@
             <div class="row ipad-width2">
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="movie-img sticky-sb">
-                        <img src="/Media/{{data.movie.5}}" alt="">
+                        <img src="/Media/{{ data.movie.5 }}" alt="">
                         <div class="movie-btn">
                             <div class="btn-transform transform-vertical red">
                                 <div><a href="{{ data.movie.12 }}" class="item item-1 redbtn"> <i class="ion-play"></i>
@@ -43,6 +38,7 @@
                         <h1 class="bd-hd">{{ data.movie.1 }}&nbsp;<span>{{ data.movie.2|date:"Y" }}</span></h1>
                         <div class="social-btn">
                             <a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+                            <a href="#" class="parent-btn"><i class="ion-clock"></i> Add to Watchlist</a>
                         </div>
                         <div class="movie-rate">
                             <div class="rate">
@@ -53,33 +49,34 @@
                             </div>
                             <div class="rate-star">
                                 {% ifnotequal star_count 0 %}
-                                <p>You Rated This : </p>
-                                <span id="demo" data-stars="{{star_ivd}}"></span>
+                                    <p>You Rated This : </p>
+                                    <span id="demo" data-stars="{{ star_ivd }}"></span>
                                 {% endifnotequal %}
                                 {% ifequal star_count 0 %}
-                                <p>Rate This Movie: </p>
-                                <span id="demo" ></span>
-                                <form name="myform" method="POST" onsubmit="DoSubmit();">
-                                    {% csrf_token %}
-                                    {{ ratingform.stars }}
-                                    <input type="submit">
-                                </form>
+                                    <p>Rate This Movie: </p>
+                                    <span id="demo"></span>
+                                    <form name="myform" method="POST" onsubmit="DoSubmit();">
+                                        {% csrf_token %}
+                                        {{ ratingform.stars }}
+                                        <input type="submit">
+                                    </form>
                                 {% endifequal %}
                                 <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
                                 <script src="{% static 'js/jquery-rate-picker.js' %}"></script>
                                 <script>
                                     $.ratePicker("#demo", {
-                                        max :10,
-                                        rgbOn:"yellow",
-                                        rgbOff:"white",
-                                        rgbSelection:"yellow",
-                                        cursor:"crosshair",
-                                        indicator:"fa-star",
-                                        rate : function (stars){
-                                            document.getElementById('demo').setAttribute("data-stars" , stars);
+                                        max: 10,
+                                        rgbOn: "yellow",
+                                        rgbOff: "white",
+                                        rgbSelection: "yellow",
+                                        cursor: "crosshair",
+                                        indicator: "fa-star",
+                                        rate: function (stars) {
+                                            document.getElementById('demo').setAttribute("data-stars", stars);
                                         }
                                     });
-                                    function DoSubmit(){
+
+                                    function DoSubmit() {
                                         document.myform.stars.value = document.getElementById('demo').getAttribute('data-stars');
                                         return true;
                                     }
@@ -128,7 +125,7 @@
                                                         <i class="ion-android-star last"></i>
                                                     </div>
                                                     <p class="time">
-                                                        {{ reviews.0.3|date }} by <a href="#"> by {{request.user}}</a>
+                                                        {{ reviews.0.3|date }} by <a href="#"> by {{ request.user }}</a>
                                                     </p>
                                                     <p>{{ reviews.0.2 }}</p>
                                                 </div>
@@ -137,19 +134,19 @@
                                                 <div class="sb-it">
                                                     <h6>Director: </h6>
                                                     {% for i in data.director %}
-                                                        <p><a href="#">{{i.5}}</a></p>
+                                                        <p><a href="#">{{ i.5 }}</a></p>
                                                     {% endfor %}
                                                 </div>
                                                 <div class="sb-it">
                                                     <h6>Writer: </h6>
                                                     {% for i in data.writer %}
-                                                        <p><a href="#">{{i.5}}</a></p>
+                                                        <p><a href="#">{{ i.5 }}</a></p>
                                                     {% endfor %}
                                                 </div>
                                                 <div class="sb-it">
                                                     <h6>Producer: </h6>
                                                     {% for i in data.producer %}
-                                                        <p><a href="#">{{i.5}}</a></p>
+                                                        <p><a href="#">{{ i.5 }}</a></p>
                                                     {% endfor %}
                                                 </div>
                                                 <div class="sb-it">
@@ -190,16 +187,16 @@
                                                 </div>
                                             </div>
                                             <!--<div class="topbar-filter">-->
-                                                <!--<p>Found <span>{{ reviews|length }} reviews</span> in total</p>-->
-                                                <!--<label>Filter by:</label>-->
-                                                <!--<select>-->
-                                                    <!--<option value="popularity">Popularity Descending</option>-->
-                                                    <!--<option value="popularity">Popularity Ascending</option>-->
-                                                    <!--<option value="rating">Rating Descending</option>-->
-                                                    <!--<option value="rating">Rating Ascending</option>-->
-                                                    <!--<option value="date">Release date Descending</option>-->
-                                                    <!--<option value="date">Release date Ascending</option>-->
-                                                <!--</select>-->
+                                            <!--<p>Found <span>{{ reviews|length }} reviews</span> in total</p>-->
+                                            <!--<label>Filter by:</label>-->
+                                            <!--<select>-->
+                                            <!--<option value="popularity">Popularity Descending</option>-->
+                                            <!--<option value="popularity">Popularity Ascending</option>-->
+                                            <!--<option value="rating">Rating Descending</option>-->
+                                            <!--<option value="rating">Rating Ascending</option>-->
+                                            <!--<option value="date">Release date Descending</option>-->
+                                            <!--<option value="date">Release date Ascending</option>-->
+                                            <!--</select>-->
                                             <!--</div>-->
                                             <!--{{ reviews }}-->
                                             {% for rev in reviews %}
@@ -232,21 +229,21 @@
                                                 <div>Nothing to show!!</div>
                                             {% endfor %}
                                             <!--<div class="topbar-filter">-->
-                                                <!--<label>Reviews per page:</label>-->
-                                                <!--<select>-->
-                                                    <!--<option value="range">5 Reviews</option>-->
-                                                    <!--<option value="saab">10 Reviews</option>-->
-                                                <!--</select>-->
-                                                <!--<div class="pagination2">-->
-                                                    <!--<span>Page 1 of 6:</span>-->
-                                                    <!--<a class="active" href="#">1</a>-->
-                                                    <!--<a href="#">2</a>-->
-                                                    <!--<a href="#">3</a>-->
-                                                    <!--<a href="#">4</a>-->
-                                                    <!--<a href="#">5</a>-->
-                                                    <!--<a href="#">6</a>-->
-                                                    <!--<a href="#"><i class="ion-arrow-right-b"></i></a>-->
-                                                <!--</div>-->
+                                            <!--<label>Reviews per page:</label>-->
+                                            <!--<select>-->
+                                            <!--<option value="range">5 Reviews</option>-->
+                                            <!--<option value="saab">10 Reviews</option>-->
+                                            <!--</select>-->
+                                            <!--<div class="pagination2">-->
+                                            <!--<span>Page 1 of 6:</span>-->
+                                            <!--<a class="active" href="#">1</a>-->
+                                            <!--<a href="#">2</a>-->
+                                            <!--<a href="#">3</a>-->
+                                            <!--<a href="#">4</a>-->
+                                            <!--<a href="#">5</a>-->
+                                            <!--<a href="#">6</a>-->
+                                            <!--<a href="#"><i class="ion-arrow-right-b"></i></a>-->
+                                            <!--</div>-->
                                             <!--</div>-->
                                         </div>
                                     </div>
@@ -492,51 +489,51 @@
                                     {#                                        </div>#}
                                     {#                                    </div>#}
                                     <!--<div id="moviesrelated" class="tab">-->
-                                        <!--<div class="row">-->
-                                            <!--<h3>Related Movies To</h3>-->
-                                            <!--<h2>Skyfall: Quantum of Spectre</h2>-->
-                                            <!--<div class="topbar-filter">-->
-                                                <!--<p>Found <span>12 movies</span> in total</p>-->
-                                                <!--<label>Sort by:</label>-->
-                                                <!--<select>-->
-                                                    <!--<option value="popularity">Popularity Descending</option>-->
-                                                    <!--<option value="popularity">Popularity Ascending</option>-->
-                                                    <!--<option value="rating">Rating Descending</option>-->
-                                                    <!--<option value="rating">Rating Ascending</option>-->
-                                                    <!--<option value="date">Release date Descending</option>-->
-                                                    <!--<option value="date">Release date Ascending</option>-->
-                                                <!--</select>-->
-                                            <!--</div>-->
-                                            <!--<div class="movie-item-style-2">-->
-                                                <!--<img src="images/uploads/mv1.jpg" alt="">-->
-                                                <!--<div class="mv-item-infor">-->
-                                                    <!--<h6><a href="#">oblivion <span>(2012)</span></a></h6>-->
-                                                    <!--<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10-->
-                                                    <!--</p>-->
-                                                    <!--<p class="describe">Earth's mightiest heroes must come together and-->
-                                                        <!--learn to fight as a team if they are to stop the mischievous-->
-                                                        <!--Loki and his alien army from enslaving humanity...</p>-->
-                                                    <!--<p class="run-time"> Run Time: 2h21’ . <span>MMPA: PG-13 </span> .-->
-                                                        <!--<span>Release: 1 May 2015</span></p>-->
-                                                    <!--<p>Director: <a href="#">Joss Whedon</a></p>-->
-                                                    <!--<p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris-->
-                                                        <!--Evans,</a> <a href="#"> Chris Hemsworth</a></p>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                            <!--<div class="topbar-filter">-->
-                                                <!--<label>Movies per page:</label>-->
-                                                <!--<select>-->
-                                                    <!--<option value="range">5 Movies</option>-->
-                                                    <!--<option value="saab">10 Movies</option>-->
-                                                <!--</select>-->
-                                                <!--<div class="pagination2">-->
-                                                    <!--<span>Page 1 of 2:</span>-->
-                                                    <!--<a class="active" href="#">1</a>-->
-                                                    <!--<a href="#">2</a>-->
-                                                    <!--<a href="#"><i class="ion-arrow-right-b"></i></a>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
+                                    <!--<div class="row">-->
+                                    <!--<h3>Related Movies To</h3>-->
+                                    <!--<h2>Skyfall: Quantum of Spectre</h2>-->
+                                    <!--<div class="topbar-filter">-->
+                                    <!--<p>Found <span>12 movies</span> in total</p>-->
+                                    <!--<label>Sort by:</label>-->
+                                    <!--<select>-->
+                                    <!--<option value="popularity">Popularity Descending</option>-->
+                                    <!--<option value="popularity">Popularity Ascending</option>-->
+                                    <!--<option value="rating">Rating Descending</option>-->
+                                    <!--<option value="rating">Rating Ascending</option>-->
+                                    <!--<option value="date">Release date Descending</option>-->
+                                    <!--<option value="date">Release date Ascending</option>-->
+                                    <!--</select>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie-item-style-2">-->
+                                    <!--<img src="images/uploads/mv1.jpg" alt="">-->
+                                    <!--<div class="mv-item-infor">-->
+                                    <!--<h6><a href="#">oblivion <span>(2012)</span></a></h6>-->
+                                    <!--<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10-->
+                                    <!--</p>-->
+                                    <!--<p class="describe">Earth's mightiest heroes must come together and-->
+                                    <!--learn to fight as a team if they are to stop the mischievous-->
+                                    <!--Loki and his alien army from enslaving humanity...</p>-->
+                                    <!--<p class="run-time"> Run Time: 2h21’ . <span>MMPA: PG-13 </span> .-->
+                                    <!--<span>Release: 1 May 2015</span></p>-->
+                                    <!--<p>Director: <a href="#">Joss Whedon</a></p>-->
+                                    <!--<p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris-->
+                                    <!--Evans,</a> <a href="#"> Chris Hemsworth</a></p>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="topbar-filter">-->
+                                    <!--<label>Movies per page:</label>-->
+                                    <!--<select>-->
+                                    <!--<option value="range">5 Movies</option>-->
+                                    <!--<option value="saab">10 Movies</option>-->
+                                    <!--</select>-->
+                                    <!--<div class="pagination2">-->
+                                    <!--<span>Page 1 of 2:</span>-->
+                                    <!--<a class="active" href="#">1</a>-->
+                                    <!--<a href="#">2</a>-->
+                                    <!--<a href="#"><i class="ion-arrow-right-b"></i></a>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
                                     <!--</div>-->
                                 </div>
                             </div>
