@@ -56,10 +56,9 @@
                                 {{ user.username }}<i class="fa fa-angle-down" aria-hidden="true"></i>
                             </a>
                             <ul class="dropdown-menu level1">
-                                <li><a href="#">Favourites </a></li>
-                                <li><a href="#">Watchlist</a></li>
-                                <li><a href="#">Ratings</a></li>
-                                <li><a href="#">Activity</a></li>
+                                <li><a href="{% url 'registration:favorites' %}">Favourites </a></li>
+                                <li><a href="{% url 'registration:watchlist' %}">Watchlist</a></li>
+                                <li><a href="#">Your Ratings</a></li>
                                 <li><a href="{% url 'registration:recommend' %}">Recommendations</a></li>
                                 <li><a href="{% url 'registration:profile' %}">Profile</a></li>
                             </ul>
@@ -77,13 +76,16 @@
         </nav>
 
         <!-- top search form -->
-        <div class="top-search">
-            <select>
-                <option value="united">TV show</option>
-                <option value="saab">Others</option>
-            </select>
-            <input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
-        </div>
+
+        <form method='post' action="{% url 'Movie:search' %}">
+            {% csrf_token %}
+            <div class="top-search">
+                {{ searchform.select }}
+                {{ searchform.search }}
+                {#                <button type="submit"><i class="fa fa-search"></i></button>#}
+            </div>
+        </form>
+
     </div>
 </header>
 
@@ -100,7 +102,7 @@
                     Sri City, Andhra Pradesh,<br>
                     India
                 </p>
-                <p>Call us: <a href="#">(+91)9398096252</a></p>
+                <p>Call us: <a href="#">(+91)7295908780</a></p>
             </div>
             <div class="flex-child-ft item2">
                 <h4>Resources</h4>

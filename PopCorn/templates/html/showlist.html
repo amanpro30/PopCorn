@@ -50,12 +50,14 @@
                     </div>
                     {% for i in data %}
                         <div class="movie-item-style-2">
-                            <img src="/Media/{{i.movie.5}}" alt="" style="width:150px;height:200px">
+                            <img src="/Media/{{ i.movie.5 }}" alt="" style="width:150px;height:200px">
                             <div class="mv-item-infor">
                                 <h6><a href="{% url 'Movie:single_movie' i.movie.0 %}">{{ i.movie.1 }}
                                     <span>({{ i.movie.2|date:'Y' }})</span></a></h6>
-                                <p class="rate"><i class="ion-android-star"></i><span>{{ i.movie.10 }}/10</span>({{ i.movie.11 }} ratings)</p>
-                                <p class="describe">{{ i.movie.4}}</p>
+                                <p class="rate"><i
+                                        class="ion-android-star"></i><span>{{ i.movie.10 }}/10</span>({{ i.movie.11 }}
+                                    ratings)</p>
+                                <p class="describe">{{ i.movie.4 }}</p>
                                 <p class="run-time"> Run Time: {{ i.movie.3|date:"i:s" }}
                                     <span>Release: {{ i.movie.2|date }}</span></p>
                                 {% for j in i.director %}
@@ -76,7 +78,7 @@
                         <div class="pagination2">
                             <span>Page 1 of {{ count_page }}:</span>
                             {% for i in count_page_range %}
-                                <a href="{% url 'Movie:movielist' filter i %}">{{i}}</a>
+                                <a href="{% url 'Movie:movielist' filter i %}">{{ i }}</a>
                             {% endfor %}
                         </div>
                     </div>

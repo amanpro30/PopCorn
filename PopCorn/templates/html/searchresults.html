@@ -1,0 +1,71 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="hero common-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero-ct">
+                        <h1>Search Results</h1>
+                        <ul class="breadcumb">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><span class="ion-ios-arrow-right"></span> movie listing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-single movie_list">
+        <div class="container">
+            <div class="row ipad-width2">
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="topbar-filter">
+                        <p>Found <span>{{ count }} </span> in total</p>
+                        <label>Sort by:</label>
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="{% url 'Movie:movielist' 'top_rated' '1' %}">Top Rated</a>
+                                <a href="{% url 'Movie:movielist' 'trending' '1' %}">Trending</a>
+                                <a href="{% url 'Movie:movielist' 'top_grossers' '1' %}">Top Grossers</a>
+                                <a href="{% url 'Movie:movielist' 'all_alphabet' '1' %}">All (By Name)</a>
+                                <a href="{% url 'Movie:movielist' 'all_release_date' '1' %}">All (By Release Date)</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% for i in shows %}
+                        <div class="movie-item-style-2">
+                            <img src="/Media/{{ i.5 }}" alt="" style="width:150px;height:200px">
+                            <div class="mv-item-infor">
+                                <h6><a href="{% url 'Movie:single_movie' i.0 %}">{{ i.1 }}
+                                    <span>({{ i.2|date:'Y' }})</span></a></h6>
+                                <p class="rate"><i
+                                        class="ion-android-star"></i><span>{{ i.10 }}/10</span>({{ i.11 }}
+                                    ratings)</p>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div>Nothing to show!!</div>
+                    {% endfor %}
+                    <div class="topbar-filter">
+                        <div class="pagination2">
+                            <span>Page 1 of {{ count_page }}:</span>
+                            {% for i in count_page_range %}
+                                <a href="{% url 'Movie:movielist' filter i %}">{{ i }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/dropdown.js' %}"></script>
+{% endblock %}

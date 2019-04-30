@@ -1,7 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from Movie.models import Show
 from django.db import connection
-from Movie.form import ReviewForm, RatingForm
+from Movie.form import ReviewForm, RatingForm, SearchForm
 from datetime import date
 import math
 
@@ -29,10 +30,10 @@ def hompage(request):
                               "(Select m.id,count(*) as no from movie_show m, movie_review r " \
                               "where m.type = 'M' " \
                               "and m.id = r.Show_id " \
-                              "group by m.id " \
-                              "order by no desc) " \
-                              " Select * from movie_show " \
-                              "where movie_show.id in (Select id from count_table) "
+                              "group by m.id) " \
+                              " Select * from movie_show, count_table " \
+                              "where movie_show.id = count_table.id " \
+                              " order by no desc "
         cur.execute(most_reviewed_query)
         context['most_reviewed'] = cur.fetchall()
 
@@ -47,11 +48,13 @@ def hompage(request):
                               "and m.id = r.Show_id " \
                               "group by m.id " \
                               "order by no desc) " \
-                              " Select * from movie_show " \
-                              "where movie_show.id in (Select id from count_table) "
+                              " Select * from movie_show, count_table " \
+                              "where movie_show.id = count_table.id " \
+                              " order by no desc "
         cur.execute(most_reviewed_query)
         context['tv_most_reviewed'] = cur.fetchall()
     print(context)
+    context['searchform'] = SearchForm()
     return render(request, 'html/basehome.html', context)
 
 
@@ -112,6 +115,7 @@ def movies(request, filter, page):
             "count_page": count_page,
             "count_page_range": range(1, count_page + 1),
             "filter": filter,
+            'searchform': SearchForm(),
         }
 
         print(context['data'])
@@ -169,6 +173,7 @@ def tvseries(request, filter):
         context = {
             "count": len(data),
             "data": data,
+            'searchform': SearchForm(),
         }
         print(context['data'])
     return render(request, 'html/showlist.html', context)
@@ -184,6 +189,7 @@ def tvseries(request, filter):
         "data": mov1,
         'stars': stars,
         'reviewform': reviewform,
+        'searchform': SearchForm()
     }
     return render(request, 'html/single_movie.html', context)
 
@@ -263,9 +269,11 @@ def singledetailmovie(request, movie_id):
         'ratingform': ratingform,
         'star_count': star_count,
         "star_ivd": star_ivd,
+        'searchform': SearchForm(),
     }
     print(data)
     return render(request, 'html/single_movie.html', context)
+
 
 # class ShowListView(generics.ListCreateAPIView):
 #     queryset = Show.objects.all()
@@ -295,3 +303,54 @@ def singledetailmovie(request, movie_id):
 # class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
 #     serializer_class = CelebritiesSerializer
 #     queryset = Celebrities.objects.all()
+
+def searchbox(request):
+    context = {}
+    with connection.cursor() as cur:
+        print(request.method)
+        if request.method == 'POST':
+            searchform = SearchForm(request.POST)
+            if searchform.is_valid():
+                query = searchform.cleaned_data['search']
+                select = searchform.cleaned_data['select']
+                print(query, select)
+                if select == '0':
+                    searchquery = "Select * from movie_show " \
+                                  " where MATCH(Title) " \
+                                  " AGAINST('{}' IN NATURAL LANGUAGE MODE)"
+                    searchquery = searchquery.format(query)
+                    cur.execute(searchquery)
+                    context['shows'] = cur.fetchall()
+                    searchquery = "Select * from celebrities_celebrity " \
+                                  " where MATCH(Name) " \
+                                  " AGAINST('{}' IN NATURAL LANGUAGE MODE)"
+                    searchquery = searchquery.format(query)
+                    cur.execute(searchquery)
+                    context['celeb'] = cur.fetchall()
+                elif select == '1':
+                    searchquery = "Select * from movie_show " \
+                                  " where MATCH(Title) " \
+                                  " AGAINST('{}' IN NATURAL LANGUAGE MODE) " \
+                                  "AND Type = 'M' "
+                    searchquery = searchquery.format(query)
+                    cur.execute(searchquery)
+                    context['shows'] = cur.fetchall()
+                elif select == '2':
+                    searchquery = "Select * from movie_show " \
+                                  " where MATCH(Title) " \
+                                  " AGAINST('{}' IN NATURAL LANGUAGE MODE) " \
+                                  "AND Type = 'T' "
+                    searchquery = searchquery.format(query)
+                    cur.execute(searchquery)
+                    context['shows'] = cur.fetchall()
+                elif select == '3':
+                    searchquery = "Select * from celebrities_celebrity " \
+                                  " where MATCH(Name) " \
+                                  " AGAINST('{}' IN NATURAL LANGUAGE MODE)"
+                    searchquery = searchquery.format(query)
+                    cur.execute(searchquery)
+                    context['celeb'] = cur.fetchall()
+            context['searchform'] = SearchForm(request.POST)
+        else:
+            context['searchform'] = SearchForm()
+    return render(request, 'html/searchresults.html', context)

@@ -1,6 +1,5 @@
 from django.db import models
 from Celebrities.models import Celebrity
-from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -91,8 +90,7 @@ class Rating(models.Model):
             MinValueValidator(1)
         ]
     )
-
-
+    
 
 class Review(models.Model):
     Show = models.ForeignKey(Show, on_delete=models.CASCADE)
@@ -114,3 +112,4 @@ class Favourite(models.Model):
         ('W', 'Watchlist')
     )
     Type = models.CharField(max_length=1, choices=TYPE_CHOICE)
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE)
