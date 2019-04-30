@@ -90,10 +90,7 @@ class Rating(models.Model):
             MinValueValidator(1)
         ]
     )
-
-    def __str__(self):
-        return self.Show.Title, self.User
-
+    
 
 class Review(models.Model):
     Show = models.ForeignKey(Show, on_delete=models.CASCADE)
