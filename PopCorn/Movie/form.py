@@ -15,3 +15,14 @@ class RatingForm(ModelForm):
     class Meta:
         model = Rating
         fields = ['stars']
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'placeholder': 'Search'}))
+    CHOICES = (
+        ('0', 'ALL'),
+        ('1', 'MOVIES'),
+        ('2', 'TV SHOWS'),
+        ('3', 'CELEBRITIES'),
+    )
+    select = forms.ChoiceField(widget=forms.Select, choices=CHOICES)

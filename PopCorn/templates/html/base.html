@@ -76,13 +76,16 @@
         </nav>
 
         <!-- top search form -->
-        <div class="top-search">
-            <select>
-                <option value="united">TV show</option>
-                <option value="saab">Others</option>
-            </select>
-            <input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
-        </div>
+
+        <form method='post' action="{% url 'Movie:search' %}">
+            {% csrf_token %}
+            <div class="top-search">
+                {{ searchform.select }}
+                {{ searchform.search }}
+{#                <button type="submit"><i class="fa fa-search"></i></button>#}
+            </div>
+        </form>
+
     </div>
 </header>
 

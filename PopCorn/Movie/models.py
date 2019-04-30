@@ -1,6 +1,5 @@
 from django.db import models
 from Celebrities.models import Celebrity
-from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -93,7 +92,7 @@ class Rating(models.Model):
     )
 
     def __str__(self):
-        return self.movie, self.stars
+        return self.Show.Title, self.User
 
 
 class Review(models.Model):
