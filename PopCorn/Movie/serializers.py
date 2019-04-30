@@ -1,5 +1,5 @@
 from rest_framework import serializers, fields
-#from rest_framework import generics
+from rest_framework import generics
 from Movie.models import *
 from Celebrities.models import *
 
@@ -8,38 +8,40 @@ class ShowSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = Show
-		fields=('id', 'Movie_title', 'Duration', 'Description', 'ReleaseDate', 'Genre', 'Country', 'Boc', 'Status', 'Trailer')	
+		fields=('id',  'Duration', 'Description', 'ReleaseDate',  'Country', 'Boc', 'Status', 'Trailer','Avg_rating', 'Num_rating','Type')	
 
 
 
-class AwardsSerializer(serializers.ModelSerializer):
+class AwardSerializer(serializers.ModelSerializer):
 	
 	
 	class Meta:
-		model=Awards
+		model=Award
 		fields=('id', 'Name', 'Date', 'Cast',)
 
 
-class CelebritiesSerializer(serializers.ModelSerializer):
+class CelebritySerializer(serializers.ModelSerializer):
 	
-	celebritie = AwardsSerializer(many=True) 
+	celebrity = AwardSerializer(many=True) 
 
 	class Meta:
-		model = Celebrities
+		model = Celebrity
 		fields = (
 			'id',
 		 	'Name',
-		 	'Dob', 'About', 
-			'Image', 'Nationality',
-			'role',
+		 	'Dob', 
+			'About', 
+			'Image',
+			'Nationality',
+			'celebrity',
 		)
 	
 	
 	
 	def create(self, validated_data):
-		awards_data=validated_data.pop('celebritie')
-		celebrities = Celebrities.objects.create(**validated_data)
+		awards_data=validated_data.pop('celebrity')
+		celebrity = Celebrities.objects.create(**validated_data)
 		for award_data in awards_data:
-			Awards.objects.create( **award_data) 
-		return celebrities
+			Award.objects.create( **award_data) 
+		return celebrity
 		

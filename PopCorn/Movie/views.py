@@ -3,6 +3,8 @@ from django.shortcuts import render
 from Movie.models import Show
 from django.db import connection
 from Movie.form import ReviewForm, RatingForm, SearchForm
+from .serializers import *
+from rest_framework import generics
 from datetime import date
 import math
 
@@ -85,12 +87,12 @@ def movies(request, filter, page):
         count_page = math.ceil(all_mov[0][0] / 10)
         for i in movies_tuple:
             query = "SELECT *" \
-                    " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrity as mc" \
+                    " FROM Movie_ShowCelebrity as msc, Celebrity_Celebrity as mc" \
                     " WHERE msc.Celebrity_id = mc.id " \
                     "AND msc.Show_id={}"
             query = query.format(i[0])
             cur.execute(query)
-            celebrities = cur.fetchall()
+            Celebrity = cur.fetchall()
             mov1 = {
                 'movie': i,
                 'director': [],
@@ -98,8 +100,8 @@ def movies(request, filter, page):
                 'writer': [],
                 'actors': [],
             }
-            print(celebrities)
-            for j in celebrities:
+            print(Celebrity)
+            for j in Celebrity:
                 if j[1] == 'D':
                     mov1['director'].append(j)
                 elif j[1] == 'A':
@@ -145,12 +147,12 @@ def tvseries(request, filter):
         movies_tuple = cur.fetchall()
         for i in movies_tuple:
             query = "SELECT *" \
-                    " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrity as mclb" \
+                    " FROM Movie_ShowCelebrity as msc, Celebrity_Celebrity as mclb" \
                     " WHERE msc.Celebrity_id = mclb.id " \
                     "AND msc.Show_id={}"
             query = query.format(i[0])
             cur.execute(query)
-            celebrities = cur.fetchall()
+            Celebrity = cur.fetchall()
             mov1 = {
                 'movie': i,
                 'director': [],
@@ -158,8 +160,8 @@ def tvseries(request, filter):
                 'writer': [],
                 'actors': [],
             }
-            print(celebrities)
-            for j in celebrities:
+            print(Celebrity)
+            for j in Celebrity:
                 if j[1] == 'D':
                     mov1['director'].append(j)
                 elif j[1] == 'A':
@@ -223,12 +225,12 @@ def singledetailmovie(request, movie_id):
         i = movies_tuple[0]
         data = []
         query = "SELECT *" \
-                " FROM Movie_ShowCelebrity as msc, Celebrities_Celebrity as mclb" \
+                " FROM Movie_ShowCelebrity as msc, Celebrity_Celebrity as mclb" \
                 " WHERE msc.Celebrity_id = mclb.id " \
                 "AND msc.Show_id={}"
         query = query.format(i[0])
         cur.execute(query)
-        celebrities = cur.fetchall()
+        Celebrity = cur.fetchall()
         mov1 = {
             'movie': i,
             'director': [],
@@ -236,7 +238,7 @@ def singledetailmovie(request, movie_id):
             'writer': [],
             'actors': [],
         }
-        for j in celebrities:
+        for j in Celebrity:
             if j[1] == 'D':
                 mov1['director'].append(j)
             elif j[1] == 'A':
@@ -273,37 +275,6 @@ def singledetailmovie(request, movie_id):
     }
     print(data)
     return render(request, 'html/single_movie.html', context)
-
-
-# class ShowListView(generics.ListCreateAPIView):
-#     queryset = Show.objects.all()
-#     serializer_class = ShowSerializer
-#
-#
-# class ShowView(generics.RetrieveUpdateDestroyAPIView):
-#     serializer_class = ShowSerializer
-#     queryset = Show.objects.all()
-#
-#
-# class AwardsListView(generics.ListCreateAPIView):
-#     queryset = Awards.objects.all()
-#     serializer_class = AwardsSerializer
-#
-#
-# class AwardsView(generics.RetrieveUpdateDestroyAPIView):
-#     serializer_class = AwardsSerializer
-#     queryset = Awards.objects.all()
-#
-#
-# class CelebritiesListView(generics.ListCreateAPIView):
-#     queryset = Celebrities.objects.all()
-#     serializer_class = CelebritiesSerializer
-#
-#
-# class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
-#     serializer_class = CelebritiesSerializer
-#     queryset = Celebrities.objects.all()
-
 def searchbox(request):
     context = {}
     with connection.cursor() as cur:
@@ -321,7 +292,7 @@ def searchbox(request):
                     searchquery = searchquery.format(query)
                     cur.execute(searchquery)
                     context['shows'] = cur.fetchall()
-                    searchquery = "Select * from celebrities_celebrity " \
+                    searchquery = "Select * from Celebrity_celebrity " \
                                   " where MATCH(Name) " \
                                   " AGAINST('{}' IN NATURAL LANGUAGE MODE)"
                     searchquery = searchquery.format(query)
@@ -344,7 +315,7 @@ def searchbox(request):
                     cur.execute(searchquery)
                     context['shows'] = cur.fetchall()
                 elif select == '3':
-                    searchquery = "Select * from celebrities_celebrity " \
+                    searchquery = "Select * from Celebrity_celebrity " \
                                   " where MATCH(Name) " \
                                   " AGAINST('{}' IN NATURAL LANGUAGE MODE)"
                     searchquery = searchquery.format(query)
@@ -358,3 +329,35 @@ def searchbox(request):
 
 def favmod(request, mov_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+#========================================================================
+
+class ShowListView(generics.ListCreateAPIView):
+    queryset = Show.objects.all()
+    serializer_class = ShowSerializer
+
+
+class ShowView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ShowSerializer
+    queryset = Show.objects.all()
+
+
+class AwardListView(generics.ListCreateAPIView):
+    queryset = Award.objects.all()
+    serializer_class = AwardSerializer
+
+
+class AwardView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = AwardSerializer
+    queryset = Award.objects.all()
+
+
+class CelebrityListView(generics.ListCreateAPIView):
+    queryset = Celebrity.objects.all()
+    serializer_class = CelebritySerializer
+
+
+class CelebrityView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CelebritySerializer
+    queryset = Celebrity.objects.all()
+#=====================================================================================
