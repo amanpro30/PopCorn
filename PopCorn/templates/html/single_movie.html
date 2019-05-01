@@ -37,11 +37,18 @@
                     <div class="movie-single-ct main-content">
                         <h1 class="bd-hd">{{ data.movie.1 }}&nbsp;<span>{{ data.movie.2|date:"Y" }}</span></h1>
                         <div class="social-btn">
-                            <a href="{% url 'Movie:favmod' data.movie.0 %}" class="parent-btn" style="color:yellow;"><i
-                                    class="ion-heart"
-                            ></i>
-                                Add to Favorite</a>
-                            <a href="#" class="parent-btn"><i class="ion-clock"></i> Add to Watchlist</a>
+                            {% ifequal fav 0 %}
+                            <a href= "#" class="parent-btn fav_add" style="color:yellow;">
+                                <i class="ion-heart "></i>Add to Favorite</a>
+                            {% else %}
+                            <a href= "#" class="parent-btn fav_del">
+                                <i class="ion-heart"></i>Added to Favorite</a>
+                            {% endifequal %}
+                            {% ifequal watchlist 0 %}
+                            <a href="#" class="parent-btn watch_add" style="color:yellow;"><i class="ion-clock"></i> Add to Watchlist</a>
+                            {% else %}
+                            <a href="#" class="parent-btn watch_del"><i class="ion-clock"></i> Added to Watchlist</a>
+                            {% endifequal %}
                         </div>
                         <div class="movie-rate">
                             <div class="rate">
@@ -546,4 +553,45 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(function() {
+          $(".watch_add").click(function () {
+              $.ajax({
+                  url: window.location.href,
+                  type: "post", // or "get"
+                  data:'addw',
+              });
+          });
+      });
+      $(function() {
+        $(".fav_add").click(function() {
+            $.ajax({
+                  url: window.location.href,
+                  type: "post", // or "get"
+                  data:'addf',
+              });
+        });
+      });
+      $(function() {
+        $(".watch_del").click(function() {
+            $.ajax({
+                  url: window.location.href,
+                  type: "post", // or "get"
+                  data:'delw',
+              });
+        });
+      });
+      $(function () {
+          $(".fav_del").click(function () {
+              $.ajax({
+                  url: window.location.href,
+                  type: "post", // or "get"
+                  data:'delf',
+              });
+          });
+      });
+    </script>
+
+
 {% endblock %}

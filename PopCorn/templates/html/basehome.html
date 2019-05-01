@@ -29,8 +29,8 @@
                                         </ul>
                                     </div>
                                     <div class="btn-transform transform-vertical">
-                                        <div><a href="#" class="item item-1 redbtn">more detail</a></div>
-                                        <div><a href="#" class="item item-2 redbtn hvrbtn">more detail</a></div>
+                                        <div><a href="{% url 'Movie:single_movie' trending_show.0.id %}" class="item item-1 redbtn">more detail</a></div>
+                                        <div><a href="{% url 'Movie:single_movie' trending_show.0.id %}" class="item item-2 redbtn hvrbtn">more detail</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -294,6 +294,7 @@
             </div>
         </div>
     </div>
+
 
 
     <!--end of latest new v1 section-->

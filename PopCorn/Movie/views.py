@@ -1,7 +1,7 @@
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from Movie.models import Show
+from Movie.models import Show,Favourite
 from django.db import connection
 from Movie.form import ReviewForm, RatingForm, SearchForm
 from datetime import date
@@ -19,7 +19,7 @@ from .serializers import *
 from rest_framework import generics, filters, fields
 from datetime import date
 import math
-
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def hompage(request):
@@ -214,10 +214,12 @@ def tvseries(request, filter):
     }
     return render(request, 'html/single_movie.html', context)
 
-
+@csrf_exempt
 def singledetailmovie(request, movie_id):
+    print('single')
     with connection.cursor() as cur:
         if request.method == 'POST':
+            print(request.body)
             reviewform = ReviewForm(request.POST)
             ratingform = RatingForm(request.POST)
             if reviewform.is_valid():
@@ -233,6 +235,18 @@ def singledetailmovie(request, movie_id):
                     starsrcvd = int(ratingform.cleaned_data['stars'])
                     ratingquery = f"Insert into Movie_Rating(show_id, user_id, stars) values ({movie_id},{request.user.id},{starsrcvd})"
                     cur.execute(ratingquery)
+            user_instance=User.objects.get(id=request.user.id)
+            show_instnace=Show.objects.get(id=movie_id)
+            print('body')
+            print(request.body)
+            if request.body == b'addw':
+                Favourite.objects.create(User=user_instance,Type='W',Show=show_instnace)
+            elif request.body == b'addf':
+                Favourite.objects.create(User=user_instance,Type='F',Show=show_instnace)
+            elif request.body == b'delw':
+                Favourite.objects.filter(User=request.user.id,Show=movie_id,Type='W').delete()
+            elif request.body == b'delf':
+                Favourite.objects.filter(User=request.user.id,Show=movie_id,Type='F').delete()
         else:
             reviewform = ReviewForm()
             ratingform = RatingForm()
@@ -282,6 +296,18 @@ def singledetailmovie(request, movie_id):
             star_ivd = star_result[0][0]
 
         print('data', mov1)
+    try:
+        queryset_fav = Favourite.objects.filter(User=request.user.id, Show=movie_id, Type='F')
+    except Favourite.DoesNotExist:
+        queryset_fav = None
+    if queryset_fav is not None:
+        fav_count = len(queryset_fav)
+    try:
+        queryset_watch=Favourite.objects.filter(User=request.user.id,Show=movie_id,Type='W')
+    except Favourite.DoesNotExist:
+        queryset_watch = None
+    if queryset_watch is not None:
+        watch_count = len(queryset_watch)
     context = {
         'reviews': reviews,
         "count": len(data),
@@ -291,6 +317,8 @@ def singledetailmovie(request, movie_id):
         'star_count': star_count,
         "star_ivd": star_ivd,
         'searchform': SearchForm(),
+        'fav':fav_count,
+        'watchlist':watch_count,
     }
     print(data)
     with connection.cursor() as cur:
