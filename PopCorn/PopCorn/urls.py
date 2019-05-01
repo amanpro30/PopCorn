@@ -16,5 +16,5 @@ urlpatterns = [
     path('', include('Movie.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('registration/', include('registration.urls')),
-    path('celebs/', include('Celebrities.urls'))
+    path('celebs/', include('Celebrities.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

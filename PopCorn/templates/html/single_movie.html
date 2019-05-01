@@ -21,14 +21,15 @@
                     <div class="movie-img sticky-sb">
                         <img src="/Media/{{ data.movie.5 }}" alt="">
                         <div class="movie-btn">
-                            <div class="btn-transform transform-vertical red">
-                                <div><a href="/{{ data.movie.12 }}" class="item item-1 redbtn"> <i class="ion-play"></i>
-                                    Watch Trailer</a>
-                                </div>
-                                <div><a href="{{ data.movie.13 }}"
-                                        class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a>
-                                </div>
-                            </div>
+                            {#                            <div class="btn-transform transform-vertical red">#}
+                            {#                                <div><a href="{{ data.movie.12 }}" class="item item-1 redbtn"> <i class="ion-play"></i>#}
+                            {#                                    Watch Trailer</a>#}
+                            {#                                </div>#}
+                            {#                                #}
+                            {#                                <div><a href="{{ data.movie.13 }}"#}
+                            {#                                        class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
                         </div>
                     </div>
                 </div>
@@ -97,6 +98,10 @@
                                     {#                                    <li><a href="#media"> Media</a></li>#}
                                     <!--<li><a href="#moviesrelated"> Related Movies</a></li>-->
                                 </ul>
+                                <div>
+                                    <iframe class="item-video" width="100%" height = "400vh"
+                                            data-src="{{ data.movie.12 }}" allowfullscreen></iframe>
+                                </div>
                                 <div class="tab-content">
                                     <div id="overview" class="tab active">
                                         <div class="row">
@@ -159,9 +164,6 @@
                                                 <div class="sb-it">
                                                     <h6>Run Time:</h6>
                                                     <p>{{ data.movie.3|date:"i:s" }}</p>
-                                                </div>
-                                                <div class="ads">
-                                                    <img src="images/uploads/ads.png" alt="">
                                                 </div>
                                             </div>
                                         </div>

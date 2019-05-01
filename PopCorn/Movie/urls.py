@@ -9,5 +9,6 @@ urlpatterns = [
     path('movies/moviedetails/<str:movie_id>/', views.singledetailmovie, name='single_movie'),
     path('tvseries/<str:filter>', views.tvseries, name='tvseries'),
     path('search/results', views.searchbox, name='search'),
-    path('<int:mov_id>/', views.favmod, name="favmod")
+    path('<int:mov_id>/', views.favmod, name="favmod"),
+
 ]
