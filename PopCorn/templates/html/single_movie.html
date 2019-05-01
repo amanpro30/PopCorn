@@ -20,17 +20,6 @@
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="movie-img sticky-sb">
                         <img src="/Media/{{ data.movie.5 }}" alt="">
-                        <div class="movie-btn">
-                            {#                            <div class="btn-transform transform-vertical red">#}
-                            {#                                <div><a href="{{ data.movie.12 }}" class="item item-1 redbtn"> <i class="ion-play"></i>#}
-                            {#                                    Watch Trailer</a>#}
-                            {#                                </div>#}
-                            {#                                #}
-                            {#                                <div><a href="{{ data.movie.13 }}"#}
-                            {#                                        class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a>#}
-                            {#                                </div>#}
-                            {#                            </div>#}
-                        </div>
                     </div>
                 </div>
 
@@ -90,18 +79,18 @@
                             </div>
                         </div>
                         <div class="movie-tabs">
+                            <div>
+                                <iframe class="item-video" width="100%" height="400vh"
+                                        data-src="{{ data.movie.12 }}" allowfullscreen></iframe>
+                            </div>
                             <div class="tabs">
                                 <ul class="tab-links tabs-mv">
                                     <li class="active"><a href="#overview">Overview</a></li>
                                     <li><a href="#reviews"> Reviews</a></li>
                                     <li><a href="#cast"> Cast & Crew </a></li>
-                                    {#                                    <li><a href="#media"> Media</a></li>#}
-                                    <!--<li><a href="#moviesrelated"> Related Movies</a></li>-->
                                 </ul>
-                                <div>
-                                    <iframe class="item-video" width="100%" height = "400vh"
-                                            data-src="{{ data.movie.12 }}" allowfullscreen></iframe>
-                                </div>
+
+                                <br><br>
                                 <div class="tab-content">
                                     <div id="overview" class="tab active">
                                         <div class="row">
@@ -172,10 +161,6 @@
                                     <div id="reviews" class="tab review">
                                         <div class="row">
                                             <div class="rv-hd">
-                                                <div class="div">
-                                                    <h3>Related Movies To</h3>
-                                                    <h2>Skyfall: Quantum of Spectre</h2>
-                                                </div>
                                                 <a href="#review_popup" class="redbtn">Write Review</a>
                                                 <div id="review_popup" class="modal-window">
                                                     <div>
@@ -184,30 +169,19 @@
                                                         <form method=post
                                                               action="{% url 'Movie:single_movie' data.movie.0 %}">
                                                             {% csrf_token %}
+                                                            <label>Title:</label>
                                                             {{ reviewform.Title }}
+                                                            <label>Review:</label>
                                                             {{ reviewform.Statement }}
                                                             <button type="submit">Submit</button>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--<div class="topbar-filter">-->
-                                            <!--<p>Found <span>{{ reviews|length }} reviews</span> in total</p>-->
-                                            <!--<label>Filter by:</label>-->
-                                            <!--<select>-->
-                                            <!--<option value="popularity">Popularity Descending</option>-->
-                                            <!--<option value="popularity">Popularity Ascending</option>-->
-                                            <!--<option value="rating">Rating Descending</option>-->
-                                            <!--<option value="rating">Rating Ascending</option>-->
-                                            <!--<option value="date">Release date Descending</option>-->
-                                            <!--<option value="date">Release date Ascending</option>-->
-                                            <!--</select>-->
-                                            <!--</div>-->
-                                            <!--{{ reviews }}-->
                                             {% for rev in reviews %}
                                                 <div class="mv-user-review-item">
                                                     <div class="user-infor">
-                                                        <img src="images/uploads/userava.jpg" alt="">
+                                                        <img src="/Media/{{ user.profile.profile_picture }}" alt="">
                                                         <div>
                                                             <h3>{{ rev.1 }}</h3>
                                                             <div class="no-star">
@@ -224,7 +198,7 @@
                                                             </div>
                                                             <p class="time">
                                                                 {{ rev.4|date }} by <a href="#">
-                                                                hawaiipierson</a>
+                                                                {{ user.username }}</a>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -233,23 +207,6 @@
                                             {% empty %}
                                                 <div>Nothing to show!!</div>
                                             {% endfor %}
-                                            <!--<div class="topbar-filter">-->
-                                            <!--<label>Reviews per page:</label>-->
-                                            <!--<select>-->
-                                            <!--<option value="range">5 Reviews</option>-->
-                                            <!--<option value="saab">10 Reviews</option>-->
-                                            <!--</select>-->
-                                            <!--<div class="pagination2">-->
-                                            <!--<span>Page 1 of 6:</span>-->
-                                            <!--<a class="active" href="#">1</a>-->
-                                            <!--<a href="#">2</a>-->
-                                            <!--<a href="#">3</a>-->
-                                            <!--<a href="#">4</a>-->
-                                            <!--<a href="#">5</a>-->
-                                            <!--<a href="#">6</a>-->
-                                            <!--<a href="#"><i class="ion-arrow-right-b"></i></a>-->
-                                            <!--</div>-->
-                                            <!--</div>-->
                                         </div>
                                     </div>
                                     <div id="cast" class="tab">
@@ -313,233 +270,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {#                                    <div id="media" class="tab">#}
-                                    {#                                        <div class="row">#}
-                                    {#                                            <div class="rv-hd">#}
-                                    {#                                                <div>#}
-                                    {#                                                    <h3>Videos & Photos of</h3>#}
-                                    {#                                                    <h2>Skyfall: Quantum of Spectre</h2>#}
-                                    {#                                                </div>#}
-                                    {#                                            </div>#}
-                                    {#                                            <div class="title-hd-sm">#}
-                                    {#                                                <h4>Videos <span>(8)</span></h4>#}
-                                    {#                                            </div>#}
-                                    {#                                            <div class="mvsingle-item media-item">#}
-                                    {#                                                <div class="vd-item">#}
-                                    {#                                                    <div class="vd-it">#}
-                                    {#                                                        <img class="vd-img" src="images/uploads/vd-item1.jpg" alt="">#}
-                                    {#                                                        <a class="fancybox-media hvr-grow"#}
-                                    {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                    {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                    {#                                                    </div>#}
-                                    {#                                                    <div class="vd-infor">#}
-                                    {#                                                        <h6><a href="#">Trailer: Watch New Scenes</a></h6>#}
-                                    {#                                                        <p class="time"> 1: 31</p>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {#                                                <div class="vd-item">#}
-                                    {#                                                    <div class="vd-it">#}
-                                    {#                                                        <img class="vd-img" src="images/uploads/vd-item2.jpg" alt="">#}
-                                    {#                                                        <a class="fancybox-media hvr-grow"#}
-                                    {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                    {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                    {#                                                    </div>#}
-                                    {#                                                    <div class="vd-infor">#}
-                                    {#                                                        <h6><a href="#">Featurette: “Avengers Re-Assembled</a></h6>#}
-                                    {#                                                        <p class="time"> 1: 03</p>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {#                                                <div class="vd-item">#}
-                                    {#                                                    <div class="vd-it">#}
-                                    {#                                                        <img class="vd-img" src="images/uploads/vd-item3.jpg" alt="">#}
-                                    {#                                                        <a class="fancybox-media hvr-grow"#}
-                                    {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                    {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                    {#                                                    </div>#}
-                                    {#                                                    <div class="vd-infor">#}
-                                    {#                                                        <h6><a href="#">Interview: Robert Downey Jr</a></h6>#}
-                                    {#                                                        <p class="time"> 3:27</p>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {#                                                <div class="vd-item">#}
-                                    {#                                                    <div class="vd-it">#}
-                                    {#                                                        <img class="vd-img" src="images/uploads/vd-item4.jpg" alt="">#}
-                                    {#                                                        <a class="fancybox-media hvr-grow"#}
-                                    {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                    {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                    {#                                                    </div>#}
-                                    {#                                                    <div class="vd-infor">#}
-                                    {#                                                        <h6><a href="#">Interview: Scarlett Johansson</a></h6>#}
-                                    {#                                                        <p class="time"> 3:27</p>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {#                                                <div class="vd-item">#}
-                                    {#                                                    <div class="vd-it">#}
-                                    {#                                                        <img class="vd-img" src="images/uploads/vd-item1.jpg" alt="">#}
-                                    {#                                                        <a class="fancybox-media hvr-grow"#}
-                                    {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                    {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                    {#                                                    </div>#}
-                                    {#                                                    <div class="vd-infor">#}
-                                    {#                                                        <h6><a href="#">Featurette: Meet Quicksilver & The Scarlet#}
-                                    {#                                                            Witch</a></h6>#}
-                                    {#                                                        <p class="time"> 1: 31</p>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {#                                                <div class="vd-item">#}
-                                    {#                                                    <div class="vd-it">#}
-                                    {#                                                        <img class="vd-img" src="images/uploads/vd-item2.jpg" alt="">#}
-                                    {#                                                        <a class="fancybox-media hvr-grow"#}
-                                    {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                    {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                    {#                                                    </div>#}
-                                    {#                                                    <div class="vd-infor">#}
-                                    {#                                                        <h6><a href="#">Interview: Director Joss Whedon</a></h6>#}
-                                    {#                                                        <p class="time"> 1: 03</p>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {#                                                <div class="vd-item">#}
-                                    {#                                                    <div class="vd-it">#}
-                                    {#                                                        <img class="vd-img" src="images/uploads/vd-item3.jpg" alt="">#}
-                                    {#                                                        <a class="fancybox-media hvr-grow"#}
-                                    {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                    {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                    {#                                                    </div>#}
-                                    {#                                                    <div class="vd-infor">#}
-                                    {#                                                        <h6><a href="#">Interview: Mark Ruffalo</a></h6>#}
-                                    {#                                                        <p class="time"> 3:27</p>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {#                                                <div class="vd-item">#}
-                                    {#                                                    <div class="vd-it">#}
-                                    {#                                                        <img class="vd-img" src="images/uploads/vd-item4.jpg" alt="">#}
-                                    {#                                                        <a class="fancybox-media hvr-grow"#}
-                                    {#                                                           href="https://www.youtube.com/embed/o-0hcF97wy0"><img#}
-                                    {#                                                                src="images/uploads/play-vd.png" alt=""></a>#}
-                                    {#                                                    </div>#}
-                                    {#                                                    <div class="vd-infor">#}
-                                    {#                                                        <h6><a href="#">Official Trailer #2</a></h6>#}
-                                    {#                                                        <p class="time"> 3:27</p>#}
-                                    {#                                                    </div>#}
-                                    {#                                                </div>#}
-                                    {#                                            </div>#}
-                                    {#                                            <div class="title-hd-sm">#}
-                                    {#                                                <h4>Photos <span> (21)</span></h4>#}
-                                    {#                                            </div>#}
-                                    {#                                            <div class="mvsingle-item">#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image11.jpg"><img#}
-                                    {#                                                        src="images/uploads/image1.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image21.jpg"><img#}
-                                    {#                                                        src="images/uploads/image2.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image31.jpg"><img#}
-                                    {#                                                        src="images/uploads/image3.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image41.jpg"><img#}
-                                    {#                                                        src="images/uploads/image4.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image51.jpg"><img#}
-                                    {#                                                        src="images/uploads/image5.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image61.jpg"><img#}
-                                    {#                                                        src="images/uploads/image6.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image71.jpg"><img#}
-                                    {#                                                        src="images/uploads/image7.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image81.jpg"><img#}
-                                    {#                                                        src="images/uploads/image8.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image91.jpg"><img#}
-                                    {#                                                        src="images/uploads/image9.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image101.jpg"><img#}
-                                    {#                                                        src="images/uploads/image10.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image111.jpg"><img#}
-                                    {#                                                        src="images/uploads/image1-1.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image121.jpg"><img#}
-                                    {#                                                        src="images/uploads/image12.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image131.jpg"><img#}
-                                    {#                                                        src="images/uploads/image13.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image141.jpg"><img#}
-                                    {#                                                        src="images/uploads/image14.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image151.jpg"><img#}
-                                    {#                                                        src="images/uploads/image15.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image161.jpg"><img#}
-                                    {#                                                        src="images/uploads/image16.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image171.jpg"><img#}
-                                    {#                                                        src="images/uploads/image17.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image181.jpg"><img#}
-                                    {#                                                        src="images/uploads/image18.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image191.jpg"><img#}
-                                    {#                                                        src="images/uploads/image19.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image201.jpg"><img#}
-                                    {#                                                        src="images/uploads/image20.jpg" alt=""></a>#}
-                                    {#                                                <a class="img-lightbox" data-fancybox-group="gallery"#}
-                                    {#                                                   href="images/uploads/image211.jpg"><img#}
-                                    {#                                                        src="images/uploads/image2-1.jpg" alt=""></a>#}
-                                    {#                                            </div>#}
-                                    {#                                        </div>#}
-                                    {#                                    </div>#}
-                                    <!--<div id="moviesrelated" class="tab">-->
-                                    <!--<div class="row">-->
-                                    <!--<h3>Related Movies To</h3>-->
-                                    <!--<h2>Skyfall: Quantum of Spectre</h2>-->
-                                    <!--<div class="topbar-filter">-->
-                                    <!--<p>Found <span>12 movies</span> in total</p>-->
-                                    <!--<label>Sort by:</label>-->
-                                    <!--<select>-->
-                                    <!--<option value="popularity">Popularity Descending</option>-->
-                                    <!--<option value="popularity">Popularity Ascending</option>-->
-                                    <!--<option value="rating">Rating Descending</option>-->
-                                    <!--<option value="rating">Rating Ascending</option>-->
-                                    <!--<option value="date">Release date Descending</option>-->
-                                    <!--<option value="date">Release date Ascending</option>-->
-                                    <!--</select>-->
-                                    <!--</div>-->
-                                    <!--<div class="movie-item-style-2">-->
-                                    <!--<img src="images/uploads/mv1.jpg" alt="">-->
-                                    <!--<div class="mv-item-infor">-->
-                                    <!--<h6><a href="#">oblivion <span>(2012)</span></a></h6>-->
-                                    <!--<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10-->
-                                    <!--</p>-->
-                                    <!--<p class="describe">Earth's mightiest heroes must come together and-->
-                                    <!--learn to fight as a team if they are to stop the mischievous-->
-                                    <!--Loki and his alien army from enslaving humanity...</p>-->
-                                    <!--<p class="run-time"> Run Time: 2h21’ . <span>MMPA: PG-13 </span> .-->
-                                    <!--<span>Release: 1 May 2015</span></p>-->
-                                    <!--<p>Director: <a href="#">Joss Whedon</a></p>-->
-                                    <!--<p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris-->
-                                    <!--Evans,</a> <a href="#"> Chris Hemsworth</a></p>-->
-                                    <!--</div>-->
-                                    <!--</div>-->
-                                    <!--<div class="topbar-filter">-->
-                                    <!--<label>Movies per page:</label>-->
-                                    <!--<select>-->
-                                    <!--<option value="range">5 Movies</option>-->
-                                    <!--<option value="saab">10 Movies</option>-->
-                                    <!--</select>-->
-                                    <!--<div class="pagination2">-->
-                                    <!--<span>Page 1 of 2:</span>-->
-                                    <!--<a class="active" href="#">1</a>-->
-                                    <!--<a href="#">2</a>-->
-                                    <!--<a href="#"><i class="ion-arrow-right-b"></i></a>-->
-                                    <!--</div>-->
-                                    <!--</div>-->
-                                    <!--</div>-->
-                                    <!--</div>-->
                                 </div>
                             </div>
                         </div>

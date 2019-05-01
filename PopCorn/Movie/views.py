@@ -210,7 +210,7 @@ def singledetailmovie(request, movie_id):
             if ratingform.is_valid():
                 if (ratingform.cleaned_data['stars']):
                     starsrcvd = int(ratingform.cleaned_data['stars'])
-                    ratingquery = f"Insert into Movie_Rating(show_id, user_id, stars) values ({movie_id},{request.user.id},{starsrcvd})"
+                    ratingquery = f"Insert into Movie_Rating(show_id, user_id, stars) values ({Show_id},{request.user.id},{starsrcvd})"
                     cur.execute(ratingquery)
         else:
             reviewform = ReviewForm()

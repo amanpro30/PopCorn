@@ -18,6 +18,6 @@ class Award(models.Model):
     Cast = models.ForeignKey(Celebrity, on_delete=models.CASCADE)
 
 
-class Tag(models.Model):
-    Celeb = models.ForeignKey(Celebrity, on_delete=models.CASCADE)
-    Tag_Name = models.CharField(max_length=100)
+# class Tag(models.Model):
+#     Celeb = models.ForeignKey(Celebrity, on_delete=models.CASCADE)
+#     Tag_Name = models.CharField(max_length=100)
