@@ -20,3 +20,9 @@ class UpdateProfile(ModelForm):
     class Meta:
         model = Profile
         exclude = ['user', 'email_confirmed']
+
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', ]

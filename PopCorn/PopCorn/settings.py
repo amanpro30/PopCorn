@@ -24,7 +24,7 @@ SECRET_KEY = '6gk(5sgofv3d%^po-=r2tamrk3tvrn+h2*ucy_9v#71z5m47fr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['ff5a5844.ngrok.io', '127.0.0.1']
 
 # Application definition
 
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'rest_framework',
     'Movie',
     'Celebrities',
     'registration',
