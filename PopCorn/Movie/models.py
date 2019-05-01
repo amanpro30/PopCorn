@@ -2,7 +2,7 @@ from django.db import models
 from Celebrities.models import Celebrity
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+import datetime
 
 class Show(models.Model):
     Title = models.CharField(max_length=200)
@@ -113,3 +113,9 @@ class Favourite(models.Model):
     )
     Type = models.CharField(max_length=1, choices=TYPE_CHOICE)
     Show = models.ForeignKey(Show, on_delete=models.CASCADE)
+
+    
+class Visits(models.Model):
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    Show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    time = models.DateTimeField(default=datetime.datetime.now)

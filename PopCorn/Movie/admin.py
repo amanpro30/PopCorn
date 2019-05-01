@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib import admin
 
 # Register your models here.
-from .models import Show, Season, Episode, ShowCelebrity, Rating, Review, Upvote, Genre, Favourite
+from .models import Show, Season, Episode, ShowCelebrity, Rating, Review, Upvote, Genre, Favourite, Visits
 
 admin.site.register(Show)
 admin.site.register(Season)
@@ -15,4 +15,5 @@ admin.site.register(Review)
 admin.site.register(Upvote)
 admin.site.register(Genre)
 admin.site.register(Favourite)
+admin.site.register(Visits)
 

@@ -5,7 +5,10 @@ from django.db import connection
 from Movie.form import ReviewForm, RatingForm, SearchForm
 from datetime import date
 import math
-
+import datetime
+from Movie.models import Visits
+from django.contrib.auth.models import User
+from django.db.models import Count
 
 # Create your views here.
 def hompage(request):
@@ -54,7 +57,13 @@ def hompage(request):
         cur.execute(most_reviewed_query)
         context['tv_most_reviewed'] = cur.fetchall()
     print(context)
+    visits_grouped = Visits.objects.filter(time__range=[datetime.datetime.now() - datetime.timedelta(days=7), datetime.datetime.now()]).values('Show').annotate(dcount=Count('Show')).order_by('-dcount')
+    print('vg',visits_grouped)
+    show_trending = visits_grouped[0]['Show']
+    trending_show = Show.objects.filter(id=show_trending)
+    print(trending_show)
     context['searchform'] = SearchForm()
+    context['trending_show'] = trending_show
     return render(request, 'html/basehome.html', context)
 
 
@@ -119,6 +128,7 @@ def movies(request, filter, page):
         }
 
         print(context['data'])
+
         return render(request, 'html/showlist.html', context)
 
 
@@ -272,6 +282,14 @@ def singledetailmovie(request, movie_id):
         'searchform': SearchForm(),
     }
     print(data)
+    with connection.cursor() as cur:
+        # query="INSERT INTO Movie_Visits values({},{},{})"
+        # query=query.format(request.user.id,movie_id,datetime.datetime.now)
+        # cur.execute(query)
+        # result = cur.fetchall()
+        user_instance = User.objects.get(id=request.user.id)
+        movie_instance = Show.objects.get(id=movie_id)
+        Visits.objects.create(User=user_instance, Show=movie_instance)
     return render(request, 'html/single_movie.html', context)
 
 
