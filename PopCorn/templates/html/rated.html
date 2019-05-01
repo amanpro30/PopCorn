@@ -1,0 +1,34 @@
+{% extends 'html/userdetailspage.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+{% endblock %}
+
+{% block profile %}
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="topbar-filter">
+        </div>
+        {% for i in data %}
+            <div class="movie-item-style-2">
+                <img src="/Media/{{ i.4 }}" alt="" style="width:150px;height:200px">
+                <div class="mv-item-infor">
+                    <h6><a href="{% url 'Movie:single_movie' i.1 %}">{{ i.0 }}
+                        <span>({{ i.2|date:'Y' }})</span></a></h6>
+                    <p class="rate"><i class="ion-android-star"></i><span>{{ i.5 }}/10</span>({{ i.6 }}
+                        ratings)</p>
+                    <p class="describe">{{ i.3 }}</p>
+                    <p class="run-time"> Run Time: {{ i.2|date:"i:s" }}
+                    <p class="rate"><i class="ion-android-star"></i><span>{{ i.7 }}/10</span>({{ i.6 }} your rating</p>
+                        <span>Release: {{ i.1|date }}</span></p>
+                </div>
+            </div>
+        {% empty %}
+            <div>Nothing to show!!</div>
+        {% endfor %}
+        <div class="topbar-filter">
+            <div class="pagination2">
+            </div>
+        </div>
+    </div>
+{% endblock %}

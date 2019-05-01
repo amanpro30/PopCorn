@@ -201,7 +201,7 @@ def favorites(request):
         query = query.format(request.user.id)
         cur.execute(query)
         context['data'] = cur.fetchall()
-
+        print(context['data'])
     return render(request, 'html/watchfavlist.html', context)
 
 
@@ -219,6 +219,47 @@ def watchlist(request):
         cur.execute(query)
         context['data'] = cur.fetchall()
     return render(request, 'html/watchfavlist.html', context)
+
+#
+# def rated(request):
+#     context = {
+#         'token': 'rated',
+#         'searchform': SearchForm(),
+#     }
+#     with connection.cursor() as cur:
+#         query = "Select  movie_show.Title,movie_show.ReleaseDate,movie_show.Duration,movie_show.Description,movie_show.Image,movie_show.Avg_rating,movie_show.Num_rating,movie_rating.Stars from movie_show right join movie_rating on movie_show.show" \
+#                 " where movie_show.id in " \
+#                 " (Select Show_id from movie_rating where User_id = {})"
+#         print(request.user.id)
+#         query = query.format(request.user.id)
+#         cur.execute(query)
+#         context['data'] = cur.fetchall()
+#         print(context['data'])
+#     return render(request, 'html/rated.html', context)
+
+
+
+
+
+def rated(request):
+    context = {
+        'token': 'rated',
+        'searchform': SearchForm(),
+    }
+    with connection.cursor() as cur:
+        query = "Select  movie_show.Title,movie_show.ReleaseDate,movie_show.Duration,movie_show.Description,movie_show.Image,movie_show.Avg_rating,movie_show.Num_rating,movie_rating.Stars from movie_show,movie_rating" \
+                " where movie_show.id=movie_rating.Show_id and User_id = {}"
+        print(request.user.id)
+        query = query.format(request.user.id)
+        cur.execute(query)
+        context['data'] = cur.fetchall()
+        print(context['data'])
+    return render(request, 'html/rated.html', context)
+
+
+
+
+
 
 
 def profile(request):

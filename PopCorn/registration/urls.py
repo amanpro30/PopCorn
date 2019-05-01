@@ -7,6 +7,7 @@ urlpatterns = [
     path('', reg_views.registration, name='register'),
     path('profile/', reg_views.profile, name='profile'),
     path('watchlist/', reg_views.watchlist, name='watchlist'),
+    path('rated/', reg_views.rated, name='rated'),
     path('favorites/', reg_views.favorites, name='favorites'),
     path('activity/', reg_views.activity, name='activities'),
     path('rating/', reg_views.rating, name='rating'),
