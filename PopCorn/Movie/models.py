@@ -13,14 +13,14 @@ class Show(models.Model):
     Country = models.CharField(max_length=200)
     Budget = models.IntegerField()
     Boc = models.IntegerField()
-    # STATUS_CHOICE = (
-    #     ('F', 'Flop'),
-    #     ('A', 'Average'),
-    #     ('H', 'Hit'),
-    #     ('S', 'SuperHit'),
-    #     ('B', 'Blockbuster'),
-    #     ('R', 'Running')
-    # )
+    STATUS_CHOICE = (
+        ('F', 'Flop'),
+        ('A', 'Average'),
+        ('H', 'Hit'),
+        ('S', 'SuperHit'),
+        ('B', 'Blockbuster'),
+        ('R', 'Running')
+     )
     Status = models.CharField(max_length=1, default='R')
     Avg_rating = models.FloatField()
     Num_rating = models.IntegerField(default=0)
@@ -30,6 +30,7 @@ class Show(models.Model):
         ('M', 'Movies'),
     )
     Type = models.CharField(max_length=1, choices=SHOW_TYPE)
+    tagline = models.TextField(max_length=2000)
 
     def __str__(self):
         return self.Title

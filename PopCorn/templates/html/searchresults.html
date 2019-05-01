@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'html/base.html' %}
 {% load static %}
 
@@ -16,7 +17,7 @@
                         <h1>Search Results</h1>
                         <ul class="breadcumb">
                             <li class="active"><a href="#">Home</a></li>
-                            <li><span class="ion-ios-arrow-right"></span> movie listing</li>
+                            <li><span class="ion-ios-arrow-right"></span> results</li>
                         </ul>
                     </div>
                 </div>
@@ -25,47 +26,63 @@
     </div>
     <div class="page-single movie_list">
         <div class="container">
-            <div class="row ipad-width2">
-                <div class="col-md-8 col-sm-12 col-xs-12">
-                    <div class="topbar-filter">
-                        <p>Found <span>{{ count }} </span> in total</p>
-                        <label>Sort by:</label>
-                        <div class="dropdown">
-                            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-                            <div id="myDropdown" class="dropdown-content">
-                                <a href="{% url 'Movie:movielist' 'top_rated' '1' %}">Top Rated</a>
-                                <a href="{% url 'Movie:movielist' 'trending' '1' %}">Trending</a>
-                                <a href="{% url 'Movie:movielist' 'top_grossers' '1' %}">Top Grossers</a>
-                                <a href="{% url 'Movie:movielist' 'all_alphabet' '1' %}">All (By Name)</a>
-                                <a href="{% url 'Movie:movielist' 'all_release_date' '1' %}">All (By Release Date)</a>
-                            </div>
+            {% if shows %}
+                <div class="row ipad-width2">
+                    <div>
+                        <h2 style="color:white;">Showlist</h2><br>
+                        <div class="topbar-filter">
+                            <p>Found <span>{{ shows|length }} </span> in total</p>
                         </div>
+                        {% for i in shows %}
+                            <div class="col-md-6">
+                                <div class="movie-item-style-2">
+                                    <img src="/Media/{{ i.5 }}" alt="" style="width:150px;height:200px">
+                                    <div class="mv-item-infor">
+                                        <h6><a href="{% url 'Movie:single_movie' i.0 %}">{{ i.1 }}
+                                            <span>({{ i.2|date:'Y' }})</span></a></h6>
+                                        <p class="rate"><i
+                                                class="ion-android-star"></i><span>{{ i.10 }}/10</span>({{ i.11 }}
+                                            ratings)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div>Nothing to show!!</div>
+                        {% endfor %}
                     </div>
-                    {% for i in shows %}
-                        <div class="movie-item-style-2">
-                            <img src="/Media/{{ i.5 }}" alt="" style="width:150px;height:200px">
-                            <div class="mv-item-infor">
-                                <h6><a href="{% url 'Movie:single_movie' i.0 %}">{{ i.1 }}
-                                    <span>({{ i.2|date:'Y' }})</span></a></h6>
-                                <p class="rate"><i
-                                        class="ion-android-star"></i><span>{{ i.10 }}/10</span>({{ i.11 }}
-                                    ratings)</p>
-                            </div>
+                </div><br><br>
+            {% endif %}
+            {% if celeb %}
+                <div class="row ipad-width2">
+                    <div>
+                        <h2 style="color:white;">Celebrities</h2><br>
+                        <div class="topbar-filter">
+                            <p class="pad-change">Found <span>{{ celeb|length }}</span> in total</p>
                         </div>
-                    {% empty %}
-                        <div>Nothing to show!!</div>
-                    {% endfor %}
-                    <div class="topbar-filter">
-                        <div class="pagination2">
-                            <span>Page 1 of {{ count_page }}:</span>
-                            {% for i in count_page_range %}
-                                <a href="{% url 'Movie:movielist' filter i %}">{{ i }}</a>
+                        <div class="row">
+                            {% for i in celeb %}
+                                <div class="col-md-6">
+                                    <div class="ceb-item-style-2">
+                                        <img src="/Media/{{ i.4 }}" alt="" style="height:100px;">
+                                        <div class="ceb-infor">
+                                            <h2><a href="{% url 'Celebrities:single_celeb' i.0 %}">{{ i.1 }}</a></h2>
+                                            <p>{{ i.3 }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <div>&nbsp;&nbsp;&nbsp;Nothing to show!!</div>
                             {% endfor %}
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
+            {% if celeb or shows %}
+            {% else %}
+                <h2 style="color:white;">OOPS! Could not find any result.</h2>
+            {% endif %}
         </div>
     </div>
+
     <script src="{% static 'js/dropdown.js' %}"></script>
 {% endblock %}
