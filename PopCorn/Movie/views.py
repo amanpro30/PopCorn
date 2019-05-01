@@ -754,7 +754,3 @@ class AwardView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Award.objects.all()
 
 
-class CelebrityListView(generics.ListCreateAPIView):
-    queryset = Celebrity.objects.all()
-    serializer_class = CelebritySerializer
-

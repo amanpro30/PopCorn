@@ -96,7 +96,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'PopCorn',
             'USER': 'root',
-            'PASSWORD': '1121',
+            'PASSWORD': '12345',
             'HOST': 'localhost',
         },
     'OPTIONS': {
