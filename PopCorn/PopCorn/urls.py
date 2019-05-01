@@ -8,7 +8,6 @@ from django.conf import settings
 from rest_framework.authtoken import views
 from Movie.views import *
 
-
 app_name = 'PopCorn'
 
 urlpatterns = [
