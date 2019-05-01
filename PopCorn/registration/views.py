@@ -31,6 +31,7 @@ from django.db import connection
 import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import pairwise_distances
+from Movie.models import Show, Rating
 
 
 def registration(request):
@@ -136,11 +137,44 @@ def recommend(request):
     user_recommend_data = []
     for i in user_prediction[request.user.id]:
         user_recommend_data.append(i)
-    print(user_recommend_data)
-    user_recommend_data_sorted = user_recommend_data.sort()
+    user_recommend_data = user_recommend_data[1:]
+    movie_rated = Rating.objects.filter(User_id=request.user.id)
+    movie_rated_list = []
+    for i in movie_rated:
+        print(i.Show_id)
+        movie_rated_list.append(i.Show_id)
+    print('movie Rated')
+    print(movie_rated)
+
+    user_recommend_data_sorted = sorted(user_recommend_data, reverse=True)
     print(user_recommend_data_sorted)
+    movie_id = []
+    for i in range(len(user_recommend_data_sorted)):
+        for j in range(len(user_recommend_data)):
+            if user_recommend_data_sorted[i] == user_recommend_data[j]:
+                movie_id.append(j+1)
+    movie_id_common = []
+    for i in movie_rated:
+        for j in movie_id:
+            print(i.Show_id,j)
+            if i.Show_id == j:
+                movie_id_common.append(j)
+    movie_id_common = movie_id_common[0:10]
+    print('miu', movie_id_common,'mid',movie_id)
+    for i in movie_id_common:
+        movie_id.remove(i)
+    movie_recommended_list = []
+    for i in movie_id:
+        # with connection.cursor() as cur:
+            # movies_query = " Select * from movie_show where id ={} "
+            # movies_query = movies_query.format(id)
+            # cur.execute(movies_query)
+            # movies = cur.fetchall()
+        movies = Show.objects.filter(id=i)
+        movie_recommended_list.append(movies)
     context = {
         "profiles": users,
+        "recommended_movies": movie_recommended_list,
     }
     return render(request, 'registration/recommend.html', context)
 

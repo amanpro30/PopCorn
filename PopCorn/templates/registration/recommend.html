@@ -1,1 +1,33 @@
-<h1>Hello Chotu</h1>
+{% extends 'html/userdetailspage.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+{% endblock %}
+
+{% block profile %}
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="topbar-filter">
+        </div>
+        {% for i in recommended_movies %}
+            <div class="movie-item-style-2">
+                <img src="/Media/{{ i.0.Image }}" alt="" style="width:150px;height:200px">
+                <div class="mv-item-infor">
+                    <h6><a href="{% url 'Movie:single_movie' i.0 %}">{{ i.0.Title }}
+                        <span>({{ i.0.ReleaseDate |date:'Y' }})</span></a></h6>
+                    <p class="rate"><i class="ion-android-star"></i><span>{{ i.0.Avg_rating }}/10</span>({{ i.11 }}
+                        ratings)</p>
+                    <p class="describe">{{ i.0.Description }}</p>
+                    <p class="run-time"> Run Time: {{ i.0.Duration|date:"i:s" }}
+                        <span>Release: {{ i.0.ReleaseDate |date }}</span></p>
+                </div>
+            </div>
+        {% empty %}
+            <div>Nothing to show!!</div>
+        {% endfor %}
+        <div class="topbar-filter">
+            <div class="pagination2">
+            </div>
+        </div>
+    </div>
+{% endblock %}
