@@ -7,7 +7,6 @@ class Celebrity(models.Model):
     About = models.TextField(max_length=2000)
     Image = models.ImageField(upload_to='Celebrity', null=True, blank=True)
     Nationality = models.CharField(max_length=200)
-    Height = models.IntegerField(null=True)
 
     def __str__(self):
         return self.Name
@@ -17,8 +16,3 @@ class Award(models.Model):
     Name = models.CharField(max_length=100)
     Date = models.DateField()
     Cast = models.ForeignKey(Celebrity, on_delete=models.CASCADE)
-
-
-class Tag(models.Model):
-    Celeb = models.ForeignKey(Celebrity, on_delete=models.CASCADE)
-    Tag_Name = models.CharField(max_length=100)
