@@ -4,7 +4,7 @@ from Movie.models import Show
 from django.db import connection
 from Movie.form import ReviewForm, RatingForm, SearchForm
 from .serializers import *
-from rest_framework import generics
+from rest_framework import generics, filters, fields
 from datetime import date
 import math
 
@@ -342,6 +342,27 @@ class ShowView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Show.objects.all()
 
 
+
+class CelebrityListView(generics.ListCreateAPIView):
+    queryset = Celebrity.objects.all()
+    serializer_class = CelebritySerializer
+
+    # serializer_class = CelebritySerializer
+    # queryset = Celebrity.objects.all()
+
+    # def get_queryset(self):
+    #     awards = Award.objects.all()
+    #     for award in awards:
+    #         queryset = Celebrity.objects.filter(
+    #             award=award
+    #         )
+    #     return queryset
+
+
+class CelebrityView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CelebritySerializer
+    queryset = Celebrity.objects.all()
+    
 class AwardListView(generics.ListCreateAPIView):
     queryset = Award.objects.all()
     serializer_class = AwardSerializer
@@ -357,7 +378,4 @@ class CelebrityListView(generics.ListCreateAPIView):
     serializer_class = CelebritySerializer
 
 
-class CelebrityView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = CelebritySerializer
-    queryset = Celebrity.objects.all()
 #=====================================================================================

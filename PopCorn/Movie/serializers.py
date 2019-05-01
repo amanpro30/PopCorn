@@ -8,40 +8,41 @@ class ShowSerializer(serializers.ModelSerializer):
 	
 	class Meta:
 		model = Show
-		fields=('id',  'Duration', 'Description', 'ReleaseDate',  'Country', 'Boc', 'Status', 'Trailer','Avg_rating', 'Num_rating','Type')	
-
-
-
-class AwardSerializer(serializers.ModelSerializer):
-	
-	
-	class Meta:
-		model=Award
-		fields=('id', 'Name', 'Date', 'Cast',)
+		fields=('id', 'Title', 'ReleaseDate', 'Duration', 'Description', 'Image',   'Country', 'Budget', 'Boc', 'Status', 'Trailer','Avg_rating', 'Num_rating','Type')	
 
 
 class CelebritySerializer(serializers.ModelSerializer):
 	
-	celebrity = AwardSerializer(many=True) 
-
+	
 	class Meta:
 		model = Celebrity
 		fields = (
-			'id',
+			
 		 	'Name',
 		 	'Dob', 
 			'About', 
 			'Image',
 			'Nationality',
-			'celebrity',
+			'Height',
+			#'award',
 		)
 	
+
+
+class AwardSerializer(serializers.ModelSerializer):
+	#celebrity = CelebritySerializer(write_only=True) 
+
+	
+	class Meta:
+		model=Award
+		fields=( 'Name', 'Date', )
+
 	
 	
 	def create(self, validated_data):
-		awards_data=validated_data.pop('celebrity')
-		celebrity = Celebrities.objects.create(**validated_data)
-		for award_data in awards_data:
-			Award.objects.create( **award_data) 
-		return celebrity
-		
+		celebritys_data=validated_data.pop('celebrity')
+		awards = Award.objects.create(**validated_data)
+		for celebrity_data in celebritys_data:
+			Celebrity.objects.create(awards=Cast, **celebrity_data) 
+		return awards
+	
