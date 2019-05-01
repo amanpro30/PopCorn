@@ -119,17 +119,19 @@ def recommend(request):
         ratings = pd.DataFrame(ratings)
         n_users = ratings.user_id.unique().shape[0]
         n_items = ratings.item_id.unique().shape[0]
-        data_matrix = np.zeros((n_users+2, n_items+1))
+        data_matrix = np.zeros((n_users + 2, n_items + 1))
         print(ratings)
         for line in ratings.itertuples():
             data_matrix[line[1], line[2]] = line[3]
-        user_similarity = 1-pairwise_distances(data_matrix, metric='cosine')
+        user_similarity = 1 - pairwise_distances(data_matrix, metric='cosine')
+
         def predict(ratings, similarity):
             mean_user_rating = ratings.mean(axis=1)
             ratings_diff = (ratings - mean_user_rating[:, np.newaxis])
             pred = mean_user_rating[:, np.newaxis] + similarity.dot(ratings_diff) / np.array(
                 [np.abs(similarity).sum(axis=1)]).T
             return pred
+
         user_prediction = predict(data_matrix, user_similarity)
         print(user_prediction)
     user_recommend_data = []
@@ -177,7 +179,6 @@ def recommend(request):
     return render(request, 'registration/recommend.html', context)
 
 
-
 # Create your views here.
 def rating(request):
     ratingquery = "Select * from "
@@ -191,6 +192,7 @@ def activity(request):
 def favorites(request):
     context = {
         'token': 'favorites',
+        'image': request.user.profile.profile_picture,
         'searchform': SearchForm(),
     }
     with connection.cursor() as cur:
@@ -208,6 +210,7 @@ def favorites(request):
 def watchlist(request):
     context = {
         'token': 'watchlist',
+        'image': request.user.profile.profile_picture,
         'searchform': SearchForm(),
     }
     with connection.cursor() as cur:
@@ -274,16 +277,19 @@ def profile(request):
         userform = UserForm(instance=request.user)
     context = {
         'token': 'profile',
+        'image': request.user.profile.profile_picture,
         'searchform': SearchForm(),
         'profileupdateform': profileupdateform,
         'userform': userform,
     }
+    print('image', context['image'])
     return render(request, 'html/profile.html', context)
 
 
 def changepassword(request):
     context = {
         'token': 'Change your password',
+        'image': request.user.profile.profile_picture,
         'searchform': SearchForm(),
     }
     return render(request, 'html/changepassword.html', context)

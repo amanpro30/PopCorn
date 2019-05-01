@@ -30,6 +30,7 @@ class Show(models.Model):
         ('M', 'Movies'),
     )
     Type = models.CharField(max_length=1, choices=SHOW_TYPE)
+    tagline = models.TextField(max_length=2000)
 
     def __str__(self):
         return self.Title

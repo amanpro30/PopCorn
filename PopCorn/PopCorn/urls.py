@@ -8,7 +8,6 @@ from django.conf import settings
 from rest_framework.authtoken import views
 from Movie.views import *
 
-
 app_name = 'PopCorn'
 
 urlpatterns = [
@@ -18,13 +17,10 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('registration/', include('registration.urls')),
     path('celebs/', include('Celebrities.urls')),
-
     path('api/celebrity/', CelebrityListView.as_view()),
     path('api/celebrity/<pk>', CelebrityView.as_view()),
     path('api/show/', ShowListView.as_view()),
     path('api/show/<pk>/', ShowView.as_view()),
     path('api/award/', AwardListView.as_view()),
     path('api/award/<pk>/', AwardView.as_view()),
-
-
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
