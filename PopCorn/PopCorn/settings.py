@@ -24,7 +24,7 @@ SECRET_KEY = '6gk(5sgofv3d%^po-=r2tamrk3tvrn+h2*ucy_9v#71z5m47fr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://popcorndjango.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['popcorndjango.herokuapp.com/', '127.0.0.1']
 
 # Application definition
 
