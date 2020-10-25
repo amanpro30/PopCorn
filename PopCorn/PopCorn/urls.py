@@ -7,6 +7,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework.authtoken import views
 from Movie.views import *
+from django.views.static import serve
+from django.conf.urls import url
 
 app_name = 'PopCorn'
 
@@ -23,4 +25,8 @@ urlpatterns = [
     path('api/show/<pk>/', ShowView.as_view()),
     path('api/award/', AwardListView.as_view()),
     path('api/award/<pk>/', AwardView.as_view()),
+    url(r'^media/(?P<path>.*)$', serve,
+        {'document_root':       settings.MEDIA_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve,
+        {'document_root': settings.STATIC_ROOT}),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

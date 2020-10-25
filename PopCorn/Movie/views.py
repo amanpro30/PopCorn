@@ -1,27 +1,18 @@
-
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from Movie.models import Show,Favourite
+from Movie.models import *
 from django.db import connection
-from Movie.form import ReviewForm, RatingForm, SearchForm
+from Movie.form import *
+import datetime
 from datetime import date
 import math
-import datetime
-from Movie.models import Visits
 from django.contrib.auth.models import User
 from django.db.models import Count
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from Movie.models import Show
-from django.db import connection
-from Movie.form import ReviewForm, RatingForm, SearchForm
 from .serializers import *
 from rest_framework import generics, filters, fields
-from datetime import date
-import math
-from django.views.decorators.csrf import csrf_exempt
 
-# Create your views here.
+
 def hompage(request):
     context = {}
     with connection.cursor() as cur:
@@ -67,14 +58,11 @@ def hompage(request):
                               " order by no desc "
         cur.execute(most_reviewed_query)
         context['tv_most_reviewed'] = cur.fetchall()
-    print(context)
     visits_grouped = Visits.objects.filter(
         time__range=[datetime.datetime.now() - datetime.timedelta(days=7), datetime.datetime.now()]).values(
         'Show').annotate(dcount=Count('Show')).order_by('-dcount')
-    print('vg', visits_grouped)
     show_trending = visits_grouped[0]['Show']
     trending_show = Show.objects.filter(id=show_trending)
-    print(trending_show)
     context['searchform'] = SearchForm()
     context['trending_show'] = trending_show
     return render(request, 'html/basehome.html', context)
@@ -101,7 +89,7 @@ def movies(request, filter, page):
                            f"ORDER BY Boc DESC LIMIT 10 OFFSET {page}"
             cur.execute(movies_query)
         movies_tuple = cur.fetchall()
-        all_movies_query = "Select count(*) from Movie_Show";
+        all_movies_query = "Select count(*) from Movie_Show"
         cur.execute(all_movies_query)
         all_mov = cur.fetchall()
         count_page = math.ceil(all_mov[0][0] / 10)
@@ -120,7 +108,6 @@ def movies(request, filter, page):
                 'writer': [],
                 'actors': [],
             }
-            print(celebrities)
             for j in celebrities:
                 if j[1] == 'D':
                     mov1['director'].append(j)
@@ -139,9 +126,6 @@ def movies(request, filter, page):
             "filter": filter,
             'searchform': SearchForm(),
         }
-
-        print(context['data'])
-
         return render(request, 'html/showlist.html', context)
 
 
@@ -181,7 +165,6 @@ def tvseries(request, filter):
                 'writer': [],
                 'actors': [],
             }
-            print(celebrities)
             for j in celebrities:
                 if j[1] == 'D':
                     mov1['director'].append(j)
@@ -198,7 +181,6 @@ def tvseries(request, filter):
             "data": data,
             'searchform': SearchForm(),
         }
-        print(context['data'])
     return render(request, 'html/showlist.html', context)
     stars_query = "Select AVG(rcv.stars) " \
                   "from Movie_ratings rcv " \
@@ -216,12 +198,10 @@ def tvseries(request, filter):
     }
     return render(request, 'html/single_movie.html', context)
 
-@csrf_exempt
+
 def singledetailmovie(request, movie_id):
-    print('single')
     with connection.cursor() as cur:
         if request.method == 'POST':
-            print(request.body)
             reviewform = ReviewForm(request.POST)
             ratingform = RatingForm(request.POST)
             if reviewform.is_valid():
@@ -230,34 +210,39 @@ def singledetailmovie(request, movie_id):
                 postquery = "Insert into Movie_Review(show_id,user_id,title,statement,PostDate) " \
                             "values " \
                             " ({},{},'{}','{}','{}')"
-                postquery = postquery.format(movie_id, request.user.id, title, statement, date.today())
+                postquery = postquery.format(
+                    movie_id, request.user.id, title, statement, date.today())
                 cur.execute(postquery)
             if ratingform.is_valid():
                 if (ratingform.cleaned_data['stars']):
                     starsrcvd = int(ratingform.cleaned_data['stars'])
                     ratingquery = "Insert into Movie_Rating(show_id, user_id, stars) values ({},{},{})"
-                    ratingquery = ratingquery.format(movie_id, request.user.id, starsrcvd)
+                    ratingquery = ratingquery.format(
+                        movie_id, request.user.id, starsrcvd)
                     cur.execute(ratingquery)
-            user_instance=User.objects.get(id=request.user.id)
-            show_instnace=Show.objects.get(id=movie_id)
-            print('body')
-            print(request.body)
+            user_instance = User.objects.get(id=request.user.id)
+            show_instnace = Show.objects.get(id=movie_id)
             if request.body == b'addw':
-                Favourite.objects.create(User=user_instance,Type='W',Show=show_instnace)
+                Favourite.objects.create(
+                    User=user_instance, Type='W', Show=show_instnace)
             elif request.body == b'addf':
-                Favourite.objects.create(User=user_instance,Type='F',Show=show_instnace)
+                Favourite.objects.create(
+                    User=user_instance, Type='F', Show=show_instnace)
             elif request.body == b'delw':
-                Favourite.objects.filter(User=request.user.id,Show=movie_id,Type='W').delete()
+                Favourite.objects.filter(
+                    User=request.user.id, Show=movie_id, Type='W').delete()
             elif request.body == b'delf':
-                Favourite.objects.filter(User=request.user.id,Show=movie_id,Type='F').delete()
+                Favourite.objects.filter(
+                    User=request.user.id, Show=movie_id, Type='F').delete()
         else:
             reviewform = ReviewForm()
             ratingform = RatingForm()
 
-        movies_query = "Select * from Movie_Show where type= 'm' and id ={}"
+        movies_query = "Select * from Movie_Show"
         movies_query = movies_query.format(movie_id)
         cur.execute(movies_query)
         movies_tuple = cur.fetchall()
+        print(movies_tuple)
         i = movies_tuple[0]
         data = []
         query = "SELECT *" \
@@ -297,16 +282,16 @@ def singledetailmovie(request, movie_id):
             star_ivd = None
         else:
             star_ivd = star_result[0][0]
-
-        print('data', mov1)
     try:
-        queryset_fav = Favourite.objects.filter(User=request.user.id, Show=movie_id, Type='F')
+        queryset_fav = Favourite.objects.filter(
+            User=request.user.id, Show=movie_id, Type='F')
     except Favourite.DoesNotExist:
         queryset_fav = None
     if queryset_fav is not None:
         fav_count = len(queryset_fav)
     try:
-        queryset_watch=Favourite.objects.filter(User=request.user.id,Show=movie_id,Type='W')
+        queryset_watch = Favourite.objects.filter(
+            User=request.user.id, Show=movie_id, Type='W')
     except Favourite.DoesNotExist:
         queryset_watch = None
     if queryset_watch is not None:
@@ -320,60 +305,24 @@ def singledetailmovie(request, movie_id):
         'star_count': star_count,
         "star_ivd": star_ivd,
         'searchform': SearchForm(),
-        'fav':fav_count,
-        'watchlist':watch_count,
+        'fav': fav_count,
+        'watchlist': watch_count,
     }
-    print(data)
     with connection.cursor() as cur:
-        # query="INSERT INTO Movie_Visits values({},{},{})"
-        # query=query.format(request.user.id,movie_id,datetime.datetime.now)
-        # cur.execute(query)
-        # result = cur.fetchall()
         user_instance = User.objects.get(id=request.user.id)
         movie_instance = Show.objects.get(id=movie_id)
         Visits.objects.create(User=user_instance, Show=movie_instance)
     return render(request, 'html/single_movie.html', context)
 
 
-# class ShowListView(generics.ListCreateAPIView):
-#     queryset = Show.objects.all()
-#     serializer_class = ShowSerializer
-#
-#
-# class ShowView(generics.RetrieveUpdateDestroyAPIView):
-#     serializer_class = ShowSerializer
-#     queryset = Show.objects.all()
-#
-#
-# class AwardsListView(generics.ListCreateAPIView):
-#     queryset = Awards.objects.all()
-#     serializer_class = AwardsSerializer
-#
-#
-# class AwardsView(generics.RetrieveUpdateDestroyAPIView):
-#     serializer_class = AwardsSerializer
-#     queryset = Awards.objects.all()
-#
-#
-# class CelebritiesListView(generics.ListCreateAPIView):
-#     queryset = Celebrities.objects.all()
-#     serializer_class = CelebritiesSerializer
-#
-#
-# class CelebritiesView(generics.RetrieveUpdateDestroyAPIView):
-#     serializer_class = CelebritiesSerializer
-#     queryset = Celebrities.objects.all()
-
 def searchbox(request):
     context = {}
     with connection.cursor() as cur:
-        print(request.method)
         if request.method == 'POST':
             searchform = SearchForm(request.POST)
             if searchform.is_valid():
                 query = searchform.cleaned_data['search']
                 select = searchform.cleaned_data['select']
-                print(query, select)
                 if select == '0':
                     searchquery = "Select * from movie_show " \
                                   " where MATCH(Title) " \
@@ -433,17 +382,6 @@ class ShowView(generics.RetrieveUpdateDestroyAPIView):
 class CelebrityListView(generics.ListCreateAPIView):
     queryset = Celebrity.objects.all()
     serializer_class = CelebritySerializer
-
-    # serializer_class = CelebritySerializer
-    # queryset = Celebrity.objects.all()
-
-    # def get_queryset(self):
-    #     awards = Award.objects.all()
-    #     for award in awards:
-    #         queryset = Celebrity.objects.filter(
-    #             award=award
-    #         )
-    #     return queryset
 
 
 class CelebrityView(generics.RetrieveUpdateDestroyAPIView):

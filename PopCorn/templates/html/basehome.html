@@ -12,15 +12,11 @@
                                 <div class="title-in">
                                     <div class="cate">
                                         <br><br>
-                                        <span class="blue"><a href="#">sci</a></span>
+                                        <span class="blue"><a href="#">Sci-Fi</a></span>
                                         <span class="yell"><a href="#">Action</a></span>
-                                        <span class="orange"><a href="#">advanture</a></span>
+                                        <span class="orange"><a href="#">Adventure</a></span>
                                     </div>
                                     <h1><a href="#">{{trending_show.0.Title}}<br><br><span></span></a></h1>
-                                    <div class="social-btn">
-                                        <a href="#" class="parent-btn"><i class="ion-play"></i> Watch Trailer</a>
-                                        <a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
-                                    </div>
                                     <div class="mv-details">
                                         <p><i class="ion-android-star"></i><span>{{trending_show.0.Avg_rating}}</span> /10</p>
                                         <ul class="mv-infor">
@@ -39,37 +35,6 @@
                                     <br>
                                     <br>
                                     <a href="#"><img src="/Media/{{trending_show.0.Image}}" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item">
-                        <div class="row">
-                            <div class="col-md-8 col-sm-12 col-xs-12">
-                                <div class="title-in">
-                                    <div class="cate">
-                                        <span class="blue"><a href="#">Genre1</a></span>
-                                        <span class="yell"><a href="#">Genre2</a></span>
-                                    </div>
-                                    <h1><a href="#">name<br>
-                                         name2<span>2015</span></a></h1>
-                                    <div class="social-btn">
-                                        <a href="#" class="parent-btn"><i class="ion-play"></i> Watch Trailer</a>
-                                        <a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
-                                    </div>
-                                    <div class="mv-details">
-                                        <p><i class="ion-android-star"></i><span></span> /10</p>
-                                        <ul class="mv-infor">
-                                            <li> Run Time: </li>
-                                            <li> Release: </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <div class="mv-img-2">
-                                    <a href="#"><img src="{% static 'images/uploads/poster1.jpg' %}" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -189,7 +154,7 @@
                                         <div class="slide-it">
                                             <div class="movie-item">
                                                 <div class="mv-img">
-                                                    <img src="{% static 'images/uploads/mv-it4.jpg' %}" alt="">
+                                                    <img src="/Media/{{ tvs.5 }}" alt="">
                                                 </div>
                                                 <div class="hvr-inner">
                                                     <a href="{% url 'Movie:single_movie' tvs.0 %}"> Read more <i
@@ -198,7 +163,7 @@
                                                 <div class="title-in">
                                                     <h6><a href="{% url 'Movie:single_movie' tvs.0 %}">{{ tvs.1 }}</a>
                                                     </h6>
-                                                    <p><i class="ion-android-star"></i><span>{{ tvs.9 }}</span> /10</p>
+                                                    <p><i class="ion-android-star"></i><span>{{ tvs.10 }}</span> /10</p>
                                                 </div>
                                             </div>
                                         </div>
