@@ -113,7 +113,7 @@ ipywidgets==6.0.0
 isort==4.3.21
 itsdangerous==1.1.0
 jedi==0.15.2
-Jinja2==2.10.1
+Jinja2==2.11.3
 joblib==0.16.0
 jsbeautifier==1.11.0
 jsonpatch==1.26
