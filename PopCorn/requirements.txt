@@ -217,7 +217,7 @@ python3-openid==3.2.0
 pytz==2020.1
 pyudev==0.21.0
 pyxdg==0.26
-PyYAML==5.3.1
+PyYAML==5.4
 pyzmq==18.1.1
 reportlab==3.5.34
 requests==2.22.0
