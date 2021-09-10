@@ -238,7 +238,7 @@ social-auth-core==3.3.3
 soupsieve==2.0.1
 speaklater==1.3
 SQLAlchemy==1.3.16
-sqlparse==0.4.1
+sqlparse==0.4.2
 sshtunnel==0.1.5
 stem==1.8.0
 systemd-python==234
