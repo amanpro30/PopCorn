@@ -12,6 +12,8 @@ from django.conf.urls import url
 
 app_name = 'PopCorn'
 
+app_name1 = 'PopCorn1'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('social_django.urls', namespace='social')),
