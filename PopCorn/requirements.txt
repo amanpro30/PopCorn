@@ -192,7 +192,7 @@ pycryptodomex==3.6.1
 pycups==1.9.73
 Pygments==2.3.1
 PyGObject==3.36.0
-PyJWT==1.7.1
+PyJWT==2.4.0
 pylint==2.5.0
 pymacaroons==0.13.0
 PyMySQL==0.10.1
