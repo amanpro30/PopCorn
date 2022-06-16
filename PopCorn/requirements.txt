@@ -158,7 +158,7 @@ netifaces==0.10.4
 networkx==2.4
 nevergrad==0.4.2
 nmap==0.0.1
-notebook==6.0.3
+notebook==6.4.12
 numpy==1.17.4
 oauthlib==3.1.0
 olefile==0.46
