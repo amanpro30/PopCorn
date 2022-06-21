@@ -159,7 +159,7 @@ networkx==2.4
 nevergrad==0.4.2
 nmap==0.0.1
 notebook==6.0.3
-numpy==1.17.4
+numpy==1.22.0
 oauthlib==3.1.0
 olefile==0.46
 opencv-python==4.4.0.44
